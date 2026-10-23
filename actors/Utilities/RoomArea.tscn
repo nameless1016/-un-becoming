@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://3f52x7idbjcb"]
+
+[ext_resource type="Script" uid="uid://vyv4bi4hm0o5" path="res://actors/Utilities/room_area.gd" id="1_cm6q8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
+
+[node name="RoomArea" type="Area2D" unique_id=1291632373]
+script = ExtResource("1_cm6q8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1727739638]
+shape = SubResource("RectangleShape2D_4kxuq")

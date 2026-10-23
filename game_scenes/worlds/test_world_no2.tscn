@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b1tkv5oak0rbb"]
+
+[ext_resource type="PackedScene" uid="uid://be8jw63t68sxd" path="res://actors/player/top_down_player.tscn" id="1_3ad1i"]
+[ext_resource type="Script" uid="uid://dnu183hvme88t" path="res://systems/Utility Scripts/camera_utility.gd" id="1_npon3"]
+[ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="2_npon3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ucswo"]
+texture = ExtResource("2_npon3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4kxuq"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/2 = SubResource("TileSetAtlasSource_ucswo")
+
+[node name="Node2D" type="Node2D" unique_id=1174087968]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1899156716]
+position = Vector2(-1, 0)
+zoom = Vector2(0.25, 0.25)
+script = ExtResource("1_npon3")
+
+[node name="TopDownPlayer" parent="." unique_id=240714517 instance=ExtResource("1_3ad1i")]
+position = Vector2(-1, 0)
+collision_mask = 6
+MAX_SPEED = 200.0
+ACCELERATION = inf
+FRICTION = inf
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1634053523]
+tile_set = SubResource("TileSet_4kxuq")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 2, 0, 131073, 2, 0, 196609, 2, 0, 262145, 2, 0, 327681, 2, 0, 393217, 2, 0, 131074, 2, 0, 196611, 2, 0, 262148, 2, 0, 327685, 2, 0, 393222, 2, 0, 65542, 2, 0, 131078, 2, 0, 196614, 2, 0, 262150, 2, 0, 327686, 2, 0, 65545, 2, 0, 131081, 2, 0, 196617, 2, 0, 262153, 2, 0, 327689, 2, 0, 393225, 2, 0, 65544, 2, 0, 65546, 2, 0, 393224, 2, 0, 393226, 2, 0, 65548, 2, 0, 131084, 2, 0, 196620, 2, 0, 262156, 2, 0, 327692, 2, 0, 393228, 2, 0, 393229, 2, 0, 393230, 2, 0, 393231, 2, 0, 393232, 2, 0, 262160, 2, 0, 327696, 2, 0, 262158, 2, 0, 262159, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 131088, 2, 0)
