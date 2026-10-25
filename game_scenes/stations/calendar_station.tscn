@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://systems/Point And Click/point_and_click_scene.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://systems/Point And Click/hotspot.tscn" id="2_hotspot"]
+
+[node name="CalendarStation" instance=ExtResource("1_base")]
+
+[node name="Hotspot_FlipPage" parent="Hotspots" instance=ExtResource("2_hotspot")]
+position = Vector2(320, 67)
+hotspot_name = "Flip page"
+interaction_type = 1
+dialogue_timeline = "calendar_flip_page"
+size = Vector2(233, 50)
+
+[node name="Hotspot_CircledDate" parent="Hotspots" instance=ExtResource("2_hotspot")]
+position = Vector2(389, 167)
+hotspot_name = "Circled date"
+dialogue_timeline = "calendar_circled_date"
+size = Vector2(67, 56)
+
+[node name="Hotspot_CrossedOutPlans" parent="Hotspots" instance=ExtResource("2_hotspot")]
+position = Vector2(233, 211)
+hotspot_name = "Crossed-out plans"
+dialogue_timeline = "calendar_crossed_out_plans"
+size = Vector2(133, 61)
+
+[node name="Hotspot_PinnedPhoto" parent="Hotspots" instance=ExtResource("2_hotspot")]
+position = Vector2(528, 167)
+hotspot_name = "Pinned photo"
+dialogue_timeline = "calendar_pinned_photo"
+size = Vector2(89, 111)
+
+[node name="Hotspot_MarginNotes" parent="Hotspots" instance=ExtResource("2_hotspot")]
+position = Vector2(344, 289)
+hotspot_name = "Margin notes"
+dialogue_timeline = "calendar_margin_notes"
+size = Vector2(200, 61)

@@ -1,0 +1,8 @@
+# ACT 1 · Dream · Interactable: ??? machine (comment only).
+# Before the player runs the executable near it.
+Ghost: There's nothing else out here. Just grass, white sky, and this.
+Ghost: It's taller than a house. Pipes, glass, a seat in the middle like something was meant to sit inside it.
+Ghost: It's broken. Cracked right down the front.
+Ghost: [pause=0.4]...It's humming anyway.
+Ghost: I don't like how warm it is. Like someone just got out of it.
+[signal arg="obtain:about:machine"]

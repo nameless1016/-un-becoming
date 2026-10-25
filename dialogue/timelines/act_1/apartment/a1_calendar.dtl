@@ -1,0 +1,7 @@
+# ACT 1 · Apartment · Interactable: calendar. Unlocks the "timeline" (review the story by dates).
+Ghost: A calendar with every past day crossed out in neat little X's.
+Ghost: Some dates have stickers. A star on Tuesday. A tiny house on Friday.
+Ghost: I've counted these days before. I know I have.
+Ghost: [pause=0.3]But that doesn't make sense.
+[signal arg="unlock:feature:timeline"]
+System: Timeline unlocked. Review what happened, day by day.

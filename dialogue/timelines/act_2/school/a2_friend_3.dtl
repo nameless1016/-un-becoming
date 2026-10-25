@@ -1,0 +1,6 @@
+# ACT 2 · Classroom · Interactable: Friend 3 (she). Ghost hears her thoughts. Unlocks her about file.
+Friend3: [i]Blaire draws cats in the corners of her notes. I like them. I never told her.[/i]
+Friend3: [i]I should sit with her at lunch. Just me. [pause=0.3]They'd ask why.[/i]
+Friend3: [i]I hope they're nice to her this time.[/i]
+[signal arg="obtain:about:friend_3"]
+System: New about file: Friend 3

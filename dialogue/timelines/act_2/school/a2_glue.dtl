@@ -1,0 +1,8 @@
+# ACT 2 · Classroom · Interactable: glue (obtainable). Unlocks the "rearrange" command.
+# COMMAND WORDING IS A DRAFT: check against the file system (Mike) before shipping.
+Ghost: A glue stick on Blaire's desk. The cap's been chewed.
+Ghost: Things that break can be stuck back together. Not like new. But together.
+[signal arg="obtain:item:glue"]
+System: New command: rearrange
+System: Use rearrange on a file whose pieces are in the wrong order.
+[signal arg="unlock:command:rearrange"]

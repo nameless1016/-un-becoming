@@ -1,0 +1,12 @@
+# ACT 1 · Apartment bedroom · Interactable: computer. Commands tutorial + unlocks the "interpret" command.
+# TUTORIAL WORDING IS A DRAFT: check it against the file system (Mike) and terminal (RJ) before shipping.
+Ghost: Her computer's asleep. A sticker of a cat over the webcam.
+Ghost: I can't press the keys. My hands go right through them.
+Ghost: But the screen wakes up anyway.
+[signal arg="unlock:feature:commands_tab"]
+System: COMMANDS are now available in your files.
+System: A command lets you do something to a file that you couldn't do by just reading it.
+System: New command: interpret
+System: Use interpret on a file to find out what it really means.
+[signal arg="unlock:command:interpret"]
+Ghost: [pause=0.3]Whatever this is, it was waiting for me.

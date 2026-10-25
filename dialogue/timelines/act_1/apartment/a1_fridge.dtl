@@ -1,0 +1,12 @@
+# ACT 1 · Apartment kitchen · Interactable: fridge.
+# Hints at a community providing for Blaire WITHOUT naming The Order. Unlocks about files + the ??? about file.
+Ghost: The fridge is full. Really full. Meals in matching containers, each one labelled with a day.
+Ghost: She didn't do this. The handwriting on the labels isn't hers.
+Ghost: There's a note on the door.
+System: [i]"Eat well. Rest. You are never alone. We are always here for you."[/i]
+Ghost: No name. Just a little symbol drawn at the bottom.
+Ghost: Someone is taking care of her. [pause=0.3]I should be glad about that.
+Ghost: [pause=0.3]Why am I not?
+[signal arg="unlock:feature:about_files"]
+[signal arg="obtain:about:unknown"]
+System: About files unlocked. New file: ???

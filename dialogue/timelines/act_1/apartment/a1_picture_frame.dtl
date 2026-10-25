@@ -1,0 +1,10 @@
+# ACT 1 · Apartment · Interactable: picture frame (obtainable, unconsumable).
+# Unlocks picture files and gives graduation photo piece 1 of 5.
+Ghost: A picture frame, face down on the shelf.
+Ghost: There's no picture in it. Just the backing, and one torn corner of a photo stuck under the clip.
+Ghost: The sleeve of a graduation gown. Somebody's hand on somebody's shoulder.
+Ghost: She put the frame face down, but she didn't throw it away.
+[signal arg="obtain:item:picture_frame"]
+[signal arg="unlock:feature:picture_files"]
+[signal arg="obtain:picture_piece:graduation_1"]
+System: Picture frame obtained. Graduation photo: piece 1 of 5.

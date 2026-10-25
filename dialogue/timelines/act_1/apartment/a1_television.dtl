@@ -1,0 +1,9 @@
+# ACT 1 · Apartment · Interactable: television. Unlocks the "true quest" (quests for the ghost, not for Blaire).
+Ghost: The TV's off. The screen should be black.
+Ghost: It isn't. There's static moving behind the glass.
+Ghost: [pause=0.4]Now there are letters in it.
+System: [speed=0.06]THIS CHANNEL IS FOR YOU.
+Ghost: For... me?
+Ghost: Nobody's supposed to be able to see me.
+[signal arg="unlock:feature:true_quest"]
+System: True Quest unlocked. The television will give quests to you, not to her.

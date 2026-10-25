@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ComputerFile" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://systems/Computer File Viewer/computer_file.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_image"]
+
+[resource]
+script = ExtResource("1_script")
+file_name = "screenshot_0412.png"
+modified = "Apr 12, 9:31 PM"
+body = "[color=#8a93b8](Placeholder: a screenshot of a message she saved. Swap the image for the real screenshot.)[/color]"
+image = ExtResource("2_image")

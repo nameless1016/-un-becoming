@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ComputerFile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://systems/Computer File Viewer/computer_file.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+file_name = "bookmarks.txt"
+modified = "Mar 12, 2:07 AM"
+body = "Bookmarks bar, newest first:
+
+• (Placeholder: forum thread)
+• (Placeholder: video channel)
+• Homework portal
+• (Placeholder: a link she opens every night)
+
+[color=#8a93b8](Placeholder: the bookmarks should trace how her online habits changed.)[/color]"

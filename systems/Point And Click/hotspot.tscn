@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://systems/Point And Click/hotspot.gd" id="1_hotspot"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_icon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hotspot"]
+resource_local_to_scene = true
+size = Vector2(64, 64)
+
+[node name="Hotspot" type="Area2D"]
+script = ExtResource("1_hotspot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hotspot")
+
+[node name="Visual" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.6)
+texture = ExtResource("2_icon")

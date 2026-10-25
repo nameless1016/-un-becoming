@@ -1,0 +1,29 @@
+# ACT 2 · Classroom · Scene: Blaire invites her friends to the haunted house "later that week".
+# She's having fun here. The betrayal (Acts 4-5) is only seeded: Friend 1/Friend 2 glance, "don't back out", Friend 3 hesitates.
+Friend1: No, no, watch this part. Watch his face. He doesn't see the cake coming.
+Friend2: [pause=0.3]Oh my god. That's so mean. Play it again.
+Friend3: You're going to get detention for having your phone out.
+Blaire: Good morning!
+Friend2: Blaire! Hiii.
+Friend1: Morning. Hey, did you do the math sheet?
+Blaire: Yeah! Want to see it?
+Friend1: Want to "copy" it. Big difference.
+Blaire: Here. Just change a few answers so it's not obvious.
+Friend1: See, this is why you're my favourite.
+Blaire: [pause=0.3]So. Um. Are you guys free on Friday night?
+Friend1: Depends. If it's another study group, I'm sick. Very sick. Contagious.
+Blaire: It's not! It's... okay. There's this old house. Nobody's lived in it for years.
+Blaire: People say the lights on the second floor turn on by themselves. Every night, around midnight.
+Friend3: People where?
+Blaire: Just a group I'm in. Online. They know all the creepy places around here.
+Friend1: A haunted house? Oh, I'm filming the entire thing.
+Friend2: [pause=0.4]That sounds so fun, Blaire. We're in. Right?
+Friend1: Totally in.
+Friend3: [pause=0.4]...Right. Sure.
+Friend1: Ghosts aren't real, by the way. Just so you know. I'll prove it.
+Ghost: I'm standing right behind you.
+Friend2: Send us the address. We'll bring snacks.
+Friend2: And Blaire? Don't back out on us.
+Blaire: I won't! I won't. I promise.
+Ghost: They said yes so fast.
+[signal arg="story:haunted_house_planned"]
