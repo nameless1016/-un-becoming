@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ComputerFile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://systems/Computer File Viewer/computer_file.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+file_name = "diary_draft.txt"
+modified = "Mar 14, 11:52 PM"
+body = "[i]Unsent draft.[/i]
+
+nobody at school gets it. at least the people in the chat actually listen.
+
+[color=#8a93b8](Placeholder: an unsent diary entry in Blaire's voice. Use it to show how her thinking has started to shift.)[/color]"

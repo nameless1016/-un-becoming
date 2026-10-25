@@ -1,0 +1,8 @@
+# SHARED · Bedroom station: bed, once sleeping is unlocked. Ends the day.
+# The game sends "time:sleep" to the calendar/clock; "No" just closes the dialogue.
+Ghost: She's asleep. The room is quiet.
+Ghost: I could let the night pass.
+- Let the day end.
+	[signal arg="time:sleep"]
+- Not yet.
+	Ghost: There's still something I haven't looked at.

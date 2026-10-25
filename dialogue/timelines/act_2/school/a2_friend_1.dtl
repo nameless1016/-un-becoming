@@ -1,0 +1,7 @@
+# ACT 2 · Classroom · Interactable: Friend 1 (he). Ghost hears his thoughts. Unlocks his about file.
+# Works whether the player clicks him before or after the invite scene.
+Friend1: [i]Channel's been dead all month. I need something big. Something people share.[/i]
+Friend1: [i]Blaire would do anything if you asked her nicely.[/i]
+Friend1: [i]That's kind of sad. [pause=0.3]That's kind of useful.[/i]
+[signal arg="obtain:about:friend_1"]
+System: New about file: Friend 1

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bl38hdwq7q4pu"]
+
+[ext_resource type="PackedScene" path="res://systems/Point And Click/point_and_click_scene.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://systems/Point And Click/hotspot.tscn" id="2_hotspot"]
+
+[node name="TelevisionStation" unique_id=786598981 instance=ExtResource("1_base")]
+
+[node name="Hotspot_Screen" parent="Hotspots" index="0" unique_id=174774130 instance=ExtResource("2_hotspot")]
+position = Vector2(320, 156)
+hotspot_name = "TV screen"
+dialogue_timeline = "tv_screen"
+size = Vector2(311, 178)
+
+[node name="Hotspot_ChannelGuide" parent="Hotspots" index="1" unique_id=1553807422 instance=ExtResource("2_hotspot")]
+position = Vector2(561, 139)
+hotspot_name = "Channel guide"
+dialogue_timeline = "tv_channel_guide"
+size = Vector2(89, 122)
+
+[node name="Hotspot_RecordedShows" parent="Hotspots" index="2" unique_id=1669202206 instance=ExtResource("2_hotspot")]
+position = Vector2(167, 300)
+hotspot_name = "Recorded shows"
+interaction_type = 1
+dialogue_timeline = "tv_recorded_shows"
+size = Vector2(122, 56)
+
+[node name="Hotspot_Remote" parent="Hotspots" index="3" unique_id=441909601 instance=ExtResource("2_hotspot")]
+position = Vector2(533, 300)
+hotspot_name = "Remote"
+interaction_type = 1
+dialogue_timeline = "tv_remote"
+size = Vector2(100, 50)

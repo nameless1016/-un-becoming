@@ -1,0 +1,8 @@
+# ACT 1 · Apartment · Interactable: notebook (obtainable, unconsumable). Unlocks journal/entry files.
+Ghost: A notebook with a doodled cover. Stars, a cat, her name in bubble letters.
+Ghost: Most pages are homework. Then lists. "Things to say on Monday." "Things NOT to say."
+Ghost: She practises talking to people.
+Ghost: [pause=0.3]I'll keep this. She won't miss it today.
+[signal arg="obtain:item:notebook"]
+[signal arg="unlock:feature:journal_files"]
+System: Notebook obtained. Journal entries you find will be written here.

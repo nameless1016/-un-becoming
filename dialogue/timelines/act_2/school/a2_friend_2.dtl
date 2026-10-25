@@ -1,0 +1,6 @@
+# ACT 2 · Classroom · Interactable: Friend 2 (she). Ghost hears her thoughts. Unlocks her about file.
+Friend2: [i]Smile, nod, say "that's so fun." Works on teachers. Works on her.[/i]
+Friend2: [i]She's been so weird lately. Always quoting her "group." Always on her phone.[/i]
+Friend2: [i]Somebody needs to snap her out of it.[/i]
+[signal arg="obtain:about:friend_2"]
+System: New about file: Friend 2

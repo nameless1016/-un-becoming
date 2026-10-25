@@ -28,6 +28,78 @@ MusicManager="*uid://c0m8bxeg6ekky"
 SettingsManager="*uid://boav6xpuq74ks"
 SoundBank="*uid://ce7kxbchc8ajm"
 ScreenTransition="*uid://rgy5yu73bm2h"
+CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
+Dialogic="*uid://ds2q0uclmolvu"
+
+[dialogic]
+
+directories/dch_directory={
+"Blaire": "res://dialogue/characters/Blaire.dch",
+"BusDriver": "res://dialogue/characters/BusDriver.dch",
+"Child": "res://dialogue/characters/Child.dch",
+"Friend1": "res://dialogue/characters/Friend1.dch",
+"Friend2": "res://dialogue/characters/Friend2.dch",
+"Friend3": "res://dialogue/characters/Friend3.dch",
+"Ghost": "res://dialogue/characters/Ghost.dch",
+"Mother": "res://dialogue/characters/Mother.dch",
+"OfficeWorker": "res://dialogue/characters/OfficeWorker.dch",
+"OldMan": "res://dialogue/characters/OldMan.dch",
+"Student": "res://dialogue/characters/Student.dch",
+"System": "res://dialogue/characters/System.dch",
+"Unknown": "res://dialogue/characters/Unknown.dch"
+}
+directories/dtl_directory={
+"a1_bed": "res://dialogue/timelines/act_1/apartment/a1_bed.dtl",
+"a1_blaire_before_bus": "res://dialogue/timelines/act_1/monologues/a1_blaire_before_bus.dtl",
+"a1_blaire_bus_glimpse": "res://dialogue/timelines/act_1/monologues/a1_blaire_bus_glimpse.dtl",
+"a1_blaire_dining_room": "res://dialogue/timelines/act_1/monologues/a1_blaire_dining_room.dtl",
+"a1_blaire_living_room": "res://dialogue/timelines/act_1/monologues/a1_blaire_living_room.dtl",
+"a1_blaire_wake_up": "res://dialogue/timelines/act_1/monologues/a1_blaire_wake_up.dtl",
+"a1_bus_child": "res://dialogue/timelines/act_1/bus/a1_bus_child.dtl",
+"a1_bus_driver": "res://dialogue/timelines/act_1/bus/a1_bus_driver.dtl",
+"a1_bus_office_worker": "res://dialogue/timelines/act_1/bus/a1_bus_office_worker.dtl",
+"a1_bus_old_man": "res://dialogue/timelines/act_1/bus/a1_bus_old_man.dtl",
+"a1_bus_student": "res://dialogue/timelines/act_1/bus/a1_bus_student.dtl",
+"a1_calendar": "res://dialogue/timelines/act_1/apartment/a1_calendar.dtl",
+"a1_closet": "res://dialogue/timelines/act_1/apartment/a1_closet.dtl",
+"a1_computer": "res://dialogue/timelines/act_1/apartment/a1_computer.dtl",
+"a1_dream_awakening": "res://dialogue/timelines/act_1/dream/a1_dream_awakening.dtl",
+"a1_dream_machine": "res://dialogue/timelines/act_1/dream/a1_dream_machine.dtl",
+"a1_fridge": "res://dialogue/timelines/act_1/apartment/a1_fridge.dtl",
+"a1_ghost_arrives": "res://dialogue/timelines/act_1/apartment/a1_ghost_arrives.dtl",
+"a1_notebook": "res://dialogue/timelines/act_1/apartment/a1_notebook.dtl",
+"a1_picture_frame": "res://dialogue/timelines/act_1/apartment/a1_picture_frame.dtl",
+"a1_television": "res://dialogue/timelines/act_1/apartment/a1_television.dtl",
+"a2_blaire_after_invite": "res://dialogue/timelines/act_2/monologues/a2_blaire_after_invite.dtl",
+"a2_blaire_school_gate": "res://dialogue/timelines/act_2/monologues/a2_blaire_school_gate.dtl",
+"a2_classroom_invite": "res://dialogue/timelines/act_2/school/a2_classroom_invite.dtl",
+"a2_friend_1": "res://dialogue/timelines/act_2/school/a2_friend_1.dtl",
+"a2_friend_2": "res://dialogue/timelines/act_2/school/a2_friend_2.dtl",
+"a2_friend_3": "res://dialogue/timelines/act_2/school/a2_friend_3.dtl",
+"a2_glue": "res://dialogue/timelines/act_2/school/a2_glue.dtl",
+"a2_locked_room": "res://dialogue/timelines/act_2/school/a2_locked_room.dtl",
+"bed_sleep": "res://dialogue/timelines/shared/bed_sleep.dtl",
+"calendar_circled_date": "res://dialogue/timelines/stations_placeholder/calendar_circled_date.dtl",
+"calendar_crossed_out_plans": "res://dialogue/timelines/stations_placeholder/calendar_crossed_out_plans.dtl",
+"calendar_flip_page": "res://dialogue/timelines/stations_placeholder/calendar_flip_page.dtl",
+"calendar_margin_notes": "res://dialogue/timelines/stations_placeholder/calendar_margin_notes.dtl",
+"calendar_pinned_photo": "res://dialogue/timelines/stations_placeholder/calendar_pinned_photo.dtl",
+"computer_browser_tabs": "res://dialogue/timelines/stations_placeholder/computer_browser_tabs.dtl",
+"computer_files": "res://dialogue/timelines/stations_placeholder/computer_files.dtl",
+"computer_group_chat": "res://dialogue/timelines/stations_placeholder/computer_group_chat.dtl",
+"computer_keyboard": "res://dialogue/timelines/stations_placeholder/computer_keyboard.dtl",
+"computer_sticky_note": "res://dialogue/timelines/stations_placeholder/computer_sticky_note.dtl",
+"tv_channel_guide": "res://dialogue/timelines/stations_placeholder/tv_channel_guide.dtl",
+"tv_recorded_shows": "res://dialogue/timelines/stations_placeholder/tv_recorded_shows.dtl",
+"tv_remote": "res://dialogue/timelines/stations_placeholder/tv_remote.dtl",
+"tv_screen": "res://dialogue/timelines/stations_placeholder/tv_screen.dtl"
+}
+layout/default_style="res://dialogue/style/unbecoming_640_style.tres"
+layout/style_list=["res://dialogue/style/unbecoming_640_style.tres"]
+layout/style_directory={
+"": "res://dialogue/style/unbecoming_640_style.tres",
+"unbecoming 640x360": "res://dialogue/style/unbecoming_640_style.tres"
+}
 
 [display]
 
@@ -37,6 +109,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [file_customization]
 
@@ -82,6 +158,15 @@ move_right={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+dialogic_default_action={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
 

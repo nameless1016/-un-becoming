@@ -1,0 +1,8 @@
+# ACT 1 · Bus still · POI: bus driver. Reading his thoughts, then the option to fast-forward to school (Act 2).
+BusDriver: [i]Six stops to the school. Light at Fourth is always red. Always.[/i]
+BusDriver: [i]Same faces every morning. Same girl in the back, talking to her phone like it's talking back.[/i]
+Ghost: If I stay close to him, the ride goes faster. I can feel it.
+- Ride to school.
+	[signal arg="travel:school"]
+- Stay on the bus a little longer.
+	Ghost: Not yet. I want to hear the others.

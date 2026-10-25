@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://kcdirnqpcbho"]
+
+[ext_resource type="PackedScene" path="res://systems/Point And Click/point_and_click_scene.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://systems/Point And Click/hotspot.tscn" id="2_hotspot"]
+[ext_resource type="Script" uid="uid://i08xcctgqlwu" path="res://game_scenes/stations/computer_station.gd" id="3_station"]
+[ext_resource type="Script" uid="uid://b7a8ctu6jogmc" path="res://systems/Computer File Viewer/file_hotspot.gd" id="4_file_hotspot"]
+[ext_resource type="Script" uid="uid://c0wxbmxughn1w" path="res://systems/Computer File Viewer/computer_file.gd" id="5_computer_file"]
+[ext_resource type="Resource" path="res://game_scenes/stations/computer_files/diary_draft.tres" id="6_diary"]
+[ext_resource type="Resource" path="res://game_scenes/stations/computer_files/bookmarks.tres" id="7_bookmarks"]
+[ext_resource type="Resource" path="res://game_scenes/stations/computer_files/screenshot_0412.tres" id="8_screenshot"]
+[ext_resource type="PackedScene" path="res://systems/Computer File Viewer/file_viewer.tscn" id="9_file_viewer"]
+
+[node name="ComputerStation" unique_id=611006305 instance=ExtResource("1_base")]
+script = ExtResource("3_station")
+
+[node name="Hotspot_BrowserTabs" parent="Hotspots" index="0" unique_id=509555176 instance=ExtResource("2_hotspot")]
+position = Vector2(200, 111)
+hotspot_name = "Browser tabs"
+dialogue_timeline = "computer_browser_tabs"
+size = Vector2(200, 111)
+
+[node name="Hotspot_GroupChat" parent="Hotspots" index="1" unique_id=2129651444 instance=ExtResource("2_hotspot")]
+position = Vector2(444, 122)
+hotspot_name = "Group chat"
+interaction_type = 2
+dialogue_timeline = "computer_group_chat"
+size = Vector2(167, 144)
+
+[node name="Hotspot_Files" parent="Hotspots" index="2" unique_id=58809821 instance=ExtResource("2_hotspot")]
+position = Vector2(183, 233)
+script = ExtResource("4_file_hotspot")
+files = Array[ExtResource("5_computer_file")]([ExtResource("6_diary"), ExtResource("7_bookmarks"), ExtResource("8_screenshot")])
+folder_title = "New Folder (2)"
+hotspot_name = "Files"
+interaction_type = 1
+dialogue_timeline = "computer_files"
+size = Vector2(111, 78)
+
+[node name="Hotspot_StickyNote" parent="Hotspots" index="3" unique_id=73079310 instance=ExtResource("2_hotspot")]
+position = Vector2(556, 289)
+hotspot_name = "Sticky note"
+dialogue_timeline = "computer_sticky_note"
+size = Vector2(78, 78)
+
+[node name="Hotspot_Keyboard" parent="Hotspots" index="4" unique_id=1260838122 instance=ExtResource("2_hotspot")]
+position = Vector2(344, 322)
+hotspot_name = "Keyboard"
+interaction_type = 1
+dialogue_timeline = "computer_keyboard"
+size = Vector2(278, 56)
+
+[node name="FileViewer" parent="." index="4" unique_id=2108237608 instance=ExtResource("9_file_viewer")]
