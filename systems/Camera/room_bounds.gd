@@ -9,7 +9,6 @@ class_name RoomBounds
 		queue_redraw()
 
 func _enter_tree() -> void:
-	# done here and not in _ready so the camera can already find it
 	add_to_group("room_bounds")
 
 func get_rect() -> Rect2:

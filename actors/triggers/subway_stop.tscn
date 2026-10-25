@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://actors/Utilities/subway_stop.gd" id="1_stop"]
+[ext_resource type="Script" uid="uid://bt2ubgfakgjrl" path="res://actors/triggers/subway_stop.gd" id="1_stop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stop"]
 size = Vector2(192, 192)

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Coco's Game Template"
+config/name="[un]-becoming"
 run/main_scene="uid://camlgx74mlna4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
