@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxt8rw8g0hpsg" path="res://actors/Utilities/teleporter.gd" id="1_nb07h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
-size = Vector2(150, 150)
+size = Vector2(12, 12)
 
 [node name="Teleporter" type="Area2D" unique_id=1028862239]
 script = ExtResource("1_nb07h")
