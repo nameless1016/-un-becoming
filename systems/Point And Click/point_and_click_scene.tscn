@@ -7,6 +7,7 @@
 script = ExtResource("1_script")
 
 [node name="Background" type="TextureRect" parent="."]
+texture_filter = 2
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2

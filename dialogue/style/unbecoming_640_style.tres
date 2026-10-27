@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=20 format=3]
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://05csseyrqwvb"]
 
 [ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_style"]
 [ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_layer"]
@@ -22,17 +22,14 @@ overrides = {
 [sub_resource type="Resource" id="Resource_background"]
 script = ExtResource("2_layer")
 scene = ExtResource("3_background")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_portraits"]
 script = ExtResource("2_layer")
 scene = ExtResource("4_portraits")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_input"]
 script = ExtResource("2_layer")
 scene = ExtResource("6_input")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_textbox"]
 script = ExtResource("2_layer")
@@ -45,9 +42,9 @@ overrides = {
 "box_size": "Vector2(480, 54)",
 "name_label_box_modulate": "Color(1, 1, 1, 1)",
 "name_label_box_offset": "Vector2(0, 15)",
-"name_label_custom_font_size": "10",
 "name_label_box_panel": "\"res://dialogue/style/name_label_panel.tres\"",
 "name_label_box_use_global_color": "false",
+"name_label_custom_font_size": "10",
 "name_label_use_global_font_size": "false",
 "next_indicator_position_offset": "Vector2(-9, -9)",
 "next_indicator_size": "Vector2(8, 8)"
@@ -76,12 +73,10 @@ overrides = {
 [sub_resource type="Resource" id="Resource_text_input"]
 script = ExtResource("2_layer")
 scene = ExtResource("9_text_input")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_history"]
 script = ExtResource("2_layer")
 scene = ExtResource("10_history")
-overrides = {}
 
 [resource]
 script = ExtResource("1_style")
@@ -98,6 +93,4 @@ layer_info = {
 "16": SubResource("Resource_text_input"),
 "17": SubResource("Resource_history")
 }
-base_overrides = {}
-layers = Array[ExtResource("2_layer")]([])
 metadata/_latest_layer = "17"
