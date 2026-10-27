@@ -7,7 +7,11 @@
 [ext_resource type="Script" uid="uid://b1ci27y347n1w" path="res://actors/player/PlayerFSM/TopDown/state_run.gd" id="4_la8er"]
 
 [node name="TopDownPlayer" unique_id=240714517 instance=ExtResource("1_wdfuy")]
+collision_mask = 6
 script = ExtResource("2_xeelx")
+MAX_SPEED = null
+ACCELERATION = null
+FRICTION = null
 
 [node name="DebugStateLabel" parent="." index="2" unique_id=1664998739]
 unique_name_in_owner = true
