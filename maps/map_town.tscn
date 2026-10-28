@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dm4sbxyp7dwf5"]
 
 [ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="1_follow"]
+[ext_resource type="Script" uid="uid://cqxnjsmtsasx4" path="res://actors/Interactables/approach_npc.gd" id="2_k7o1b"]
 [ext_resource type="PackedScene" uid="uid://be8jw63t68sxd" path="res://actors/player/top_down_player.tscn" id="2_player"]
 [ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="3_icon"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
@@ -107,18 +108,21 @@ text = "STATION"
 
 [node name="Entities" type="Node2D" parent="." unique_id=774249776]
 
+[node name="House Guy" type="Area2D" parent="Entities" unique_id=1787517878]
+position = Vector2(5905, 479)
+script = ExtResource("2_k7o1b")
+dialogue_lines = Array[String](["NIGGER!"])
+
 [node name="Talker" type="Area2D" parent="Entities" unique_id=726901488]
-position = Vector2(2496, 1216)
+position = Vector2(2496, 1068)
 script = ExtResource("8_npc")
 dialogue_lines = Array[String](["Hey, you made it.", "The subway pad is south of here.", "Press E near people. Some of us just stand around."])
-enable_portrait_bob = null
 display_name = "Talker"
 fill_color = Color(0.85, 0.85, 0.85, 1)
 
 [node name="Loner" type="Area2D" parent="Entities" unique_id=1821759580]
 position = Vector2(1344, 1088)
 script = ExtResource("8_npc")
-enable_portrait_bob = null
 can_interact = false
 display_name = "Loner"
 fill_color = Color(0.62, 0.62, 0.62, 1)
@@ -139,7 +143,6 @@ fill_color = Color(0.35, 0.35, 0.35, 1)
 
 [node name="TopDownPlayer" parent="." unique_id=570780909 instance=ExtResource("2_player")]
 position = Vector2(1728, 1216)
-collision_mask = 6
 MAX_SPEED = 400.0
 ACCELERATION = inf
 FRICTION = inf

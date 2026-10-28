@@ -112,6 +112,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
 [node name="FileImage" type="TextureRect" parent="Window/Layout/Body/Content/VBox/ContentScroll/ContentVBox"]
+texture_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 110)
 expand_mode = 1
