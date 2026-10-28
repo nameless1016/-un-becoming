@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cgvinyvp8w8vm"
+path="res://.godot/imported/Waltz of the Flowers.ogg-3f8f9041cbf175ac7b4bebc547c805dd.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/unbecoming_ost/Waltz of the Flowers.ogg"
+dest_files=["res://.godot/imported/Waltz of the Flowers.ogg-3f8f9041cbf175ac7b4bebc547c805dd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
