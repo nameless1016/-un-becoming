@@ -30,6 +30,8 @@ SoundBank="*uid://ce7kxbchc8ajm"
 ScreenTransition="*uid://rgy5yu73bm2h"
 CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
+MetaOS="*uid://dyw7ns5odiwbh"
+FileManager="*uid://b2ejw4nss25lx"
 
 [dialogic]
 
