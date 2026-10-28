@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://camlgx74mlna4"]
 
 [ext_resource type="Script" uid="uid://b6rwu6r4il3so" path="res://game_scenes/menus/MainMenu/main_menu.gd" id="1_script"]
-[ext_resource type="Theme" path="res://game_scenes/menus/MainMenu/menu_theme.tres" id="2_theme"]
+[ext_resource type="Theme" uid="uid://5omhfkwss1sl" path="res://game_scenes/menus/MainMenu/menu_theme.tres" id="2_theme"]
 [ext_resource type="Script" uid="uid://bu8us8ce0qdvv" path="res://systems/Smooth Hover/menu_item.gd" id="3_menu_item"]
 [ext_resource type="Script" uid="uid://dr2duffbp7nxx" path="res://systems/Smooth Hover/hover_fade.gd" id="4_fade"]
 [ext_resource type="Script" uid="uid://d3bfe2hix5ooq" path="res://game_scenes/menus/MainMenu/key_cell.gd" id="5_key_cell"]
