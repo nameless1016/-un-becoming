@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcxcpueo6wkel"
+path="res://.godot/imported/Indecisive Calmness .ogg-5023c60bb610666d9809228cfc5f5f12.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/music/unbecoming_ost/Indecisive Calmness .ogg"
+dest_files=["res://.godot/imported/Indecisive Calmness .ogg-5023c60bb610666d9809228cfc5f5f12.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

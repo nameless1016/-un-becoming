@@ -12,7 +12,6 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_walls"]
 texture = ExtResource("3_icon")
-margins = Vector2i(48, 48)
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -111,13 +110,15 @@ text = "STATION"
 [node name="Talker" type="Area2D" parent="Entities" unique_id=726901488]
 position = Vector2(2496, 1216)
 script = ExtResource("8_npc")
-timeline_name = "a1_bus_driver"
+dialogue_lines = Array[String](["Hey, you made it.", "The subway pad is south of here.", "Press E near people. Some of us just stand around."])
+enable_portrait_bob = null
 display_name = "Talker"
 fill_color = Color(0.85, 0.85, 0.85, 1)
 
 [node name="Loner" type="Area2D" parent="Entities" unique_id=1821759580]
 position = Vector2(1344, 1088)
 script = ExtResource("8_npc")
+enable_portrait_bob = null
 can_interact = false
 display_name = "Loner"
 fill_color = Color(0.62, 0.62, 0.62, 1)
@@ -125,7 +126,6 @@ fill_color = Color(0.62, 0.62, 0.62, 1)
 [node name="Sign" type="Area2D" parent="Entities" unique_id=1341644283]
 position = Vector2(1088, 960)
 script = ExtResource("9_obj")
-timeline_name = "a1_fridge"
 examine_text = "DOWNTOWN. Subway is south."
 display_name = "Sign"
 fill_color = Color(0.72, 0.72, 0.72, 1)
@@ -139,6 +139,7 @@ fill_color = Color(0.35, 0.35, 0.35, 1)
 
 [node name="TopDownPlayer" parent="." unique_id=570780909 instance=ExtResource("2_player")]
 position = Vector2(1728, 1216)
+collision_mask = 6
 MAX_SPEED = 400.0
 ACCELERATION = inf
 FRICTION = inf
