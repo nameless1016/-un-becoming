@@ -102,6 +102,8 @@ layout/style_directory={
 "": "res://dialogue/style/unbecoming_640_style.tres",
 "unbecoming 640x360": "res://dialogue/style/unbecoming_640_style.tres"
 }
+glossary/default_case_sensitive=true
+variables={}
 
 [display]
 
