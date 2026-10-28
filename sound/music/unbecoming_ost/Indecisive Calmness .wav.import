@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddnuagc5hniaa"
+path="res://.godot/imported/Indecisive Calmness .wav-45b9bf7407dad5701b4321645b028cc9.sample"
+
+[deps]
+
+source_file="res://sound/music/unbecoming_ost/Indecisive Calmness .wav"
+dest_files=["res://.godot/imported/Indecisive Calmness .wav-45b9bf7407dad5701b4321645b028cc9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
