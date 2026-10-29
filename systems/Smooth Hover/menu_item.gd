@@ -53,6 +53,7 @@ func _ready() -> void:
 func _on_mouse_entered() -> void:
 	if not disabled and focus_mode != Control.FOCUS_NONE:
 		grab_focus()
+		SoundBank.play_sfx("ui_hover")
 	_refresh.call_deferred()
 
 

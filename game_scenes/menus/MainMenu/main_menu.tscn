@@ -137,6 +137,7 @@ script = ExtResource("3_menu_item")
 
 [node name="UserScreen" type="Control" parent="." unique_id=783477775]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -235,6 +236,7 @@ text = "last saved: --/--/--"
 
 [node name="WelcomeScreen" type="Control" parent="." unique_id=352515015]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -296,6 +298,7 @@ text = "loading files..."
 
 [node name="SettingsScreen" type="Control" parent="." unique_id=1114530273]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

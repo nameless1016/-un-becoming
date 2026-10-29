@@ -46,6 +46,8 @@ var _tile_tween: Tween
 
 
 func _ready() -> void:
+	MusicManager.change_music("title", 0)
+	
 	if ResourceLoader.exists(silhouette_path):
 		_silhouette.texture = load(silhouette_path)
 
@@ -99,6 +101,7 @@ func _show_screen(screen: Control, fade: bool = true) -> void:
 	_screen_tween = create_tween()
 	if old and old != screen:
 		if fade:
+			SoundBank.play_sfx("ui_accept")
 			_screen_tween.tween_property(old, "modulate:a", 0.0, SCREEN_FADE)
 		_screen_tween.tween_callback(old.hide)
 	_screen_tween.tween_callback(func() -> void:
@@ -178,6 +181,8 @@ func _on_volume_changed() -> void:
 	SettingsManager.music_vol = _sliders[1].value
 	SettingsManager.sfx_vol = _sliders[2].value
 	SettingsManager.save_settings()
+	
+	#SoundBank.play_sfx("ui_hover")
 
 
 func _on_resolution_pressed(index: int) -> void:
@@ -188,11 +193,15 @@ func _on_resolution_pressed(index: int) -> void:
 	var area := DisplayServer.screen_get_usable_rect(DisplayServer.window_get_current_screen())
 	DisplayServer.window_set_position(area.position + (area.size - window_size) / 2)
 	_sync_viewport_buttons()
+	
+	SoundBank.play_sfx("ui_click")
 
 
 func _on_mode_pressed(index: int) -> void:
 	DisplayServer.window_set_mode(WINDOW_MODES[index])
 	_sync_viewport_buttons()
+	
+	SoundBank.play_sfx("ui_click")
 
 
 ## Lights up the buttons that match the current window.
@@ -218,23 +227,28 @@ func _sync_viewport_buttons() -> void:
 func _ask_quit() -> void:
 	if _busy:
 		return
+	SoundBank.play_sfx("ui_message")
 	_busy = true
 	var choice := await DesktopPopup.ask(self, "Exit", "Don't leave me...", ["Yes", "No"], "Yes")
 	_busy = false
 	if choice == "Yes":
 		get_tree().quit()
 	else:
+		SoundBank.play_sfx("ui_back")
 		_quit_button.grab_focus()
 
 
 func _ask_reset() -> void:
 	if _busy:
 		return
+	SoundBank.play_sfx("ui_message")
 	_busy = true
 	var choice := await DesktopPopup.ask(self, "Reset game", "This erases your save, settings and controls.\nAre you sure?", ["Reset", "Cancel"], "Reset", false)
 	_busy = false
 	if choice == "Reset":
 		_reset_everything()
+		SoundBank.play_sfx("ui_error")
+	else: SoundBank.play_sfx("ui_back")
 	%ResetGameButton.grab_focus()
 
 
