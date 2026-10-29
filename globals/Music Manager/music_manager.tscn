@@ -4,8 +4,14 @@
 [ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="2_cfotr"]
 [ext_resource type="Resource" uid="uid://cf6wh5r475byb" path="res://sound/music/example_track.tres" id="3_jxerq"]
 [ext_resource type="Resource" uid="uid://cfha3wc0frq7a" path="res://sound/music/example_track2.tres" id="4_ll68j"]
+[ext_resource type="Resource" uid="uid://0u6570sc6xlf" path="res://sound/music/music_track_resource/dream.tres" id="5_rlx5c"]
+[ext_resource type="Resource" uid="uid://dys8ou6wc83ug" path="res://sound/music/music_track_resource/lonely.tres" id="6_leqai"]
+[ext_resource type="Resource" uid="uid://cpsvdbigif2vf" path="res://sound/music/music_track_resource/outside.tres" id="7_edcgs"]
+[ext_resource type="Resource" uid="uid://dg7505b4ljvjs" path="res://sound/music/music_track_resource/room.tres" id="8_uvhfi"]
+[ext_resource type="Resource" uid="uid://qo2fi2oboewn" path="res://sound/music/music_track_resource/title.tres" id="9_517qc"]
+[ext_resource type="Resource" uid="uid://qak6y2ijy8kc" path="res://sound/music/music_track_resource/waltz.tres" id="10_1ovvu"]
 
 [node name="MusicManager" type="Node" unique_id=1495717072]
 process_mode = 3
 script = ExtResource("1_kwnxt")
-music_tracks = Array[ExtResource("2_cfotr")]([ExtResource("3_jxerq"), ExtResource("4_ll68j")])
+music_tracks = Array[ExtResource("2_cfotr")]([ExtResource("3_jxerq"), ExtResource("4_ll68j"), ExtResource("5_rlx5c"), ExtResource("6_leqai"), ExtResource("7_edcgs"), ExtResource("8_uvhfi"), ExtResource("9_517qc"), ExtResource("10_1ovvu")])
