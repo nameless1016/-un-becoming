@@ -1,0 +1,199 @@
+[gd_resource type="Theme" format=3 uid="uid://5omhfkwss1sl"]
+
+[ext_resource type="FontFile" uid="uid://c1l2nqyly0e6x" path="res://game_assets/fonts/Space Mono/SpaceMono-Regular.ttf" id="1_regular"]
+[ext_resource type="FontFile" uid="uid://c75h05eeo6326" path="res://game_assets/fonts/Space Mono/SpaceMono-Bold.ttf" id="2_bold"]
+[ext_resource type="FontFile" uid="uid://bp72ijrsey0s3" path="res://game_assets/fonts/Space Mono/SpaceMono-Italic.ttf" id="3_italic"]
+[ext_resource type="FontFile" uid="uid://dbo012xkreu0c" path="res://game_assets/fonts/Space Mono/SpaceMono-BoldItalic.ttf" id="4_bold_italic"]
+[ext_resource type="Texture2D" uid="uid://crqlxl6nkr66q" path="res://game_scenes/menus/MainMenu/icons/slider_knob.svg" id="5_knob"]
+
+[sub_resource type="StyleBoxEmpty" id="Empty"]
+
+[sub_resource type="StyleBoxFlat" id="Slider_fill"]
+content_margin_top = 1.5
+content_margin_bottom = 1.5
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="Slider_track"]
+content_margin_top = 1.5
+content_margin_bottom = 1.5
+bg_color = Color(0.45, 0.45, 0.45, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="Focus_outline"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="Key_hover"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.16, 0.16, 0.16, 1)
+
+[sub_resource type="StyleBoxFlat" id="Key_normal"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="Key_listening"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="Pill_hover"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.22, 0.22, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="Pill_pressed"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="StyleBoxFlat" id="Pill_normal"]
+content_margin_left = 6.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 2.0
+bg_color = Color(0.11, 0.11, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="Popup_button"]
+content_margin_left = 10.0
+content_margin_top = 1.0
+content_margin_right = 10.0
+content_margin_bottom = 1.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="Popup_close"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="RedButton_hover"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0.16, 0.06, 0.06, 1)
+
+[sub_resource type="StyleBoxFlat" id="RedButton_normal"]
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="Divider"]
+color = Color(1, 1, 1, 1)
+vertical = true
+
+[resource]
+default_font = ExtResource("1_regular")
+default_font_size = 9
+BackButton/base_type = &"Button"
+BackButton/colors/font_color = Color(0.8, 0.8, 0.8, 1)
+BackButton/colors/font_hover_color = Color(1, 1, 1, 1)
+BackButton/font_sizes/font_size = 8
+BackButton/fonts/font = ExtResource("2_bold")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.3)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("Empty")
+Button/styles/focus = SubResource("Empty")
+Button/styles/hover = SubResource("Empty")
+Button/styles/normal = SubResource("Empty")
+Button/styles/pressed = SubResource("Empty")
+HSlider/icons/grabber = ExtResource("5_knob")
+HSlider/icons/grabber_highlight = ExtResource("5_knob")
+HSlider/styles/grabber_area = SubResource("Slider_fill")
+HSlider/styles/grabber_area_highlight = SubResource("Slider_fill")
+HSlider/styles/slider = SubResource("Slider_track")
+KeyCell/base_type = &"Button"
+KeyCell/colors/font_focus_color = Color(1, 1, 1, 1)
+KeyCell/font_sizes/font_size = 8
+KeyCell/fonts/font = ExtResource("2_bold")
+KeyCell/styles/focus = SubResource("Focus_outline")
+KeyCell/styles/hover = SubResource("Key_hover")
+KeyCell/styles/normal = SubResource("Key_normal")
+KeyCell/styles/pressed = SubResource("Key_listening")
+Label/colors/font_color = Color(1, 1, 1, 1)
+MenuItem/base_type = &"Button"
+MenuItem/colors/font_color = Color(0.82, 0.82, 0.82, 1)
+MenuItem/colors/font_disabled_color = Color(1, 1, 1, 0.3)
+MenuItem/colors/font_focus_color = Color(1, 1, 1, 1)
+MenuItem/colors/font_hover_color = Color(1, 1, 1, 1)
+MenuItem/font_sizes/font_size = 15
+PillButton/base_type = &"Button"
+PillButton/font_sizes/font_size = 9
+PillButton/fonts/font = ExtResource("2_bold")
+PillButton/styles/focus = SubResource("Focus_outline")
+PillButton/styles/hover = SubResource("Pill_hover")
+PillButton/styles/hover_pressed = SubResource("Pill_pressed")
+PillButton/styles/normal = SubResource("Pill_normal")
+PillButton/styles/pressed = SubResource("Pill_pressed")
+PopupButton/base_type = &"Button"
+PopupButton/font_sizes/font_size = 8
+PopupButton/fonts/font = ExtResource("2_bold")
+PopupButton/styles/normal = SubResource("Popup_button")
+PopupClose/base_type = &"Button"
+PopupClose/font_sizes/font_size = 9
+PopupClose/styles/normal = SubResource("Popup_close")
+RedButton/base_type = &"Button"
+RedButton/colors/font_color = Color(0.79, 0.29, 0.29, 1)
+RedButton/colors/font_focus_color = Color(0.95, 0.42, 0.42, 1)
+RedButton/colors/font_hover_color = Color(0.95, 0.42, 0.42, 1)
+RedButton/colors/font_pressed_color = Color(0.95, 0.42, 0.42, 1)
+RedButton/font_sizes/font_size = 9
+RedButton/styles/focus = SubResource("Focus_outline")
+RedButton/styles/hover = SubResource("RedButton_hover")
+RedButton/styles/normal = SubResource("RedButton_normal")
+RedButton/styles/pressed = SubResource("RedButton_hover")
+RichTextLabel/fonts/bold_font = ExtResource("2_bold")
+RichTextLabel/fonts/bold_italics_font = ExtResource("4_bold_italic")
+RichTextLabel/fonts/italics_font = ExtResource("3_italic")
+RichTextLabel/fonts/normal_font = ExtResource("1_regular")
+SettingsTab/base_type = &"Button"
+SettingsTab/colors/font_color = Color(0.82, 0.82, 0.82, 1)
+SettingsTab/colors/font_focus_color = Color(1, 1, 1, 1)
+SettingsTab/colors/font_hover_color = Color(1, 1, 1, 1)
+SettingsTab/constants/h_separation = 8
+SettingsTab/constants/icon_max_width = 18
+SettingsTab/font_sizes/font_size = 10
+SmallLabel/base_type = &"Label"
+SmallLabel/font_sizes/font_size = 8
+SmallLabel/fonts/font = ExtResource("2_bold")
+TitleRed/base_type = &"Label"
+TitleRed/colors/font_color = Color(0.79, 0.29, 0.29, 1)
+TitleRed/font_sizes/font_size = 20
+TitleRed/fonts/font = ExtResource("2_bold")
+VSeparator/constants/separation = 1
+VSeparator/styles/separator = SubResource("Divider")

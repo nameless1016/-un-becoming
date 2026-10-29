@@ -10,6 +10,11 @@ extends Node2D
 ##
 ## Hotspot positions are in the game's 640x360 viewport (the Background
 ## rect), so keep them inside it. Esc is left to the pause menu; Back leaves.
+##
+## Stills are illustrated, not pixel art: draw them at 1920x1080. Background
+## uses smooth (linear) filtering, unlike the project's pixel-art default, so
+## the full detail shows at the window's real resolution. A point in the
+## 1920x1080 art is at (x / 3, y / 3) in hotspot coordinates.
 
 signal hotspot_activated(hotspot: Hotspot)
 signal dialogue_started(timeline: String)
