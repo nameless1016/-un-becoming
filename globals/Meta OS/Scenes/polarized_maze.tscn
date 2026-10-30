@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bh2u4h0xyo4es"]
 
-[ext_resource type="Script" uid="uid://j1xi3q5m428p" path="res://globals/Meta OS/Scenes/polarized_maze.gd" id="1_q3o5j"]
-[ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="2_qnww2"]
+[ext_resource type="Script" uid="uid://j1xi3q5m428p" path="res://globals/Meta OS/Scenes/polarized_maze.gd" id="1_6k8xx"]
+[ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="2_wfb0u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_32gta"]
 radius = 24.0
 
 [node name="PolarizedMazeTest" type="Node2D" unique_id=1828947712]
-script = ExtResource("1_q3o5j")
+script = ExtResource("1_6k8xx")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1320962612]
 unique_name_in_owner = true
@@ -15,7 +15,7 @@ position = Vector2(120, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=840336544]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_qnww2")
+texture = ExtResource("2_wfb0u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1623069675]
 shape = SubResource("CircleShape2D_32gta")
