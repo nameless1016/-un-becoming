@@ -110,7 +110,7 @@ text = "STATION"
 [node name="Entities" type="Node2D" parent="." unique_id=774249776]
 
 [node name="House Guy" type="Area2D" parent="Entities" unique_id=1787517878]
-position = Vector2(5905, 479)
+position = Vector2(8522, 278)
 script = ExtResource("2_k7o1b")
 dialogue_lines = Array[String](["NIGGER!"])
 

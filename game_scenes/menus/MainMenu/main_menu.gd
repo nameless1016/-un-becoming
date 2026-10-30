@@ -144,7 +144,12 @@ func _start_game() -> void:
 	if next_level_path.is_empty():
 		push_warning("Main menu has no next_level_path set.")
 		return
-	GameManager.load_next_level(next_level_path)
+	# goes to the saved spot, or the start point if there's no save yet
+	SaveManager.fallback_scene = next_level_path
+	if SaveManager.has_save():
+		SaveManager.continue_game()
+	else:
+		SaveManager.new_game()
 
 
 func _refresh_tile() -> void:
@@ -157,8 +162,8 @@ func _refresh_tile() -> void:
 
 func _update_last_saved() -> void:
 	var text := "--/--/--"
-	if FileAccess.file_exists(GameManager.SAVE_PATH):
-		var local_time := FileAccess.get_modified_time(GameManager.SAVE_PATH) + int(Time.get_time_zone_from_system().bias) * 60
+	if FileAccess.file_exists(SaveManager.SAVE_PATH):
+		var local_time := FileAccess.get_modified_time(SaveManager.SAVE_PATH) + int(Time.get_time_zone_from_system().bias) * 60
 		var date := Time.get_datetime_dict_from_unix_time(local_time)
 		text = "%02d/%02d/%02d" % [date.month, date.day, date.year % 100]
 	_last_saved.text = "last saved: " + text
@@ -262,6 +267,7 @@ func _reset_everything() -> void:
 		slider.set_value_no_signal(1.0)
 	if FileAccess.file_exists(GameManager.SAVE_PATH):
 		DirAccess.remove_absolute(GameManager.SAVE_PATH)
+	SaveManager.delete_save()
 	SettingsManager.reset_keybinds_to_default()
 	_update_last_saved()
 

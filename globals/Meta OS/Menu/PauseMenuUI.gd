@@ -11,6 +11,7 @@ var background_rect: TextureRect
 var blur_material: ShaderMaterial
 var menu_container: VBoxContainer
 var resume_btn: Button
+var save_btn: Button
 var settings_btn: Button
 var exit_btn: Button
 
@@ -177,6 +178,16 @@ func _update_selection_visuals() -> void:
 			b.add_theme_color_override("font_color", Color("#777777"))
 
 
+# Saves the game and flashes "Saved" on the button for a sec.
+func _on_save_pressed() -> void:
+	var ok: bool = SaveManager.save_game()
+	save_btn.set_meta("label_name", "Saved" if ok else "Save failed")
+	_update_selection_visuals()
+	await get_tree().create_timer(1.2, true, false, true).timeout
+	save_btn.set_meta("label_name", "Save")
+	_update_selection_visuals()
+
+
 func _update_badge() -> void:
 	weekday_lbl.text = TimeManager.get_weekday_name()
 	day_lbl.text = "%02d" % TimeManager.current_day
@@ -300,6 +311,11 @@ func _build_ui() -> void:
 	resume_btn.pressed.connect(toggle_pause)
 	menu_container.add_child(resume_btn)
 	buttons.append(resume_btn)
+	
+	save_btn = _create_menu_button("Save", 38)
+	save_btn.pressed.connect(_on_save_pressed)
+	menu_container.add_child(save_btn)
+	buttons.append(save_btn)
 	
 	settings_btn = _create_menu_button("Settings", 38)
 	menu_container.add_child(settings_btn)

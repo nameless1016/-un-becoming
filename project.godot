@@ -32,9 +32,10 @@ CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 MetaOS="*uid://dyw7ns5odiwbh"
 FileManager="*uid://b2ejw4nss25lx"
+SaveManager="*uid://blc72ui8ewl1o"
 TimeManager="*uid://cdjpfhv3bj1pd"
 WindowManager="*uid://dm10jl6xy7hsm"
-SaveManager="*uid://blc72ui8ewl1o"
+PauseManager="*uid://bfntalgfdpkgw"
 
 [dialogic]
 
@@ -193,4 +194,5 @@ interact={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
