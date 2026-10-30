@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_yq4q0"]
 [ext_resource type="PackedScene" uid="uid://b3fobc4mms4jw" path="res://systems/World Camera Component/world_camera_component.tscn" id="2_qk6m4"]
+[ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="3_08jht"]
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_qk6m4"]
+[ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08jht"]
 texture = ExtResource("1_yq4q0")
@@ -22,56 +24,48 @@ texture = ExtResource("1_yq4q0")
 3:1/0 = 0
 4:1/0 = 0
 4:2/0 = 0
-4:2/0/terrain = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
 4:3/0 = 0
-4:3/0/terrain = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, -4, -4, -4, -8, 4, -8, 4, 4, -8, 4)
 3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 4, -8, 4)
 2:3/0 = 0
-2:3/0/terrain = 0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4, 4, -4, 4, -8, -4, -8, -4, 4, 8, 4)
 2:2/0 = 0
-2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
 6:1/0 = 0
 6:2/0 = 0
 5:2/0 = 0
 5:1/0 = 0
 8:1/0 = 0
-8:1/0/terrain = 0
 8:2/0 = 0
-8:2/0/terrain = 0
 8:3/0 = 0
-8:3/0/terrain = 0
 8:4/0 = 0
-8:4/0/terrain = 0
 8:5/0 = 0
-8:5/0/terrain = 0
 6:3/0 = 0
-6:3/0/terrain = 0
 7:3/0 = 0
-7:3/0/terrain = 0
 9:3/0 = 0
-9:3/0/terrain = 0
 10:3/0 = 0
-10:3/0/terrain = 0
 5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:7/0 = 0
 12:11/0 = 0
 12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 0, 4, 0, 4, 8, -4, 8, -4, -8)
 12:10/0 = 0
-12:10/0/terrain = 0
 12:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 8, -8, 8, 8, -4, 8)
 13:10/0 = 0
-13:10/0/terrain = 0
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:10/0 = 0
-14:10/0/terrain = 0
 14:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4, -8, 4, 8, -8, 8)
 14:11/0 = 0
 14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 0, -4, 0, -4, 8, 4, 8, 4, -8)
@@ -112,11 +106,18 @@ tile_set = SubResource("TileSet_mm1bc")
 tile_map_data = PackedByteArray("AAANAAcAAAACAAIAAAANAAgAAAACAAIAAAAZABEAAAADAAMAAAANAAUAAAAFAAcAAAANAAYAAAAFAAgAAAANAAkAAAAEAAIAAAANAAoAAAACAAIAAAANAAsAAAACAAIAAAANAAwAAAACAAIAAAANAA0AAAACAAIAAAANAA4AAAACAAIAAAANAA8AAAACAAIAAAANABAAAAACAAIAAAANABEAAAACAAMAAAAOAAUAAAAGAAcAAAAOAAYAAAAGAAgAAAAOABEAAAADAAMAAAAPAAUAAAAGAAcAAAAPAAYAAAAGAAgAAAAPABEAAAADAAMAAAAQAAUAAAAGAAcAAAAQAAYAAAAGAAgAAAAQABEAAAADAAMAAAARAAUAAAAGAAcAAAARAAYAAAAGAAgAAAARABEAAAADAAMAAAASAAUAAAAGAAcAAAASAAYAAAAGAAgAAAASABEAAAADAAMAAAATAAUAAAAGAAcAAAATAAYAAAAGAAgAAAATABEAAAADAAMAAAAUAAUAAAAGAAcAAAAUAAYAAAAGAAgAAAAUABEAAAADAAMAAAAVAAUAAAAGAAcAAAAVAAYAAAAGAAgAAAAVABEAAAADAAMAAAAWAAUAAAAGAAcAAAAWAAYAAAAGAAgAAAAWABEAAAADAAMAAAAXAAUAAAAGAAcAAAAXAAYAAAAGAAgAAAAXABEAAAADAAMAAAAYAAUAAAAGAAcAAAAYAAYAAAAGAAgAAAAYABEAAAADAAMAAAAZAAUAAAAGAAcAAAAZAAYAAAAGAAgAAAAaAAUAAAAHAAcAAAAaAAYAAAAHAAgAAAAaAAcAAAAEAAIAAAAaAAgAAAAEAAIAAAAaAAkAAAAEAAIAAAAaAAoAAAAEAAIAAAAaAAsAAAARAAQAAAAaAAwAAAARAAUAAAAaAA0AAAARAAUAAAAaAA4AAAARAAYAAAAaAA8AAAAEAAIAAAAaABAAAAAEAAIAAAAaABEAAAAEAAMAAAA=")
 tile_set = SubResource("TileSet_4kxuq")
 
-[node name="WorldCameraComponent" parent="." unique_id=1725945058 node_paths=PackedStringArray("target") instance=ExtResource("2_qk6m4")]
-target = NodePath("../PlayerBlaire")
+[node name="WorldCameraComponent" parent="." unique_id=1725945058 instance=ExtResource("2_qk6m4")]
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("3_08jht")
+player_group = &"player"
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_qk6m4")]
-position = Vector2(392, 256)
+position = Vector2(273, 127)
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=56070009]
+position = Vector2(209, 79)
+script = ExtResource("4_bounds")
+size = Vector2(220, 208)
 
 [node name="Props" type="Node2D" parent="." unique_id=458710017]
 

@@ -3,6 +3,8 @@ class_name FollowCamera
 
 ## Drag your player node here, or leave empty to auto-find
 @export var player: Node2D
+## Group the player is in, used when no player is dragged in
+@export var player_group: StringName = &"player"
 
 var current_room: RoomBounds
 
@@ -10,14 +12,22 @@ func _ready() -> void:
 	# update in physics so it matches the player and doesn't jitter
 	process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
 	
+	# always center on the player, in case something else set the anchor or offset
+	anchor_mode = Camera2D.ANCHOR_MODE_DRAG_CENTER
+	offset = Vector2.ZERO
+	
 	if player == null:
-		player = get_parent().get_node_or_null("TopDownPlayer")
+		player = get_tree().get_first_node_in_group(player_group) as Node2D
 	
 	snap_to_player()
 
 func _physics_process(_delta: float) -> void:
 	if player == null:
-		return
+		# the player might not be in the tree yet, keep looking
+		player = get_tree().get_first_node_in_group(player_group) as Node2D
+		if player == null:
+			return
+		snap_to_player()
 	
 	global_position = player.global_position
 	
