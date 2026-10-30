@@ -55,7 +55,18 @@ func make_solid_shape() -> Shape2D:
 	return circle
 
 
+## True when the NPC has its own sprite child, so the placeholder circle is not needed.
+func has_sprite() -> bool:
+	for child in get_children():
+		if child is Sprite2D or child is AnimatedSprite2D:
+			return true
+	return false
+
+
 func draw_body() -> void:
+	# NPCs with a sprite use it as their body, so draw no placeholder or ring
+	if has_sprite():
+		return
 	var r := body_size.x * 0.5
 	draw_circle(Vector2.ZERO, r, lit_fill())
 	if can_interact:

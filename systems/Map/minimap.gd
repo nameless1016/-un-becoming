@@ -213,7 +213,34 @@ func collect_layer_walls() -> Array[Rect2]:
 			var rect := Rect2(center + lo, hi - lo)
 			if current_room.get_rect().grow(8.0).intersects(rect):
 				out.append(rect)
+
+	# Rooms built from sprites and StaticBody2D colliders (like the bus)
+	for node in get_parent().find_children("*", "StaticBody2D", true, false):
+		var body := node as StaticBody2D
+		if body == null or body.get_parent() is Interactable:
+			continue
+		for child in body.get_children():
+			var cs := child as CollisionShape2D
+			if cs == null or cs.disabled or cs.shape == null:
+				continue
+			var half := shape_half_extents(cs.shape) * cs.global_scale.abs()
+			if half == Vector2.ZERO:
+				continue
+			var body_rect := Rect2(cs.global_position - half, half * 2.0)
+			if current_room.get_rect().grow(8.0).intersects(body_rect):
+				out.append(body_rect)
 	return out
+
+
+## Half size of the box that encloses a collision shape (rectangles, circles, capsules).
+func shape_half_extents(shape: Shape2D) -> Vector2:
+	if shape is RectangleShape2D:
+		return shape.size * 0.5
+	if shape is CircleShape2D:
+		return Vector2(shape.radius, shape.radius)
+	if shape is CapsuleShape2D:
+		return Vector2(shape.radius, maxf(shape.height * 0.5, shape.radius))
+	return Vector2.ZERO
 
 
 ## Draws static visual elements including the floor boundary, walls, teleporters, and subway stops.
@@ -221,10 +248,10 @@ func _draw_static() -> void:
 	if current_room == null:
 		return
 
-	static_layer.draw_rect(Rect2(origin, room_rect.size * scale_f), Color(0.12, 0.12, 0.12, 0.95))
+	static_layer.draw_rect(Rect2(origin, room_rect.size * scale_f), Color(0.75, 0.75, 0.75, 0.95))
 
 	for r in wall_rects:
-		static_layer.draw_rect(r, Color(0.55, 0.55, 0.55))
+		static_layer.draw_rect(r, Color(0.3, 0.3, 0.3))
 
 	for p in door_points:
 		static_layer.draw_circle(p, 4.0, Color(0.0, 0.0, 0.0))
