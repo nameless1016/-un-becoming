@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://dg7505b4ljvjs"]
+
+[ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="1_2tl48"]
+[ext_resource type="AudioStream" uid="uid://dlwho2uit6vmj" path="res://sound/music/unbecoming_ost/Music Box of the Flowers.wav" id="2_c34aa"]
+
+[resource]
+script = ExtResource("1_2tl48")
+track_name = "room"
+stems = Array[AudioStream]([ExtResource("2_c34aa")])
+bpm = 80
+metadata/_custom_type_script = "uid://ok7aycfrhu2f"

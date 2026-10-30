@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://systems/Desktop Popup/desktop_popup.gd" id="1_script"]
+[ext_resource type="Theme" path="res://game_scenes/menus/MainMenu/menu_theme.tres" id="2_theme"]
+[ext_resource type="FontFile" path="res://game_assets/fonts/Space Mono/SpaceMono-Italic.ttf" id="3_italic"]
+[ext_resource type="Script" path="res://systems/Smooth Hover/hover_fade.gd" id="4_fade"]
+
+[sub_resource type="StyleBoxFlat" id="Frame"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="TitleBar"]
+content_margin_left = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[node name="DesktopPopup" type="Window"]
+title = "Exit"
+size = Vector2i(168, 88)
+visible = false
+wrap_controls = false
+transient = true
+exclusive = true
+unresizable = true
+borderless = true
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Frame" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Frame")
+
+[node name="Layout" type="VBoxContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="PanelContainer" parent="Frame/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("TitleBar")
+
+[node name="Row" type="HBoxContainer" parent="Frame/Layout/TitleBar"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Frame/Layout/TitleBar/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SmallLabel"
+text = "Exit"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Frame/Layout/TitleBar/Row"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"PopupClose"
+text = "×"
+
+[node name="HoverFade" type="Node" parent="Frame/Layout/TitleBar/Row/CloseButton"]
+script = ExtResource("4_fade")
+
+[node name="Body" type="MarginContainer" parent="Frame/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="Content" type="VBoxContainer" parent="Frame/Layout/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Message" type="Label" parent="Frame/Layout/Body/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_italic")
+theme_override_font_sizes/font_size = 8
+text = "Don't leave me..."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Frame/Layout/Body/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
