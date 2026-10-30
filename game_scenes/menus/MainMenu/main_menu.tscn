@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
-next_level_path = "uid://cbh3de4aa1ibn"
+next_level_path = "uid://dm4sbxyp7dwf5"
 
 [node name="Background" type="ColorRect" parent="." unique_id=337964643]
 layout_mode = 0

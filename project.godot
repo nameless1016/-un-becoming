@@ -32,6 +32,7 @@ CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 MetaOS="*uid://dyw7ns5odiwbh"
 FileManager="*uid://b2ejw4nss25lx"
+SaveManager="*uid://blc72ui8ewl1o"
 
 [dialogic]
 
