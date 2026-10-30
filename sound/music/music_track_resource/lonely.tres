@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://dys8ou6wc83ug"]
+
+[ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="1_nsyo3"]
+[ext_resource type="AudioStream" uid="uid://ddnuagc5hniaa" path="res://sound/music/unbecoming_ost/Indecisive Calmness .wav" id="2_fwhsr"]
+
+[resource]
+script = ExtResource("1_nsyo3")
+track_name = "lonely"
+stems = Array[AudioStream]([ExtResource("2_fwhsr")])
+metadata/_custom_type_script = "uid://ok7aycfrhu2f"
