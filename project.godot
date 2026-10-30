@@ -32,6 +32,10 @@ CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 MetaOS="*uid://dyw7ns5odiwbh"
 FileManager="*uid://b2ejw4nss25lx"
+SaveManager="*uid://blc72ui8ewl1o"
+TimeManager="*uid://cdjpfhv3bj1pd"
+WindowManager="*uid://dm10jl6xy7hsm"
+PauseManager="*uid://bfntalgfdpkgw"
 
 [dialogic]
 
@@ -109,10 +113,13 @@ variables={}
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/transparent=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 

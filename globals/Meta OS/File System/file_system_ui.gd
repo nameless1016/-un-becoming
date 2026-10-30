@@ -1,5 +1,6 @@
 class_name FileSystemUI
 extends Node
+signal request_open_calendar
 
 # This export variable lets you drop an image from the editor.
 @export var silhouette_image: Texture2D
@@ -74,13 +75,15 @@ func _ready() -> void:
 	terminal_win.file_decoded.connect(func(_f): _refresh_current_view())
 
 
-# This listens to key presses while any of the subwindows are focused.
+# Handles hotkeys when any of the desktop subwindows have OS focus.
 func _on_subwindow_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		if event.keycode == KEY_Q or event.keycode == KEY_ESCAPE:
 			toggle_filesystem()
 		elif event.keycode == KEY_T:
 			toggle_terminal()
+		elif event.keycode == KEY_C:
+			request_open_calendar.emit()
 
 
 # Opens or closes the file system, and resets everything on close.
