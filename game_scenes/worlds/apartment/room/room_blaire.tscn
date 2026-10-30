@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_yq4q0"]
 [ext_resource type="PackedScene" uid="uid://b3fobc4mms4jw" path="res://systems/World Camera Component/world_camera_component.tscn" id="2_qk6m4"]
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_qk6m4"]
+[ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
+[ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="4_still"]
 [ext_resource type="PackedScene" uid="uid://bdl5psjyb6nr8" path="res://objects/props/prop_computer_desk.tscn" id="5_10xaw"]
 [ext_resource type="PackedScene" uid="uid://d4byl56v65qg1" path="res://objects/props/prop_bed.tscn" id="5_dsmek"]
 [ext_resource type="PackedScene" uid="uid://bnfoyw5ep8ru5" path="res://objects/props/prop_drawer.tscn" id="6_4lic0"]
 [ext_resource type="PackedScene" uid="uid://553fms505acn" path="res://objects/props/prop_back_table.tscn" id="6_5flus"]
 [ext_resource type="PackedScene" uid="uid://ccyr05igjc6vq" path="res://objects/props/prop_back_small_table.tscn" id="7_faj5y"]
 [ext_resource type="PackedScene" uid="uid://cb7un7nbw265n" path="res://objects/props/prop_gaming_chair.tscn" id="10_4mh2t"]
-[ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="11_follow"]
-[ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="12_bounds"]
-[ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="13_0vyqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08jht"]
 texture = ExtResource("1_yq4q0")
@@ -35,14 +34,18 @@ texture = ExtResource("1_yq4q0")
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -4, -8, -4, 8, 8, 8)
 4:2/0 = 0
+4:2/0/terrain = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, 4, 8, 4, 0, 8, 0, 8, -8)
 4:3/0 = 0
+4:3/0/terrain = 0
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, -4, 4)
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4, -8, 4, -8, -4, -4, -4, -4, -8, 4, -8, 4, -4, 8, -4)
 2:3/0 = 0
+2:3/0/terrain = 0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
 2:2/0 = 0
+2:2/0/terrain = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 4, -8, 4, -8, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
 6:1/0 = 0
 6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4, -8, 4, 8, -8, 8)
@@ -53,6 +56,7 @@ texture = ExtResource("1_yq4q0")
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:3/0 = 0
+6:3/0/terrain = 0
 6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -8, -4, -8, -4, -4, -8, -4, -8, 4, 4, 4)
 17:5/0 = 0
 17:6/0 = 0
@@ -103,11 +107,6 @@ tile_set = SubResource("TileSet_mm1bc")
 tile_map_data = PackedByteArray("AAAQAAoAAAACAAEAAAAQAAsAAAACAAEAAAAQAAwAAAACAAEAAAAQAA0AAAACAAEAAAAXAAoAAAARAAQAAAAXAAsAAAARAAUAAAAXAAwAAAARAAUAAAAXAA0AAAARAAYAAAAQAAYAAAAEAAEAAAAQAAcAAAAEAAIAAAARAAYAAAAFAAEAAAARAAcAAAAFAAIAAAASAAYAAAAFAAEAAAASAAcAAAAFAAIAAAATAAYAAAAFAAEAAAATAAcAAAAFAAIAAAAUAAYAAAAFAAEAAAAUAAcAAAAFAAIAAAAVAAYAAAAFAAEAAAAVAAcAAAAFAAIAAAAWAAYAAAAFAAEAAAAWAAcAAAAFAAIAAAAXAAYAAAAGAAEAAAAXAAcAAAAGAAIAAAAQAA8AAAACAAEAAAAXAA8AAAACAAEAAAAQABAAAAAEAAMAAAARABAAAAAFAAMAAAASABAAAAAFAAMAAAATABAAAAAFAAMAAAAUABAAAAAFAAMAAAAVABAAAAAFAAMAAAAWABAAAAAFAAMAAAAXABAAAAAGAAMAAAAQAA4AAAACAAEAAAAQAAgAAAACAAEAAAAQAAkAAAACAAEAAAAXAAgAAAACAAEAAAAXAAkAAAACAAEAAAAXAA4AAAACAAEAAAA=")
 tile_set = SubResource("TileSet_4kxuq")
 
-[node name="RoomBounds" type="Node2D" parent="." unique_id=1956046423]
-position = Vector2(240, 92)
-script = ExtResource("12_bounds")
-size = Vector2(160, 180)
-
 [node name="Props" type="Node2D" parent="." unique_id=458710017]
 y_sort_enabled = true
 
@@ -155,12 +154,47 @@ script = ExtResource("11_follow")
 player_group = &"player"
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_qk6m4")]
-position = Vector2(360, 203)
-ACCELERATION = inf
-FRICTION = inf
+position = Vector2(300, 170)
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=56070009]
+position = Vector2(256, 96)
+script = ExtResource("4_bounds")
+size = Vector2(128, 176)
 
 [node name="PropGamingChair" parent="." unique_id=991210297 instance=ExtResource("10_4mh2t")]
 position = Vector2(355, 249)
 
-[node name="Minimap" type="CanvasLayer" parent="." unique_id=562651553]
-script = ExtResource("13_0vyqh")
+[node name="PointsOfInterest" type="Node2D" parent="."]
+
+[node name="Bed" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(300, 130)
+script = ExtResource("4_still")
+station_scene = "res://game_scenes/stations/bedroom_still.tscn"
+display_name = "Bed"
+body_size = Vector2(28, 32)
+show_placeholder = false
+
+[node name="Calendar" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(276, 150)
+script = ExtResource("4_still")
+station_scene = "res://game_scenes/stations/calendar_station.tscn"
+interact_radius = 12.0
+display_name = "Calendar"
+body_size = Vector2(14, 72)
+show_placeholder = false
+
+[node name="Desk" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(348, 117)
+script = ExtResource("4_still")
+station_scene = "res://game_scenes/stations/computer_station.tscn"
+display_name = "Desk"
+body_size = Vector2(32, 20)
+show_placeholder = false
+
+[node name="Kitchen" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(372, 192)
+script = ExtResource("4_still")
+station_scene = "res://game_scenes/stations/kitchen_still.tscn"
+display_name = "Kitchen"
+body_size = Vector2(8, 64)
+show_placeholder = false

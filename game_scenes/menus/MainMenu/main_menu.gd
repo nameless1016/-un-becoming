@@ -6,6 +6,11 @@ extends Control
 ## opens as its own window on the player's desktop.
 
 @export_file("*.tscn") var next_level_path: String
+## Set by the Act 0 cutscene once it has played.
+const INTRO_SEEN_FLAG := "act_0_seen"
+
+## Plays on Start until the save says it was seen (Act 0). Empty: skip straight to the game.
+@export_file("*.tscn") var intro_scene: String = "res://game_scenes/cutscenes/act_0/act_0_cutscene.tscn"
 ## Blaire's silhouette behind the title (from Meta OS). Skipped if the file isn't there.
 @export_file("*.png") var silhouette_path: String = "res://globals/Meta OS/File System/blaire_silhouette.png"
 ## How long "loading files..." shows before the game starts, in seconds.
@@ -146,7 +151,12 @@ func _start_game() -> void:
 		return
 	# goes to the saved spot, or the start point if there's no save yet
 	SaveManager.fallback_scene = next_level_path
-	if SaveManager.has_save():
+	# Act 0 plays until a save says it was seen. Saves from before Act 0 existed
+	# don't have the flag, so they get it too.
+	var seen_intro: bool = SaveManager.has_save() and SaveManager.load_game() and SaveManager.get_flag(INTRO_SEEN_FLAG)
+	if not intro_scene.is_empty() and not seen_intro:
+		GameManager.load_next_level(intro_scene)
+	elif SaveManager.has_save():
 		SaveManager.continue_game()
 	else:
 		SaveManager.new_game()

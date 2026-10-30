@@ -1,0 +1,28 @@
+# ACT 0 · Childhood house, night · Blaire's monologue while she prepares to burn the house. DRAFT.
+# Foreshadowing: this is the bad ending's monologue. The same timeline replays word for word in the
+# bad ending (Act 10), which is what reveals the loop, so each line should read one way now and another then.
+# Plays over the cutscene: burning house with Blaire's back at the centre -> her face -> closer and closer
+# close-ups, then the errors. Cues for game_scenes/cutscenes/act_0: fx:burning_start (fire sfx + wide shot),
+# fx:shot_face (cut to her face), fx:shot_closer (push in a step), fx:glitch_start (hands over to the errors).
+[signal arg="fx:burning_start"]
+Blaire: [pause=0.5]It's quieter than I thought it would be.
+Blaire: The third step still creaks. Mom always said that's how she knew I was sneaking down at night.
+Blaire: [pause=0.3]Nobody listens for it anymore.
+Blaire: I went through every room. The kitchen. The hallway. Your room. Mine.
+Blaire: I left the photos on the walls. They should get to see this.
+Blaire: I know what you'd say. That I'm not thinking straight. That this isn't me.
+Blaire: [pause=0.3]You're wrong. For the first time, someone told me exactly who I am.
+Blaire: They said I'm never alone. They said they'll always be here for me.
+Blaire: Could you ever say that? [pause=0.3]Did you ever?
+Blaire: [pause=0.5]...
+[signal arg="fx:shot_face"]
+Blaire: Someone's watching. I can feel it.
+Blaire: [pause=0.3]Good. Watch.
+[signal arg="fx:shot_closer"]
+Blaire: One match. That's all it takes for a house to stop being a home.
+[signal arg="fx:shot_closer"]
+Blaire: It isn't anger. I thought it would be anger.
+[signal arg="fx:shot_closer"]
+Blaire: It just feels like I'm finally doing what I was told.
+[signal arg="fx:glitch_start"]
+Blaire: [pause=0.5]Let it burn.
