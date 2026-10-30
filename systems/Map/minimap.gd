@@ -17,7 +17,7 @@ enum Spot {
 
 @export_group("Layout")
 ## Corner of the viewport where the minimap anchors.
-@export var corner: Spot = Spot.TOP_RIGHT
+@export var corner: Spot = Spot.TOP_LEFT
 ## Dimensions of the minimap UI panel in pixels.
 @export var panel_size: Vector2 = Vector2(150, 150)
 ## Distance from the edges of the viewport in pixels.

@@ -88,14 +88,10 @@ script = ExtResource("7_follow")
 player = NodePath("../PlayerBlaire")
 
 [node name="BG" type="ColorRect" parent="." unique_id=378985092]
-offset_right = 640.0
+offset_left = -4.0
+offset_right = 636.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 1)
-
-[node name="RoomBounds" type="Node2D" parent="." unique_id=368672483]
-position = Vector2(144, 88)
-script = ExtResource("5_bounds")
-size = Vector2(336, 192)
 
 [node name="BusFloor" type="Sprite2D" parent="." unique_id=1443360109]
 position = Vector2(144, 88)
@@ -178,28 +174,28 @@ shape = SubResource("CapsuleShape2D_qn6qw")
 position = Vector2(216, 217)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChairCollisions/BusChairCollision5" unique_id=460473776]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_qn6qw")
 
 [node name="BusChairCollision6" type="StaticBody2D" parent="ChairCollisions" unique_id=29508159]
 position = Vector2(248, 216)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChairCollisions/BusChairCollision6" unique_id=1971712894]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_qn6qw")
 
 [node name="BusChairCollision7" type="StaticBody2D" parent="ChairCollisions" unique_id=754555288]
 position = Vector2(280, 216)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChairCollisions/BusChairCollision7" unique_id=1459558403]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_qn6qw")
 
 [node name="BusChairCollision8" type="StaticBody2D" parent="ChairCollisions" unique_id=1035251530]
 position = Vector2(184, 216)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChairCollisions/BusChairCollision8" unique_id=1583890797]
-position = Vector2(0, 4)
+position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_qn6qw")
 
 [node name="BusChairCollision9" type="StaticBody2D" parent="ChairCollisions" unique_id=1699274117]
@@ -317,3 +313,9 @@ position = Vector2(432, 256)
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=1573317822]
 script = ExtResource("6_minimap")
+panel_size = Vector2(125, 125)
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=368672483]
+position = Vector2(117, 88)
+script = ExtResource("5_bounds")
+size = Vector2(336, 192)
