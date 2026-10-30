@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://m07als1115f4" path="res://game_scenes/worlds/apartment/room/room_blaire.gd" id="1_08jht"]
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_yq4q0"]
 [ext_resource type="PackedScene" uid="uid://b3fobc4mms4jw" path="res://systems/World Camera Component/world_camera_component.tscn" id="2_qk6m4"]
+[ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="3_08jht"]
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_qk6m4"]
 [ext_resource type="PackedScene" uid="uid://bdl5psjyb6nr8" path="res://objects/props/prop_computer_desk.tscn" id="5_10xaw"]
 [ext_resource type="PackedScene" uid="uid://d4byl56v65qg1" path="res://objects/props/prop_bed.tscn" id="5_dsmek"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://553fms505acn" path="res://objects/props/prop_back_table.tscn" id="6_5flus"]
 [ext_resource type="PackedScene" uid="uid://ccyr05igjc6vq" path="res://objects/props/prop_back_small_table.tscn" id="7_faj5y"]
 [ext_resource type="PackedScene" uid="uid://cb7un7nbw265n" path="res://objects/props/prop_gaming_chair.tscn" id="10_4mh2t"]
+[ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08jht"]
 texture = ExtResource("1_yq4q0")
@@ -32,19 +34,15 @@ texture = ExtResource("1_yq4q0")
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -4, -8, -4, 8, 8, 8)
 4:2/0 = 0
-4:2/0/terrain = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, -4, 8, 4, 8, 4, 0, 8, 0, 8, -8)
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
 4:3/0 = 0
-4:3/0/terrain = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, -4, 4)
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, -4, -4, -4, -8, 4, -8, 4, 4, -8, 4)
 3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4, -8, 4, -8, -4, -4, -4, -4, -8, 4, -8, 4, -4, 8, -4)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4, 8, -4, 8, 4, -8, 4)
 2:3/0 = 0
-2:3/0/terrain = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -4, 4, -4, 4, -8, -4, -8, -4, 4, 8, 4)
 2:2/0 = 0
-2:2/0/terrain = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 4, -8, 4, -8, -4, 8, -4, 8, 4, 4, 4, 4, 8, -4, 8)
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
 6:1/0 = 0
 6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4, -8, 4, 8, -8, 8)
 6:2/0 = 0
@@ -52,10 +50,40 @@ texture = ExtResource("1_yq4q0")
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
 5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:2/0 = 0
+8:3/0 = 0
+8:4/0 = 0
+8:5/0 = 0
 6:3/0 = 0
-6:3/0/terrain = 0
-6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -8, -4, -8, -4, -4, -8, -4, -8, 4, 4, 4)
+7:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+5:8/0 = 0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:8/0 = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:8/0 = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:7/0 = 0
+12:11/0 = 0
+12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 0, 4, 0, 4, 8, -4, 8, -4, -8)
+12:10/0 = 0
+12:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 8, -8, 8, 8, -4, 8)
+13:10/0 = 0
+13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:10/0 = 0
+14:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4, -8, 4, 8, -8, 8)
+14:11/0 = 0
+14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 0, -4, 0, -4, 8, 4, 8, 4, -8)
+13:11/0 = 0
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
 17:5/0 = 0
 17:6/0 = 0
 17:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -8, 4, -8, 4, 8, -4, 8)
@@ -105,53 +133,20 @@ tile_set = SubResource("TileSet_mm1bc")
 tile_map_data = PackedByteArray("AAAQAAoAAAACAAEAAAAQAAsAAAACAAEAAAAQAAwAAAACAAEAAAAQAA0AAAACAAEAAAAXAAoAAAARAAQAAAAXAAsAAAARAAUAAAAXAAwAAAARAAUAAAAXAA0AAAARAAYAAAAQAAYAAAAEAAEAAAAQAAcAAAAEAAIAAAARAAYAAAAFAAEAAAARAAcAAAAFAAIAAAASAAYAAAAFAAEAAAASAAcAAAAFAAIAAAATAAYAAAAFAAEAAAATAAcAAAAFAAIAAAAUAAYAAAAFAAEAAAAUAAcAAAAFAAIAAAAVAAYAAAAFAAEAAAAVAAcAAAAFAAIAAAAWAAYAAAAFAAEAAAAWAAcAAAAFAAIAAAAXAAYAAAAGAAEAAAAXAAcAAAAGAAIAAAAQAA8AAAACAAEAAAAXAA8AAAACAAEAAAAQABAAAAAEAAMAAAARABAAAAAFAAMAAAASABAAAAAFAAMAAAATABAAAAAFAAMAAAAUABAAAAAFAAMAAAAVABAAAAAFAAMAAAAWABAAAAAFAAMAAAAXABAAAAAGAAMAAAAQAA4AAAACAAEAAAAQAAgAAAACAAEAAAAQAAkAAAACAAEAAAAXAAgAAAACAAEAAAAXAAkAAAACAAEAAAAXAA4AAAACAAEAAAA=")
 tile_set = SubResource("TileSet_4kxuq")
 
-[node name="Props" type="Node2D" parent="." unique_id=458710017]
-y_sort_enabled = true
-
-[node name="PropBed" parent="Props" unique_id=383605962 instance=ExtResource("5_dsmek")]
-position = Vector2(292, 144)
-
-[node name="Painting" type="Sprite2D" parent="Props" unique_id=631035596]
-position = Vector2(292, 109)
-texture = SubResource("AtlasTexture_mti6b")
-
-[node name="prop_drawer" parent="Props" unique_id=996556695 instance=ExtResource("6_4lic0")]
-position = Vector2(314, 128)
-
-[node name="PropComputerDesk" parent="Props" unique_id=1170852200 instance=ExtResource("5_10xaw")]
-position = Vector2(348, 129)
-
-[node name="PropBackTable" parent="Props" unique_id=1969808181 instance=ExtResource("6_5flus")]
-position = Vector2(356, 260)
-
-[node name="PropBackSmallTable" parent="Props" unique_id=954049080 instance=ExtResource("7_faj5y")]
-position = Vector2(332, 260)
-
-[node name="Shelf1" type="Sprite2D" parent="Props" unique_id=1929045818]
-z_index = 1
-position = Vector2(270, 238)
-texture = SubResource("AtlasTexture_mm1bc")
-
-[node name="Shelf2" type="Sprite2D" parent="Props" unique_id=170606000]
-z_index = 1
-position = Vector2(270, 204)
-texture = SubResource("AtlasTexture_mm1bc")
-
-[node name="Calendar" type="Sprite2D" parent="Props" unique_id=1886595575]
-position = Vector2(274, 109)
-texture = SubResource("AtlasTexture_62yky")
-
-[node name="Rug" type="Sprite2D" parent="." unique_id=1333012158]
-z_index = -1
-position = Vector2(320, 201)
-texture = SubResource("AtlasTexture_4lic0")
-
-[node name="WorldCameraComponent" parent="." unique_id=1725945058 node_paths=PackedStringArray("target") instance=ExtResource("2_qk6m4")]
-camera_mode = 0
-target = NodePath("../PlayerBlaire")
+[node name="WorldCameraComponent" parent="." unique_id=1725945058 instance=ExtResource("2_qk6m4")]
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("3_08jht")
+player_group = &"player"
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_qk6m4")]
-position = Vector2(360, 203)
+position = Vector2(273, 127)
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=56070009]
+position = Vector2(209, 79)
+script = ExtResource("4_bounds")
+size = Vector2(220, 208)
+
+[node name="Props" type="Node2D" parent="." unique_id=458710017]
 
 [node name="PropGamingChair" parent="." unique_id=991210297 instance=ExtResource("10_4mh2t")]
 position = Vector2(355, 249)

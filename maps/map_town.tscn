@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="7_mini"]
 [ext_resource type="Script" uid="uid://d1wugnxskesgt" path="res://actors/Interactables/npc.gd" id="8_npc"]
 [ext_resource type="Script" uid="uid://csnuoxqg341j5" path="res://actors/Interactables/world_object.gd" id="9_obj"]
+[ext_resource type="Script" uid="uid://ceb1ykx3xytw3" path="res://actors/Interactables/point_and_click_trigger.gd" id="10_pnc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_walls"]
 texture = ExtResource("3_icon")
@@ -109,7 +110,7 @@ text = "STATION"
 [node name="Entities" type="Node2D" parent="." unique_id=774249776]
 
 [node name="House Guy" type="Area2D" parent="Entities" unique_id=1787517878]
-position = Vector2(5905, 479)
+position = Vector2(8522, 278)
 script = ExtResource("2_k7o1b")
 dialogue_lines = Array[String](["NIGGER!"])
 
@@ -129,8 +130,8 @@ fill_color = Color(0.62, 0.62, 0.62, 1)
 
 [node name="Sign" type="Area2D" parent="Entities" unique_id=1341644283]
 position = Vector2(1088, 960)
-script = ExtResource("9_obj")
-examine_text = "DOWNTOWN. Subway is south."
+script = ExtResource("10_pnc")
+station_scene = "uid://kcdirnqpcbho"
 display_name = "Sign"
 fill_color = Color(0.72, 0.72, 0.72, 1)
 
