@@ -7,8 +7,8 @@ signal loaded
 const SAVE_PATH := "user://save.json"
 
 # change these to your real living room scene and spawn marker
-const LIVING_ROOM_SCENE := "uid://dm4sbxyp7dwf5"
-const LIVING_ROOM_SPAWN := "HouseSpawn"
+const LIVING_ROOM_SCENE := "res://game_scenes/worlds/apartment/room/room_blaire.tscn"
+const LIVING_ROOM_SPAWN := "RoomSpawn"
 
 # ALWAYS_LIVING_ROOM: always start in the living room
 # LAST_PLACE: start where they last saved

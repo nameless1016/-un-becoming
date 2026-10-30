@@ -138,6 +138,7 @@ folder_colors={
 "res://game_assets/": "orange",
 "res://game_scenes/": "yellow",
 "res://globals/": "green",
+"res://objects/": "red",
 "res://sound/": "teal",
 "res://systems/": "blue",
 "res://vfx/": "purple"
