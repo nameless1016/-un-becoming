@@ -32,6 +32,8 @@ CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 MetaOS="*uid://dyw7ns5odiwbh"
 FileManager="*uid://b2ejw4nss25lx"
+TimeManager="*uid://cdjpfhv3bj1pd"
+WindowManager="*uid://dm10jl6xy7hsm"
 
 [dialogic]
 
@@ -107,10 +109,13 @@ layout/style_directory={
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/transparent=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
@@ -180,5 +185,4 @@ dialogic_default_action={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
