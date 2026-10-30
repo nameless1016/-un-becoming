@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dt5e47t4567xv"]
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_ecpr7"]
+[ext_resource type="Script" path="res://actors/Interactables/world_prop.gd" id="9_prop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
 atlas = ExtResource("1_ecpr7")
 region = Rect2(96, 144, 16, 16)
 
-[node name="prop_lamp" type="Node2D" unique_id=1784411265]
+[node name="prop_lamp" type="Area2D" unique_id=1784411265]
+script = ExtResource("9_prop")
+display_name = "Lamp"
+show_on_minimap = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705773161]
 position = Vector2(0, -7)

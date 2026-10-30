@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://m07als1115f4" path="res://game_scenes/worlds/apartment/room/room_blaire.gd" id="1_08jht"]
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_yq4q0"]
 [ext_resource type="PackedScene" uid="uid://b3fobc4mms4jw" path="res://systems/World Camera Component/world_camera_component.tscn" id="2_qk6m4"]
-[ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="3_08jht"]
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_qk6m4"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
 [ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="4_still"]
@@ -150,8 +149,8 @@ position = Vector2(320, 201)
 texture = SubResource("AtlasTexture_4lic0")
 
 [node name="WorldCameraComponent" parent="." unique_id=1725945058 instance=ExtResource("2_qk6m4")]
-zoom = Vector2(1.5, 1.5)
-script = ExtResource("3_08jht")
+zoom = Vector2(1.8, 1.8)
+script = ExtResource("11_follow")
 player_group = &"player"
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_qk6m4")]
