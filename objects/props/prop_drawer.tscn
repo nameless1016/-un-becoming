@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnfoyw5ep8ru5"]
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_tujp2"]
+[ext_resource type="PackedScene" uid="uid://dt5e47t4567xv" path="res://objects/props/prop_lamp.tscn" id="2_4neg4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
 atlas = ExtResource("1_tujp2")
@@ -19,3 +20,6 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347592458]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_mti6b")
+
+[node name="prop_lamp" parent="." unique_id=1784411265 instance=ExtResource("2_4neg4")]
+position = Vector2(0, -9)
