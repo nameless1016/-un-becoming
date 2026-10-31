@@ -388,7 +388,11 @@ category = 4
 content = "WSBZOPL YLWHPY PUZAYBJAPVUZ..."
 cipher_type = 2
 cipher_shift = 7
-solved_content = "PLUSHIE REPAIR INSTRUCTIONS:\\n1. Thread needle.\\n2. Hide knot inside tear.\\n3. Sew with ladder stitch.\\n4. Pull tight to conceal."
+solved_content = "PLUSHIE REPAIR INSTRUCTIONS:
+1. Thread needle.
+2. Hide knot inside tear.
+3. Sew with ladder stitch.
+4. Pull tight to conceal."
 can_rearrange = true
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
@@ -538,7 +542,12 @@ filename = "letter_final_unsent.txt"
 category = 4
 description = "The complete assembled draft to her father."
 content = "[LOCKED: Requires all 7 decrypted fragments to assemble.]"
-solved_content = "Dear Dad,\\n\\nI hope this letter finds you in good health... I miss you.\\n— Blaire"
+solved_content = "Dear Dad,
+
+I hope this letter finds you in good health...
+
+I miss you.
+ 		Blaire"
 can_intervene = true
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 

@@ -10,6 +10,9 @@ extends Control
 ## [2] - Pick up Secret Cipher (The Order Directive)
 ## [3] - Clear all inventory files
 ## [4] - Pick up Letter Part 7 and Unlock Decode Command
+## [5] - Pick up Mother Profile
+## [6] - Pick up Plushie Repair Manual and Unlock Rearrange Command
+## [7] - Pick up Letter Part 4
 
 var file_system_ui: FileSystemUI
 var pause_menu: PauseMenuUI
@@ -81,12 +84,15 @@ func _create_test_ui() -> void:
 [1] - Pick up Notebook (Item Dock)
 [2] - Pick up Secret Cipher (The Order Directive)
 [3] - Clear all inventory files
-[4] - Pick up Letter Part 7 & Unlock Decode Command"""
+[4] - Pick up Letter Part 7 & Unlock Decode
+[5] - Pick up Mother Dossier (About)
+[6] - Pick up Plushie Manual & Unlock Rearrange
+[7] - Pick up Letter Part 4 (Vigenère)"""
 	
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["Cartograph Mono", "Consolas", "monospace"])
 	label.add_theme_font_override("font", font)
-	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_font_size_override("font_size", 13)
 	add_child(label)
 
 
@@ -109,6 +115,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				_test_clear_inventory()
 			KEY_4:
 				_test_pickup_letter_pt07()
+			KEY_5:
+				_test_pickup_about_mother()
+			KEY_6:
+				_test_pickup_plushie_manual()
+			KEY_7:
+				_test_pickup_letter_pt04()
 
 
 func _test_pickup_notebook() -> void:
@@ -122,14 +134,32 @@ func _test_pickup_cipher() -> void:
 
 
 func _test_pickup_letter_pt07() -> void:
-	# Adds the secret file to inventory.
 	FileManager.obtain_file_by_id("cipher_letter_pt07")
-	
-	# Unlocks command three which represents Decode.
 	FileManager.unlock_terminal_command(3)
-	
-	# Displays the obtained confirmation dialog.
 	await MetaOS.show_dialog("Obtained", "letter_pt07.enc", ["CLOSE"], "txt")
+
+
+func _test_pickup_about_mother() -> void:
+	# Obtains the Mother dossier for the About folder.
+	FileManager.obtain_file_by_id("about_mother")
+	await MetaOS.show_dialog("Obtained", "Mother.info", ["CLOSE"], "txt")
+
+
+func _test_pickup_plushie_manual() -> void:
+	# Obtains the plushie repair cipher.
+	FileManager.obtain_file_by_id("cipher_plushie_manual")
+	
+	# Unlocks command two which represents Rearrange.
+	FileManager.unlock_terminal_command(2)
+	
+	await MetaOS.show_dialog("Obtained", "plushie_repair.enc", ["CLOSE"], "txt")
+
+
+func _test_pickup_letter_pt04() -> void:
+	# Obtains part four of the letter.
+	FileManager.obtain_file_by_id("cipher_letter_pt04")
+	await MetaOS.show_dialog("Obtained", "letter_pt04.enc", ["CLOSE"], "txt")
+
 
 func _test_clear_inventory() -> void:
 	FileManager.collected_files.clear()
