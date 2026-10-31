@@ -126,7 +126,7 @@ func _on_dialogue_signal(argument: Variant) -> void:
 
 ## Virtual method to override in subclasses for handling custom timeline signal events.
 func on_dialogue_action(action: String, args: Dictionary) -> void:
-	print("[Npc] %s got dialogue signal: '%s'" % [name, action])
+	#print("[Npc] %s got dialogue signal: '%s'" % [name, action])
 	# "travel:school" or {"action": "travel", "target": "school"}
 	if action.begins_with("travel:"):
 		queue_travel(action.trim_prefix("travel:").strip_edges())

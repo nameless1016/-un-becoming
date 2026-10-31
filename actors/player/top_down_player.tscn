@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bnjbtr6imgm3d" path="res://actors/player/top_down_player.gd" id="2_xeelx"]
 [ext_resource type="Script" uid="uid://qri00n31jglx" path="res://actors/player/PlayerFSM/TopDown/state_idle.gd" id="3_snjlb"]
 [ext_resource type="Script" uid="uid://b1ci27y347n1w" path="res://actors/player/PlayerFSM/TopDown/state_run.gd" id="4_la8er"]
+[ext_resource type="Script" path="res://actors/player/PlayerFSM/TopDown/state_scripted.gd" id="9_scripted"]
 
 [node name="TopDownPlayer" unique_id=240714517 instance=ExtResource("1_wdfuy")]
 collision_mask = 6
@@ -23,4 +24,8 @@ PLAYER = NodePath("../..")
 
 [node name="Run" type="Node" parent="FSM" index="1" unique_id=1211236791 node_paths=PackedStringArray("PLAYER")]
 script = ExtResource("4_la8er")
+PLAYER = NodePath("../..")
+
+[node name="Scripted" type="Node" parent="FSM" index="2" node_paths=PackedStringArray("PLAYER")]
+script = ExtResource("9_scripted")
 PLAYER = NodePath("../..")

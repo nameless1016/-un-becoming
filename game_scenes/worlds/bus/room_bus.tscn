@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="6_minimap"]
 [ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="7_follow"]
 [ext_resource type="Script" uid="uid://d1wugnxskesgt" path="res://actors/Interactables/npc.gd" id="8_npc"]
+[ext_resource type="Script" uid="uid://o1wcxwd8gcxy" path="res://systems/Scripted Movement/player_path.gd" id="10_mfyfq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7fms"]
 atlas = ExtResource("1_l7fms")
@@ -311,8 +312,6 @@ texture = SubResource("AtlasTexture_mfyfq")
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_m7ng0")]
 position = Vector2(432, 256)
-ACCELERATION = inf
-FRICTION = inf
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=1573317822]
 script = ExtResource("6_minimap")
@@ -322,3 +321,12 @@ panel_size = Vector2(125, 125)
 position = Vector2(117, 88)
 script = ExtResource("5_bounds")
 size = Vector2(336, 192)
+
+[node name="PlayerPath" type="Node" parent="." unique_id=903470557]
+script = ExtResource("10_mfyfq")
+
+[node name="Marker1" type="Marker2D" parent="PlayerPath" unique_id=434698002]
+position = Vector2(432, 266)
+
+[node name="Marker2" type="Marker2D" parent="PlayerPath" unique_id=1275739856]
+position = Vector2(425, 176)
