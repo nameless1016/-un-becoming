@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ejtcbfo4lt16"]
 
+[ext_resource type="Script" uid="uid://bfpisd51jafws" path="res://game_scenes/worlds/bus/room_bus.gd" id="1_b0oai"]
 [ext_resource type="Texture2D" uid="uid://dhbsj6sqjwj0v" path="res://game_assets/world/bus/bus_map-Sheet.png" id="1_l7fms"]
 [ext_resource type="Texture2D" uid="uid://bxqrwvgpqwmib" path="res://game_assets/npcs/npc_sprites_sheet.png" id="2_qn6qw"]
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_m7ng0"]
@@ -83,6 +84,7 @@ region = Rect2(96, 64, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
 
 [node name="room_bus" type="Node2D" unique_id=494569057]
+script = ExtResource("1_b0oai")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1829471035 node_paths=PackedStringArray("player")]
 position = Vector2(432, 256)
