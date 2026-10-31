@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dxdkgugmu361p"]
+
+[ext_resource type="Script" uid="uid://cfwf5d8exox4f" path="res://addons/dialogic/Modules/LayeredPortrait/custom_layered_portrait.gd" id="1_uubi5"]
+[ext_resource type="Texture2D" uid="uid://b1b3mw32hl8u1" path="res://dialogue/portraits/base_1.png" id="2_da88y"]
+[ext_resource type="Texture2D" uid="uid://x2lsi1wsvuux" path="res://dialogue/portraits/empty_portrait_base.png" id="2_yhkqf"]
+[ext_resource type="Texture2D" uid="uid://ch8rgujrhvt45" path="res://dialogue/portraits/base_2.png" id="3_f1d2x"]
+[ext_resource type="Texture2D" uid="uid://c7d3xo5v8y8ks" path="res://dialogue/portraits/exp_default.png" id="4_cfnyc"]
+[ext_resource type="Texture2D" uid="uid://bvqqoijm6f2l6" path="res://dialogue/portraits/exp_happy.png" id="5_fqx5o"]
+[ext_resource type="Texture2D" uid="uid://bx4rdh30iyutm" path="res://dialogue/portraits/exp_smile.png" id="6_wjeiv"]
+[ext_resource type="Texture2D" uid="uid://bda1rsvoagdd7" path="res://dialogue/portraits/exp_reassure.png" id="7_5n4g3"]
+[ext_resource type="Texture2D" uid="uid://mcj18b3r7p5i" path="res://dialogue/portraits/exp_thinking.png" id="8_5bgs5"]
+[ext_resource type="Texture2D" uid="uid://bq42w8ues466d" path="res://dialogue/portraits/exp_alert.png" id="9_76rac"]
+[ext_resource type="Texture2D" uid="uid://cm7tmbi51h6fn" path="res://dialogue/portraits/exp_pout.png" id="10_ljdhx"]
+[ext_resource type="Texture2D" uid="uid://fobwrl7smk5y" path="res://dialogue/portraits/exp_crying.png" id="11_vandc"]
+[ext_resource type="Texture2D" uid="uid://cq0o5igh8lmu6" path="res://dialogue/portraits/exp_surprised.png" id="12_c8h7u"]
+[ext_resource type="Texture2D" uid="uid://cvttumei1u1fu" path="res://dialogue/portraits/exp_angry.png" id="13_h3x6t"]
+[ext_resource type="Texture2D" uid="uid://r1ir2ljk184w" path="res://dialogue/portraits/exp_serious.png" id="14_lwuhp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1258r"]
+animations = [{
+"frames": [{
+"duration": 1.6,
+"texture": ExtResource("2_da88y")
+}, {
+"duration": 1.6,
+"texture": ExtResource("3_f1d2x")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LayeredPortrait" type="CanvasGroup" unique_id=216550498]
+script = ExtResource("1_uubi5")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1243771648]
+texture = ExtResource("2_yhkqf")
+
+[node name="SketchLoop" type="AnimatedSprite2D" parent="Base" unique_id=1722003257]
+sprite_frames = SubResource("SpriteFrames_1258r")
+autoplay = "default"
+frame_progress = 0.17244108
+
+[node name="Expression" type="Node2D" parent="." unique_id=295665481]
+
+[node name="Default" type="Sprite2D" parent="Expression" unique_id=685578957]
+visible = false
+texture = ExtResource("4_cfnyc")
+
+[node name="Happy" type="Sprite2D" parent="Expression" unique_id=1469228439]
+visible = false
+texture = ExtResource("5_fqx5o")
+
+[node name="Smile" type="Sprite2D" parent="Expression" unique_id=1748402128]
+visible = false
+texture = ExtResource("6_wjeiv")
+
+[node name="Reassure" type="Sprite2D" parent="Expression" unique_id=1120813302]
+visible = false
+texture = ExtResource("7_5n4g3")
+
+[node name="Thinking" type="Sprite2D" parent="Expression" unique_id=1563491531]
+visible = false
+texture = ExtResource("8_5bgs5")
+
+[node name="Alert" type="Sprite2D" parent="Expression" unique_id=692813884]
+visible = false
+texture = ExtResource("9_76rac")
+
+[node name="Pout" type="Sprite2D" parent="Expression" unique_id=379605430]
+visible = false
+texture = ExtResource("10_ljdhx")
+
+[node name="Crying" type="Sprite2D" parent="Expression" unique_id=660801215]
+visible = false
+texture = ExtResource("11_vandc")
+
+[node name="Surprised" type="Sprite2D" parent="Expression" unique_id=1241562128]
+visible = false
+texture = ExtResource("12_c8h7u")
+
+[node name="Angry" type="Sprite2D" parent="Expression" unique_id=1585493245]
+visible = false
+texture = ExtResource("13_h3x6t")
+
+[node name="Serious" type="Sprite2D" parent="Expression" unique_id=1849625318]
+texture = ExtResource("14_lwuhp")

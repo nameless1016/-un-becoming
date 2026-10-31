@@ -4,16 +4,28 @@
 &"_translation_id": "",
 &"color": Color(1, 0.78, 0.55, 1),
 &"custom_info": {
+"prefix": "",
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "",
+"suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "Main",
 &"description": "Before the incident: warm, a little awkward, tries hard to belong. Calls The Order 'my group' and doesn't name it yet.",
 &"display_name": "Blaire",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"Main": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(-20, 0),
+"scale": 0.8,
+"scene": "res://dialogue/portraits/layered_portrait_blaire.tscn"
+}
+},
 &"scale": 1.0
 }

@@ -226,6 +226,18 @@ shader_parameter/wave_amplitude = 0.04
 shader_parameter/wave_frequency = 12.0
 shader_parameter/twist_distortion = 0.08
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0gyw"]
+size = Vector2(1918, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grroy"]
+size = Vector2(1950.625, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlpvg"]
+size = Vector2(22, 1891)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ajys"]
+size = Vector2(32, 1843.375)
+
 [node name="world_dream" type="Node2D" unique_id=894283626]
 script = ExtResource("1_86xcg")
 
@@ -259,3 +271,33 @@ target = NodePath("../PlayerBlaire")
 [node name="prop_ghost_machine" parent="." unique_id=248482055 instance=ExtResource("5_0afwg")]
 visible = false
 position = Vector2(320, -896)
+
+[node name="Walls" type="Node2D" parent="." unique_id=1568522805]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=356720836]
+position = Vector2(280, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=117024992]
+position = Vector2(40, 502)
+shape = SubResource("RectangleShape2D_l0gyw")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls" unique_id=336248258]
+position = Vector2(296, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2" unique_id=79269878]
+position = Vector2(39.6875, -1213)
+shape = SubResource("RectangleShape2D_grroy")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls" unique_id=1586582027]
+position = Vector2(160, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3" unique_id=1372989731]
+position = Vector2(-810, -355.5)
+shape = SubResource("RectangleShape2D_tlpvg")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls" unique_id=178545766]
+position = Vector2(464, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4" unique_id=562549508]
+position = Vector2(831, -331.6875)
+shape = SubResource("RectangleShape2D_3ajys")
