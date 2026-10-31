@@ -28,6 +28,11 @@ var active_transition: Tween
 var quit_dialog: PanelContainer
 var quit_dialog_open: bool = false
 
+# The main menu's settings, shown on top of the pause menu.
+const SETTINGS_SCENE := "uid://camlgx74mlna4"
+var settings_open: bool = false
+var settings_view: SubViewportContainer
+
 
 func _init() -> void:
 	borderless = true
@@ -51,12 +56,14 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		if event.keycode == KEY_ESCAPE:
-			if quit_dialog_open:
+			if settings_open:
+				_close_settings()
+			elif quit_dialog_open:
 				_close_quit_dialog()
 			else:
 				toggle_pause()
 			get_viewport().set_input_as_handled()
-		elif is_paused and not quit_dialog_open:
+		elif is_paused and not quit_dialog_open and not settings_open:
 			if event.keycode == KEY_UP or event.keycode == KEY_W:
 				_change_selection(-1)
 				get_viewport().set_input_as_handled()
@@ -194,6 +201,43 @@ func _update_badge() -> void:
 	slot_lbl.text = TimeManager.get_slot_symbol() + "  " + TimeManager.get_slot_name()
 
 
+# Opens the same settings screen as the main menu, scaled up to fill the window.
+func _open_settings() -> void:
+	if settings_open:
+		return
+	settings_open = true
+	
+	settings_view = SubViewportContainer.new()
+	settings_view.set_anchors_preset(Control.PRESET_FULL_RECT)
+	settings_view.stretch = true
+	
+	var view := SubViewport.new()
+	# the settings are laid out for 640x360, this stretches them to the window
+	view.size_2d_override = Vector2i(640, 360)
+	view.size_2d_override_stretch = true
+	settings_view.add_child(view)
+	
+	var settings := (load(SETTINGS_SCENE) as PackedScene).instantiate()
+	settings.settings_only = true
+	settings.closed.connect(_close_settings)
+	view.add_child(settings)
+	
+	add_child(settings_view)
+	menu_container.hide()
+	date_badge.hide()
+
+
+func _close_settings() -> void:
+	if not settings_open:
+		return
+	settings_open = false
+	if settings_view:
+		settings_view.queue_free()
+		settings_view = null
+	menu_container.show()
+	date_badge.show()
+
+
 func _open_quit_dialog() -> void:
 	quit_dialog_open = true
 	quit_dialog.show()
@@ -318,6 +362,7 @@ func _build_ui() -> void:
 	buttons.append(save_btn)
 	
 	settings_btn = _create_menu_button("Settings", 38)
+	settings_btn.pressed.connect(_open_settings)
 	menu_container.add_child(settings_btn)
 	buttons.append(settings_btn)
 	
