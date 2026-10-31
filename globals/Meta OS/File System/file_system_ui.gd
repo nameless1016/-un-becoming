@@ -329,6 +329,12 @@ func _render_explorer_file_list() -> void:
 		var prefix := "[OK] " if f.is_solved else "     "
 		btn.text = prefix + f.filename
 		btn.icon = _generate_file_icon()
+		# Use executable gear icon for .exe files, standard file icon for others.
+		if f.category == GameFile.Category.EXECUTABLE or f.filename.ends_with(".exe"):
+			btn.icon = _generate_exe_icon()
+		else:
+			btn.icon = _generate_file_icon()
+		
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.custom_minimum_size = Vector2(0, 32)
 		btn.add_theme_font_override("font", system_font)
@@ -391,7 +397,7 @@ func _build_windows() -> void:
 		GameFile.Category.ENTRY,
 		GameFile.Category.ABOUT,
 		GameFile.Category.PHOTO,
-		GameFile.Category.ITEM,
+		GameFile.Category.EXECUTABLE,
 		GameFile.Category.SECRET
 	]
 	
@@ -644,8 +650,15 @@ func _refresh_items_dock() -> void:
 		
 		if i < items.size():
 			var item_file: GameFile = items[i]
-			slot_btn.icon = _generate_notebook_icon()
+			
+			# Uses your custom icon if assigned, otherwise falls back to the default notebook icon
+			if item_file.icon:
+				slot_btn.icon = item_file.icon
+			else:
+				slot_btn.icon = _generate_notebook_icon()
+				
 			slot_btn.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			slot_btn.expand_icon = true
 			
 			slot_btn.mouse_entered.connect(_on_item_hovered.bind(item_file, slot_btn))
 			slot_btn.mouse_exited.connect(_on_item_unhovered)
@@ -664,7 +677,9 @@ func _on_item_hovered(item: GameFile, slot_btn: Button) -> void:
 	var text := "NAME: " + item.filename.get_basename() + "\n"
 	text += "SIZE: " + item.item_size + "\n"
 	text += "LOCATION: " + item.item_location + "\n"
-	text += "DESCRIPTION: " + item.content
+	# FIXED: Uses short_description for items instead of content
+	var desc := item.short_description if item.short_description != "" else item.description
+	text += "DESCRIPTION: " + desc
 	item_properties_label.text = text
 	
 	props_win.position = Vector2i(items_win.position.x - 305, items_win.position.y + int(slot_btn.position.y))
@@ -821,7 +836,8 @@ func _get_category_name(cat: GameFile.Category) -> String:
 		GameFile.Category.ENTRY: return "Entry"
 		GameFile.Category.ABOUT: return "About"
 		GameFile.Category.PHOTO: return "Photo"
-		GameFile.Category.ITEM: return "Executable"
+		GameFile.Category.EXECUTABLE: return "Executable"
+		GameFile.Category.ITEM: return "Item"
 		GameFile.Category.SECRET: return "Secret"
 	return "Files"
 
@@ -847,6 +863,18 @@ func _generate_file_icon() -> ImageTexture:
 		return ImageTexture.create_from_image(img)
 	return null
 
+# Vector icon for executable files.
+func _generate_exe_icon() -> ImageTexture:
+	var svg := """<svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20">
+		<path d="M 2 2 L 10 2 L 14 6 L 14 18 L 2 18 Z" fill="#000000" stroke="#ffffff" stroke-width="2"/>
+		<rect x="5" y="8" width="6" height="6" fill="#ffffff"/>
+		<line x1="8" y1="6" x2="8" y2="8" stroke="#ffffff" stroke-width="1.5"/>
+		<line x1="8" y1="14" x2="8" y2="16" stroke="#ffffff" stroke-width="1.5"/>
+	</svg>"""
+	var img := Image.new()
+	if img.load_svg_from_string(svg) == OK:
+		return ImageTexture.create_from_image(img)
+	return null
 
 # Vector icon for the notebook item.
 func _generate_notebook_icon() -> ImageTexture:

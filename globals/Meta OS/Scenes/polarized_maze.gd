@@ -131,19 +131,9 @@ func _ready() -> void:
 			calendar_win.toggle_calendar()
 	)
 	
-	# Loads files by id without showing any popups.
-	_init_starter_files()
 	
 	await get_tree().create_timer(0.4).timeout
 	await play_glitched_prompt("[ E   T O   O P E N   L E N S ]", 2.2)
-
-
-func _init_starter_files() -> void:
-	# Calls files by id from the database.
-	FileManager.obtain_file_by_id("entry_letter")
-	FileManager.obtain_file_by_id("photo_blaire")
-	FileManager.obtain_file_by_id("cipher_order")
-	FileManager.obtain_file_by_id("exe_indoctrination")
 
 
 func _build_window_boundaries(bounds: Vector2) -> void:

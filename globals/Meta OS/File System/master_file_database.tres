@@ -1,0 +1,548 @@
+[gd_resource type="Resource" script_class="FileDatabase" format=3 uid="uid://dgpm5cbf5iulf"]
+
+[ext_resource type="Script" uid="uid://buxyckyv4tgap" path="res://globals/Meta OS/File System/game_file.gd" id="1_p77w3"]
+[ext_resource type="Script" uid="uid://b1jb2la1v1d1i" path="res://globals/Meta OS/File System/file_database.gd" id="2_m0e1t"]
+
+[sub_resource type="Resource" id="Resource_p77w3"]
+resource_name = "notebook.dat [item_notebook]"
+script = ExtResource("1_p77w3")
+file_id = "item_notebook"
+filename = "notebook.dat"
+destination = 1
+category = 5
+content = ""
+item_size = "24KB"
+item_location = "bedroom desk"
+short_description = "Spiral-bound notebook. Several early pages were torn out. The remaining entries stop abruptly in July 2012."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_84nym"]
+resource_name = "picture_frame.dat [item_picture_frame]"
+script = ExtResource("1_p77w3")
+file_id = "item_picture_frame"
+filename = "picture_frame.dat"
+destination = 1
+category = 5
+item_size = "18KB"
+item_location = "nightstand"
+short_description = "A standing frame with intact glass. The photograph inside was removed. Dry tape marks remain on the backing card."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_qthf4"]
+resource_name = "needle.dat [item_needle]"
+script = ExtResource("1_p77w3")
+file_id = "item_needle"
+filename = "needle.dat"
+destination = 1
+category = 5
+item_size = "2KB"
+item_location = "living room drawer"
+short_description = "A small spool of dark brown thread. Matches the fabric of the damaged plushie under the bed."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_m0e1t"]
+resource_name = "hairpin.dat [item_hairpin]"
+script = ExtResource("1_p77w3")
+file_id = "item_hairpin"
+filename = "hairpin.dat"
+destination = 1
+category = 5
+item_size = "1KB"
+item_location = "bathroom shelf"
+short_description = "A plain black metal hairpin. Bent out of shape, as if used to pick a simple lock."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_6lrp0"]
+resource_name = "glue.dat [item_glue]"
+script = ExtResource("1_p77w3")
+file_id = "item_glue"
+filename = "glue.dat"
+destination = 1
+category = 5
+item_location = "classroom floor"
+short_description = "Liquid craft adhesive. Left behind under a student desk after school hours."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_4qn30"]
+resource_name = "bandages.dat [item_bandages]"
+script = ExtResource("1_p77w3")
+file_id = "item_bandages"
+filename = "bandages.dat"
+destination = 1
+category = 5
+item_size = "6KB"
+item_location = "bathroom cabinet"
+short_description = "Sterile gauze and adhesive tape. Kept beside skin-soothing ointment."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_5iku3"]
+resource_name = "ribbon.dat [item_ribbon]"
+script = ExtResource("1_p77w3")
+file_id = "item_ribbon"
+filename = "ribbon.dat"
+destination = 1
+category = 5
+item_size = "3KB"
+item_location = "childhood closet"
+short_description = "A faded red fabric ribbon. Originally tied around the neck of her childhood teddy bear."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_c25wk"]
+resource_name = "gasoline_can.dat [item_gasoline]"
+script = ExtResource("1_p77w3")
+file_id = "item_gasoline"
+filename = "gasoline_can.dat"
+destination = 1
+category = 5
+item_size = "48KB"
+item_location = "apartment hallway"
+short_description = "A plastic fuel canister. The smell of petroleum seeps through the sealed cap."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_rvse8"]
+resource_name = "matchbox.dat [item_matchstick]"
+script = ExtResource("1_p77w3")
+file_id = "item_matchstick"
+filename = "matchbox.dat"
+destination = 1
+category = 5
+item_size = "5KB"
+item_location = "kitchen counter"
+short_description = "A cardboard matchbox. Only three matches remain inside."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_k36fh"]
+resource_name = "Fake_Friends.txt [entry_fake_friends]"
+script = ExtResource("1_p77w3")
+file_id = "entry_fake_friends"
+filename = "Fake_Friends.txt"
+description = "Personal log written after the haunted house prank.
+"
+content = "They smiled all week, then locked the door from the outside. I sat on the cold floor for an hour listening to them laugh down the corridor. Nobody was joking. They just wanted me gone."
+ghost_hint_solved = "I remember the lock turning from the outside. That was the last day I went to school."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_g2rd1"]
+resource_name = "Cults.txt [entry_cults]"
+script = ExtResource("1_p77w3")
+file_id = "entry_cults"
+filename = "Cults.txt"
+description = "Web search notes and forum definitions.
+"
+content = "People call online groups cults when they don't understand them. Society labels anything outside the norm as dangerous. But if the world outside offers only cruelty, why is seeking shelter called radical?"
+ghost_hint_solved = "This was where I began defending them to myself."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_jlq73"]
+resource_name = "Nothing_Is_Real.txt [entry_nothing_is_real]"
+script = ExtResource("1_p77w3")
+file_id = "entry_nothing_is_real"
+filename = "Nothing_Is_Real.txt"
+description = "Personal log during bedroom isolation."
+content = "People on the street speak like prerecorded tapes. Smiles are performance. The only place where words carry genuine weight is the private board. The Order is the only family that stays.
+"
+ghost_hint_solved = "The curtains stayed closed for three months after I wrote this."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_6lbq8"]
+resource_name = "Anarchy.txt [entry_anarchy]"
+script = ExtResource("1_p77w3")
+file_id = "entry_anarchy"
+filename = "Anarchy.txt"
+description = "Reflections on ideological literature provided by The Order."
+content = "You cannot renovate a foundation made of mold. You clear the ground with flame so something genuine can grow. If the snakes scream while the house burns, they are only proving the sickness was real."
+ghost_hint_solved = "Their phrases had completely replaced my own thoughts."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_wy560"]
+resource_name = "Myself.info [about_myself]"
+script = ExtResource("1_p77w3")
+file_id = "about_myself"
+filename = "Myself.info"
+category = 1
+description = "Observer self-profile."
+content = "Subject: Entity attached to Blaire. Zero physical form. Retains fractured emotional memories without autobiographical context. Bound to monitor Blaire's timeline."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_3whis"]
+resource_name = "Blaire.info [about_blaire]"
+script = ExtResource("1_p77w3")
+file_id = "about_blaire"
+filename = "Blaire.info"
+category = 1
+description = "Subject profile."
+content = "Blaire. Age 19 (in 2012). University student. Mother deceased (November 2011). Father absent. Displays acute social anxiety, chronic withdrawal, and progressive dependency on anonymous networks."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_byh8s"]
+resource_name = "The_Order.info [about_the_order]"
+script = ExtResource("1_p77w3")
+file_id = "about_the_order"
+filename = "The_Order.info"
+category = 1
+description = "Extremist collective dossier."
+content = "Decentralized network operating across private boards. Targets grieving individuals. Provides material support (rent, food stipends) to induce loyalty before delegating acts of property destruction."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_ul4bb"]
+resource_name = "Apartment.info [about_apartment]"
+script = ExtResource("1_p77w3")
+file_id = "about_apartment"
+filename = "Apartment.info"
+category = 1
+description = "Current living space."
+content = "Ground floor one-bedroom apartment. Lease funded by an account tied to The Order. Groceries and dry goods delivered bi-weekly."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_e21l2"]
+resource_name = "School.info [about_school]"
+script = ExtResource("1_p77w3")
+file_id = "about_school"
+filename = "School.info"
+category = 1
+description = "University facility."
+content = "Three-storey campus."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_r5j44"]
+resource_name = "Market.info [about_market]"
+script = ExtResource("1_p77w3")
+file_id = "about_market"
+filename = "Market.info"
+category = 1
+description = "Commercial area in neighborhood."
+content = "Local convenience store and supermarket. The only outside location subject visited during Act 6 to acquire cash and basic supplies."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_v0dvx"]
+resource_name = "Mother.info [about_mother]"
+script = ExtResource("1_p77w3")
+file_id = "about_mother"
+filename = "Mother.info"
+category = 1
+description = "Deceased family member."
+content = "Died late 2011 after long-term illness. Her death initiated household collapse. Left behind the teddy bear and music box melodies."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_qt76d"]
+resource_name = "Father.info [about_father]"
+script = ExtResource("1_p77w3")
+file_id = "about_father"
+filename = "Father.info"
+category = 1
+description = "Estranged family member."
+content = "Departed the residence following his spouse's death. Blaire severed his contact records under instructions from The Order."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_ecfmg"]
+resource_name = "Friend_1.info [about_friend_1]"
+script = ExtResource("1_p77w3")
+file_id = "about_friend_1"
+filename = "Friend_1.info"
+category = 1
+description = "Anime club member (Male).
+"
+content = "Vocal peer from student club. Encouraged the haunted house visit. Voiced frustration over Blaire's sudden social withdrawal."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_74h3l"]
+resource_name = "Friend_2.info [about_friend_2]"
+script = ExtResource("1_p77w3")
+file_id = "about_friend_2"
+filename = "Friend_2.info"
+category = 1
+description = "Anime club member (Female)."
+content = "Attempted to maintain contact via chat after Blaire stopped attending campus. Blocked by subject under Order directive."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_v7jo0"]
+resource_name = "Friend_3.info [about_friend_3]"
+script = ExtResource("1_p77w3")
+file_id = "about_friend_3"
+filename = "Friend_3.info"
+category = 1
+description = "Anime club member (Female)."
+content = "Nonchalant participant during the concert and haunted house excursions. Stopped reaching out once rumors spread."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_t4t7s"]
+resource_name = "Unknown_Machine.info [about_ghost_machine]"
+script = ExtResource("1_p77w3")
+file_id = "about_ghost_machine"
+filename = "Unknown_Machine.info"
+category = 1
+description = "Mechanical relic in the dream meadow."
+content = "A terminal housing vacuum tubes, stripped copper coils, and analog timer mechanisms. Appears identical to equipment constructed in an unverified future timeline."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_so5bg"]
+resource_name = "small_blaire_teddy.png [photo_blaire_teddy]"
+script = ExtResource("1_p77w3")
+file_id = "photo_blaire_teddy"
+filename = "small_blaire_teddy.png"
+category = 2
+description = "Childhood photograph."
+content = "A young Blaire sitting on a living room rug, holding a plush bear with a red ribbon. Her mother's hand is visible on her shoulder.
+"
+ghost_hint_solved = "Before the stitches tore. Before the house went quiet."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_j4pki"]
+resource_name = "graduation_photo.png [photo_graduation]"
+script = ExtResource("1_p77w3")
+file_id = "photo_graduation"
+filename = "graduation_photo.png"
+category = 2
+description = "Assembled academic portrait."
+content = "[REQUIRES ALL 5 PIECES ASSEMBLED]: Blaire in high school cap and gown, standing between both parents before her mother's illness progressed."
+can_interpret = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_47uhe"]
+resource_name = "family_reunited.png [photo_family]"
+script = ExtResource("1_p77w3")
+file_id = "photo_family"
+filename = "family_reunited.png"
+category = 2
+description = "Preserved timeline record."
+content = "Blaire and her father outside the preserved childhood home. No smoke. No fire."
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_yc0xq"]
+resource_name = "Indoctrination.exe [exe_indoctrination]"
+script = ExtResource("1_p77w3")
+file_id = "exe_indoctrination"
+filename = "Indoctrination.exe"
+category = 3
+description = "Compliance verification subroutine."
+content = "EXECUTE: Checks local registry to confirm outside contacts remain severed."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_lj5xk"]
+resource_name = "Sewing.exe [exe_sewing]"
+script = ExtResource("1_p77w3")
+file_id = "exe_sewing"
+filename = "Sewing.exe"
+category = 3
+description = "Plushie reconstruction program."
+content = "STITCH_ROUTINE: Requires [thread], [needle], and deciphered manual."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_4v8md"]
+resource_name = "Composing.exe [exe_composing]"
+script = ExtResource("1_p77w3")
+file_id = "exe_composing"
+filename = "Composing.exe"
+category = 3
+description = "Music box transcription program."
+content = "NOTE_PARSER: Reconstructs melody sequence from blackboard and chalk fragments."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_u3p8l"]
+resource_name = "Disconnect.exe [exe_disconnect]"
+script = ExtResource("1_p77w3")
+file_id = "exe_disconnect"
+filename = "Disconnect.exe"
+category = 3
+description = "Network termination subroutine."
+content = "PURGE_CHATS: Erases local messaging databases."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_tjt3b"]
+resource_name = "Arson.exe [exe_arson]"
+script = ExtResource("1_p77w3")
+file_id = "exe_arson"
+filename = "Arson.exe"
+category = 3
+description = "Physical action protocol."
+content = "IGNITION_DIRECTIVE: Confirms accelerant readiness for childhood residence."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_u8e6u"]
+resource_name = "Becoming.exe [exe_becoming]"
+script = ExtResource("1_p77w3")
+file_id = "exe_becoming"
+filename = "Becoming.exe"
+category = 3
+description = "Loop initiation protocol."
+content = "TIME_MIGRATION: Subroutine used to project mental imprint backward."
+can_execute = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_emwfh"]
+resource_name = "plushie_repair.enc [cipher_plushie_manual]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_plushie_manual"
+filename = "plushie_repair.enc"
+category = 4
+content = "WSBZOPL YLWHPY PUZAYBJAPVUZ..."
+cipher_type = 2
+cipher_shift = 7
+solved_content = "PLUSHIE REPAIR INSTRUCTIONS:\\n1. Thread needle.\\n2. Hide knot inside tear.\\n3. Sew with ladder stitch.\\n4. Pull tight to conceal."
+can_rearrange = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_35hch"]
+resource_name = "loc_hallway.morse [cipher_photo_piece_02]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_photo_piece_02"
+filename = "loc_hallway.morse"
+category = 4
+content = ". -- .--. - -.-- / .... .- .-.. .-.. ... / --- ..-. / -... . - .-. .- -.-- .- .-.."
+cipher_type = 7
+solved_content = "KEYS TO COMMUNICATION"
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_i3hea"]
+resource_name = "loc_keys.morse [cipher_photo_piece_03]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_photo_piece_03"
+filename = "loc_keys.morse"
+category = 4
+content = "-.- . -.-- ... / - --- / -.-. --- -- -- ..- -. .. -.-. .- - .. --- -.
+"
+cipher_type = 7
+solved_content = "KEYS TO COMMUNICATION"
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_s0xi8"]
+resource_name = "loc_drawer.morse [cipher_photo_piece_04]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_photo_piece_04"
+filename = "loc_drawer.morse"
+category = 4
+content = "... . -.-. .-. . - ... / --- ..-. / - .... . / -.-- --- ..- -. --."
+cipher_type = 7
+solved_content = "SECRETS OF THE YOUNG"
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_re3u3"]
+resource_name = "photo_back.enc [cipher_photo_piece_05]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_photo_piece_05"
+filename = "photo_back.enc"
+category = 4
+content = "Moim nhvv tsaopv xyxyi tfu qv. Ubx owwii fvq’g uheka hrr udh jbuowej memv hsguijlpsb. Zw nlla ezc iice htoiw."
+cipher_type = 3
+cipher_key = "TheOrder"
+solved_content = "They were always there for me. But after mom's death and dad sinking into depression. It just all fell apart."
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_koyw1"]
+resource_name = "letter_pt01.enc [cipher_letter_pt01]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt01"
+filename = "letter_pt01.enc"
+category = 4
+content = "nruter ruoy rof nepo eb syawla lliw rood ym taht wonk ot uoy tnaw I..."
+cipher_type = 1
+solved_content = "I hope to see you again someday, it is unfortunate how our time together played out. Wherever you are, my door will always be open."
+can_rearrange = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_uv253"]
+resource_name = "letter_pt02.enc [cipher_letter_pt02]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt02"
+filename = "letter_pt02.enc"
+category = 4
+content = "IRSXG4DJORSSA3LZEB2W4ZTPOJ2HK3TBORSSAYTFMNXW22LOM4WCASJAMFWSA53F..."
+cipher_type = 4
+solved_content = "Despite my unfortunate becoming, I am well provided for. The Order treats me well and refills my fridge."
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_a8q2i"]
+resource_name = "letter_pt03.enc [cipher_letter_pt03]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt03"
+filename = "letter_pt03.enc"
+category = 4
+content = "M aew lyvx alir csy pijx, xvypc, M aew pswx erh hitviwwih..."
+cipher_type = 2
+cipher_shift = 4
+solved_content = "I was hurt when you left. All I saw was a man running away, leaving the burden of a broken home on the shoulders of a child."
+can_rearrange = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_4ddhj"]
+resource_name = "letter_pt04.enc [cipher_letter_pt04]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt04"
+filename = "letter_pt04.enc"
+category = 4
+content = "J ceuvqcpr eyio he cjie eo jfre zvmi qvdik, klf xetfhjps gfy uluoyx..."
+cipher_type = 3
+cipher_key = "blaire"
+solved_content = "I remember when we used to bond over music. The melodies you taught me are embedded in my memory so I can play them blindfolded.
+"
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_qnju2"]
+resource_name = "letter_pt05.enc [cipher_letter_pt05]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt05"
+filename = "letter_pt05.enc"
+category = 4
+content = "88 46 30 68 84 28 30 84 67 34 58 57 57 45 50 57 58..."
+cipher_type = 8
+cipher_key = "TheOrder"
+solved_content = "The Order has helped me through grief and darkness. Before I knew it, I had become one of them."
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_nnqe7"]
+resource_name = "letter_pt06.enc [cipher_letter_pt06]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt06"
+filename = "letter_pt06.enc"
+category = 4
+content = "SSBob3BlIHRoaXMgbGV0dGVyIGZpbmRzIHlvdSBpbiBnb29kIGhlYWx0aCwgaWYgeW91IGFy..."
+cipher_type = 5
+solved_content = "I don't blame you entirely for how this turned out. I still have nightmares of watching you walk out of my life."
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_psj2t"]
+resource_name = "letter_pt07.enc [cipher_letter_pt07]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt07"
+filename = "letter_pt07.enc"
+category = 4
+content = "8K_\\bE+L/6BPDN1Ch7^1ATAo*Bl7I&+F.mJ+DG^9B5_^!+D>=pCij>A..."
+cipher_type = 6
+solved_content = "I used to resent you, but I realized you too were grieving. Her passing broke me, but I couldn't imagine losing the love of your life."
+can_decode = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[sub_resource type="Resource" id="Resource_rmxer"]
+resource_name = "letter_final_unsent.txt [cipher_letter_pt08]"
+script = ExtResource("1_p77w3")
+file_id = "cipher_letter_pt08"
+filename = "letter_final_unsent.txt"
+category = 4
+description = "The complete assembled draft to her father."
+content = "[LOCKED: Requires all 7 decrypted fragments to assemble.]"
+solved_content = "Dear Dad,\\n\\nI hope this letter finds you in good health... I miss you.\\n— Blaire"
+can_intervene = true
+metadata/_custom_type_script = "uid://buxyckyv4tgap"
+
+[resource]
+script = ExtResource("2_m0e1t")
+all_files = Array[ExtResource("1_p77w3")]([SubResource("Resource_p77w3"), SubResource("Resource_84nym"), SubResource("Resource_qthf4"), SubResource("Resource_m0e1t"), SubResource("Resource_6lrp0"), SubResource("Resource_4qn30"), SubResource("Resource_5iku3"), SubResource("Resource_c25wk"), SubResource("Resource_rvse8"), SubResource("Resource_k36fh"), SubResource("Resource_g2rd1"), SubResource("Resource_jlq73"), SubResource("Resource_6lbq8"), SubResource("Resource_wy560"), SubResource("Resource_3whis"), SubResource("Resource_byh8s"), SubResource("Resource_ul4bb"), SubResource("Resource_e21l2"), SubResource("Resource_r5j44"), SubResource("Resource_v0dvx"), SubResource("Resource_qt76d"), SubResource("Resource_ecfmg"), SubResource("Resource_74h3l"), SubResource("Resource_v7jo0"), SubResource("Resource_t4t7s"), SubResource("Resource_so5bg"), SubResource("Resource_j4pki"), SubResource("Resource_47uhe"), SubResource("Resource_yc0xq"), SubResource("Resource_lj5xk"), SubResource("Resource_4v8md"), SubResource("Resource_u3p8l"), SubResource("Resource_tjt3b"), SubResource("Resource_u8e6u"), SubResource("Resource_emwfh"), SubResource("Resource_35hch"), SubResource("Resource_i3hea"), SubResource("Resource_s0xi8"), SubResource("Resource_re3u3"), SubResource("Resource_koyw1"), SubResource("Resource_uv253"), SubResource("Resource_a8q2i"), SubResource("Resource_4ddhj"), SubResource("Resource_qnju2"), SubResource("Resource_nnqe7"), SubResource("Resource_psj2t"), SubResource("Resource_rmxer")])
+metadata/_custom_type_script = "uid://b1jb2la1v1d1i"
