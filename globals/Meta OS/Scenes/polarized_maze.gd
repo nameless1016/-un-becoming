@@ -1,7 +1,7 @@
 extends Node2D
 
 # Multi stage perception maze where corridors are formed by connected negative word walls.
-# Stage 0 represents school alienation, Stage 1 represents the Order, Stage 2 represents the fire.
+# Stage zero represents school alienation, stage one represents the order, stage two represents the fire.
 # Walls are hidden in normal view and reveal their words inside the polarized lens.
 
 @onready var player: CharacterBody2D = %Player
@@ -33,9 +33,9 @@ const WINDOWS_FRAME_OFFSET := Vector2.ZERO
 
 # Theme colors for each perception stage.
 const STAGE_COLORS: Array[Color] = [
-	Color(0.85, 0.95, 1.0, 1.0), # Stage 0, cyan white school.
-	Color(0.75, 0.35, 1.0, 1.0), # Stage 1, purple order.
-	Color(1.0, 0.45, 0.15, 1.0)  # Stage 2, amber apartment.
+	Color(0.85, 0.95, 1.0, 1.0),
+	Color(0.75, 0.35, 1.0, 1.0),
+	Color(1.0, 0.45, 0.15, 1.0)
 ]
 
 
@@ -61,7 +61,7 @@ func _ready() -> void:
 	var screen_size: Vector2i = DisplayServer.screen_get_size(screen_id)
 	main_win.position = screen_origin + (screen_size - main_win.size) / 2
 	
-	# Main window only draws layer 1, keeping layer 2 word walls hidden.
+	# Main window only draws layer one, keeping layer two word walls hidden.
 	main_win.canvas_cull_mask = 1
 	
 	# Spawns player at top left.
@@ -112,8 +112,7 @@ func _ready() -> void:
 	pause_menu = PauseMenuUI.new()
 	add_child(pause_menu)
 	
-	time_banner = TimeBannerUI.new()
-	add_child(time_banner)
+	# Time banner logic is preserved, but not called here.
 	
 	calendar_win = CalendarWindow.new()
 	add_child(calendar_win)
@@ -132,44 +131,19 @@ func _ready() -> void:
 			calendar_win.toggle_calendar()
 	)
 	
+	# Loads files by id without showing any popups.
 	_init_starter_files()
 	
 	await get_tree().create_timer(0.4).timeout
-	await MetaOS.show_dialog("Obtained", "a letter to ???.txt", ["CLOSE"], "txt")
-	
-	# Note, WASD prompt logic is preserved but only E prompt is called on startup.
 	await play_glitched_prompt("[ E   T O   O P E N   L E N S ]", 2.2)
 
 
 func _init_starter_files() -> void:
-	var f1 := GameFile.new()
-	f1.file_id = "entry_letter"
-	f1.filename = "a letter to ???.txt"
-	f1.category = GameFile.Category.ENTRY
-	f1.content = "I saw her standing by the fence.\nShe looked distant.\nWas it something I said?"
-	f1.can_interpret = true
-	FileManager.obtain_file(f1)
-	
-	var f2 := GameFile.new()
-	f2.file_id = "photo_blaire"
-	f2.filename = "small_blaire_teddy.png"
-	f2.category = GameFile.Category.PHOTO
-	f2.content = "A silhouette of Blaire holding her teddy bear."
-	f2.can_intervene = true
-	FileManager.obtain_file(f2)
-	
-	var f3 := GameFile.new()
-	f3.file_id = "cipher_order"
-	f3.filename = "the_order_directive.txt"
-	f3.category = GameFile.Category.SECRET
-	f3.cipher_type = GameFile.CipherType.CAESAR
-	f3.content = "XLI SVHIV MW EPVIEHC LIVI.\nGLSMGI MW ER MPPYWMSR."
-	f3.solved_content = "THE ORDER IS ALREADY HERE.\nCHOICE IS AN ILLUSION."
-	f3.ghost_hint_unsolved = "The signal is shifted backward by four letters."
-	f3.ghost_hint_solved = "The directive is locked. They are watching."
-	f3.can_interpret = true
-	f3.can_decode = true
-	FileManager.obtain_file(f3)
+	# Calls files by id from the database.
+	FileManager.obtain_file_by_id("entry_letter")
+	FileManager.obtain_file_by_id("photo_blaire")
+	FileManager.obtain_file_by_id("cipher_order")
+	FileManager.obtain_file_by_id("exe_indoctrination")
 
 
 func _build_window_boundaries(bounds: Vector2) -> void:
@@ -213,18 +187,18 @@ func _load_stage(stage_idx: int) -> void:
 			_build_stage_2_apartment()
 
 
-# Stage 0: School Alienation Hallway (Continuous connected corridor).
+# Stage zero, school alienation hallway.
 func _build_stage_0_school() -> void:
-	# Spawns player inside the starting hallway (between y=40 ceiling and y=160 floor).
+	# Spawns player inside the starting hallway.
 	player.position = Vector2(100, 100)
 	
-	# Outer boundary walls (Northern and Eastern side).
+	# Outer boundary walls.
 	_create_word_wall(Vector2(40, 40), Vector2(400, 40), "FAKE FRIENDS", 0)
 	_create_word_wall(Vector2(400, 40), Vector2(850, 40), "ALIENATION", 0)
 	_create_word_wall(Vector2(850, 40), Vector2(850, 580), "EXCLUDED", 0)
 	_create_word_wall(Vector2(650, 580), Vector2(850, 580), "HOPELESS", 0)
 	
-	# Inner boundary walls (Channels the player through the hallway).
+	# Inner boundary walls.
 	_create_word_wall(Vector2(40, 40), Vector2(40, 160), "UNWANTED", 0)
 	_create_word_wall(Vector2(40, 160), Vector2(300, 160), "ALONE", 0)
 	_create_word_wall(Vector2(300, 160), Vector2(300, 360), "LEFT ON READ", 0)
@@ -241,7 +215,7 @@ func _build_stage_0_school() -> void:
 	_create_shift_trigger(Vector2(750, 520), 1)
 
 
-# Stage 1: The Order (Sealed hallways with no holes, shift trigger locked inside).
+# Stage one, the order.
 func _build_stage_1_order() -> void:
 	# Spawns player inside the first hallway corridor.
 	player.position = Vector2(120, 100)
@@ -265,10 +239,11 @@ func _build_stage_1_order() -> void:
 	_create_word_wall(Vector2(200, 460), Vector2(400, 460), "MANDATORY DIRECTIVE", 1)
 	_create_word_wall(Vector2(200, 460), Vector2(200, 550), "SURRENDER CONTROL", 1)
 	
-	# Amber trigger placed safely inside the closed chamber between y=460 and y=550.
+	# Amber trigger placed safely inside the closed chamber.
 	_create_shift_trigger(Vector2(300, 505), 2)
 
-# Stage 2: The Apartment / Arson (Player spawns inside at 320, 500).
+
+# Stage two, the apartment and arson.
 func _build_stage_2_apartment() -> void:
 	player.position = Vector2(320, 500)
 	
@@ -302,22 +277,18 @@ func _create_word_wall(from_pt: Vector2, to_pt: Vector2, word: String, stage_idx
 	var angle: float = from_pt.angle_to_point(to_pt)
 	var center: Vector2 = (from_pt + to_pt) / 2.0
 	var wall_thickness: float = 24.0
-	var half_thick: float = wall_thickness / 2.0
 	
-	# Slight length extension so perpendicular corners butt together with zero gaps.
 	var full_len: float = length + wall_thickness
 	
 	body.position = center
 	body.rotation = angle
 	
-	# Full length collision bounding.
 	var col := CollisionShape2D.new()
 	var rect_shape := RectangleShape2D.new()
 	rect_shape.size = Vector2(full_len, wall_thickness)
 	col.shape = rect_shape
 	body.add_child(col)
 	
-	# Solid black background on layer 2.
 	var bg := ColorRect.new()
 	bg.size = Vector2(full_len, wall_thickness)
 	bg.position = -bg.size / 2.0
@@ -325,7 +296,6 @@ func _create_word_wall(from_pt: Vector2, to_pt: Vector2, word: String, stage_idx
 	bg.visibility_layer = 2
 	body.add_child(bg)
 	
-	# Wireframe lines running along the corridor rails with seamless corner joints.
 	var border := Line2D.new()
 	border.visibility_layer = 2
 	border.width = 2.0
@@ -342,7 +312,6 @@ func _create_word_wall(from_pt: Vector2, to_pt: Vector2, word: String, stage_idx
 	])
 	body.add_child(border)
 	
-	# Negative word label.
 	var lbl := Label.new()
 	lbl.visibility_layer = 2
 	lbl.text = word
@@ -376,7 +345,6 @@ func _create_shift_trigger(trigger_pos: Vector2, target_stage: int) -> void:
 	col.shape = shape
 	area.add_child(col)
 	
-	# 1-bit retro door graphic on layer 2.
 	_attach_door_graphic(area, STAGE_COLORS[target_stage])
 	
 	area.body_entered.connect(func(body: Node2D):
@@ -386,7 +354,7 @@ func _create_shift_trigger(trigger_pos: Vector2, target_stage: int) -> void:
 	maze_root.add_child(area)
 
 
-# Final exit door triggering the Act 0 dialogue sequence.
+# Final exit door triggering the sequence.
 func _create_final_exit_trigger(trigger_pos: Vector2) -> void:
 	var area := Area2D.new()
 	area.position = trigger_pos
@@ -399,7 +367,6 @@ func _create_final_exit_trigger(trigger_pos: Vector2) -> void:
 	col.shape = shape
 	area.add_child(col)
 	
-	# Red door graphic for the final exit.
 	_attach_door_graphic(area, Color("#e52230"))
 	
 	area.body_entered.connect(func(body: Node2D):
@@ -408,9 +375,9 @@ func _create_final_exit_trigger(trigger_pos: Vector2) -> void:
 	)
 	maze_root.add_child(area)
 	
-# Helper that draws a retro 1-bit door frame, inner panel, and doorknob.
+
+# Helper that draws a retro one bit door frame, inner panel, and doorknob.
 func _attach_door_graphic(parent: Node2D, door_color: Color) -> void:
-	# Outer door frame.
 	var frame := Line2D.new()
 	frame.visibility_layer = 2
 	frame.width = 2.0
@@ -424,7 +391,6 @@ func _attach_door_graphic(parent: Node2D, door_color: Color) -> void:
 	])
 	parent.add_child(frame)
 	
-	# Inner door panel.
 	var panel := Line2D.new()
 	panel.visibility_layer = 2
 	panel.width = 1.5
@@ -438,7 +404,6 @@ func _attach_door_graphic(parent: Node2D, door_color: Color) -> void:
 	])
 	parent.add_child(panel)
 	
-	# Doorknob on the right side.
 	var knob := Line2D.new()
 	knob.visibility_layer = 2
 	knob.width = 2.0
@@ -452,6 +417,8 @@ func _attach_door_graphic(parent: Node2D, door_color: Color) -> void:
 	])
 	parent.add_child(knob)
 
+
+# Shifts perception stage with glitch distortion.
 func trigger_perception_shift(new_stage: int) -> void:
 	if is_shifting_perception:
 		return
@@ -480,6 +447,7 @@ func trigger_perception_shift(new_stage: int) -> void:
 	is_shifting_perception = false
 
 
+# Final sequence triggered by reaching the red door.
 func _run_final_sequence() -> void:
 	if is_shifting_perception:
 		return
@@ -488,21 +456,18 @@ func _run_final_sequence() -> void:
 	is_dragging_lens = false
 	lens_window.hide()
 	
+	# Plays the final glitch distortion.
 	await _play_extended_final_glitch()
 	
 	player.hide()
 	maze_root.hide()
 	
-	await MetaOS.show_dialog("Info", "[i]Please help me.[/i]", ["YES", "YES"])
-	await MetaOS.show_dialog("Blocked", "She didn't come here.", ["OKAY"])
-	await MetaOS.show_dialog("Info", "[i]It hurts.[/i]", ["I'M SORRY"])
-	
-	var no_buttons: Array[String] = []
-	await MetaOS.show_dialog("Info", "[color=red][i]Burn down the house, Blaire.[/i][/color]", no_buttons)
-	
+	# Brief pause after distortion before closing.
+	await get_tree().create_timer(0.4).timeout
 	get_tree().quit()
 
 
+# Intense glitch effect with transparent background preservation.
 func _play_extended_final_glitch() -> void:
 	glitch_overlay.show()
 	var tween := create_tween()
@@ -596,7 +561,6 @@ func _setup_glitch_prompt_ui() -> void:
 	prompt_label.hide()
 
 
-# Glitch typewriter logic preserved completely.
 func play_glitched_prompt(final_text: String, display_hold: float = 2.0) -> void:
 	prompt_label.show()
 	prompt_label.modulate.a = 1.0
@@ -655,6 +619,11 @@ func _process(_delta: float) -> void:
 
 
 func _on_lens_window_input(event: InputEvent) -> void:
+	# Forwards keyboard inputs to the main controls if the lens window is clicked.
+	if event is InputEventKey:
+		_unhandled_input(event)
+		return
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			is_dragging_lens = true
@@ -694,4 +663,5 @@ func _toggle_lens_window() -> void:
 		var spawn_pos: Vector2 = Vector2(main_win_pos) + WINDOWS_FRAME_OFFSET + player.position - Vector2(lens_window.size) / 2.0
 		lens_window.position = Vector2i(spawn_pos)
 		lens_window.show()
-		lens_window.grab_focus()
+		# Keeps keyboard focus on the main game window.
+		get_window().grab_focus()
