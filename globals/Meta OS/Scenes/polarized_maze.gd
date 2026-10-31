@@ -10,6 +10,9 @@ extends Node2D
 
 var is_dragging_lens: bool = false
 var drag_start_mouse_pos: Vector2i = Vector2i.ZERO
+# Stores the target position to prevent moving the window hundreds of times per second.
+var target_lens_pos: Vector2i = Vector2i.ZERO
+var has_pending_lens_move: bool = false
 var is_shifting_perception: bool = false
 
 var current_stage: int = 0
@@ -598,18 +601,25 @@ func _process(_delta: float) -> void:
 	if not lens_window.visible:
 		return
 		
+	# Updates the physical window position only once per render frame, eliminating mouse lag.
+	if is_dragging_lens and has_pending_lens_move:
+		if lens_window.position != target_lens_pos:
+			lens_window.position = target_lens_pos
+		has_pending_lens_move = false
+		
+	# Releases dragging lock if physical mouse button was let go.
 	if is_dragging_lens and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		is_dragging_lens = false
 		
 	var main_win_pos: Vector2i = DisplayServer.window_get_position(DisplayServer.MAIN_WINDOW_ID)
 	var lens_win_pos: Vector2i = lens_window.position
 	
+	# Lens camera tracks relative to the game window.
 	var offset: Vector2 = Vector2(lens_win_pos - main_win_pos) - WINDOWS_FRAME_OFFSET + Vector2(lens_window.size) / 2.0
 	lens_camera.global_position = offset
 
 
 func _on_lens_window_input(event: InputEvent) -> void:
-	# Forwards keyboard inputs to the main controls if the lens window is clicked.
 	if event is InputEventKey:
 		_unhandled_input(event)
 		return
@@ -618,13 +628,18 @@ func _on_lens_window_input(event: InputEvent) -> void:
 		if event.pressed:
 			is_dragging_lens = true
 			drag_start_mouse_pos = DisplayServer.mouse_get_position() - lens_window.position
+			target_lens_pos = lens_window.position
 		else:
 			is_dragging_lens = false
+			has_pending_lens_move = false
 	elif event is InputEventMouseMotion and is_dragging_lens:
 		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			is_dragging_lens = false
+			has_pending_lens_move = false
 			return
-		lens_window.position = DisplayServer.mouse_get_position() - drag_start_mouse_pos
+		# Buffers the position instead of making a direct operating system call.
+		target_lens_pos = DisplayServer.mouse_get_position() - drag_start_mouse_pos
+		has_pending_lens_move = true
 
 
 func _unhandled_input(event: InputEvent) -> void:

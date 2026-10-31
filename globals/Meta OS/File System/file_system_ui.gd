@@ -25,6 +25,8 @@ var visible: bool:
 # Dragging variables for the center window.
 var is_dragging_center: bool = false
 var center_drag_offset: Vector2i = Vector2i.ZERO
+var target_center_pos: Vector2i = Vector2i.ZERO
+var has_pending_center_move: bool = false
 var is_retract_animating: bool = false
 var retract_tween: Tween
 
@@ -60,6 +62,22 @@ var notice_label: Label
 var right_dock_vbox: VBoxContainer
 var item_properties_label: Label
 
+func _process(_delta: float) -> void:
+	if not is_open:
+		return
+
+	if is_dragging_center:
+		# Releases dragging if the player let go of the mouse button anywhere on screen.
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			is_dragging_center = false
+			_check_center_dock_snap()
+			return
+
+		# Reads global monitor mouse position directly so crossing over other windows never freezes.
+		var global_mouse: Vector2i = DisplayServer.mouse_get_position()
+		var new_pos: Vector2i = global_mouse - center_drag_offset
+		if center_win and center_win.position != new_pos:
+			center_win.position = new_pos
 
 func _ready() -> void:
 	_setup_system_font()
@@ -142,6 +160,11 @@ func show_center_notice(msg: String) -> void:
 
 # Hides all windows and cancels active slide animations.
 func hide_all_windows() -> void:
+	is_dragging_center = false
+	has_pending_center_move = false
+	if retract_tween and retract_tween.is_valid():
+		retract_tween.kill()
+	is_retract_animating = false
 	if retract_tween and retract_tween.is_valid():
 		retract_tween.kill()
 	is_retract_animating = false
@@ -255,15 +278,18 @@ func _on_center_title_bar_input(event: InputEvent) -> void:
 			center_drag_offset = DisplayServer.mouse_get_position() - center_win.position
 		else:
 			is_dragging_center = false
-			# If dragged near the dock position, snap back automatically.
-			var current_pos: Vector2 = Vector2(center_win.position)
-			var target_pos: Vector2 = Vector2(center_dock_pos)
-			if current_pos.distance_to(target_pos) < SNAP_THRESHOLD:
-				var snap_tween := create_tween()
-				snap_tween.tween_method(func(pos: Vector2i): center_win.position = pos, center_win.position, center_dock_pos, 0.12).set_trans(Tween.TRANS_QUAD)
-				
-	elif event is InputEventMouseMotion and is_dragging_center:
-		center_win.position = DisplayServer.mouse_get_position() - center_drag_offset
+			_check_center_dock_snap()
+
+
+# Helper that snaps the center window into its dock if dropped nearby.
+func _check_center_dock_snap() -> void:
+	if not center_win:
+		return
+	var current_pos: Vector2 = Vector2(center_win.position)
+	var target_pos: Vector2 = Vector2(center_dock_pos)
+	if current_pos.distance_to(target_pos) < SNAP_THRESHOLD:
+		var snap_tween := create_tween()
+		snap_tween.tween_method(func(pos: Vector2i): center_win.position = pos, center_win.position, center_dock_pos, 0.12).set_trans(Tween.TRANS_QUAD)
 
 
 # Switches between silhouette, file list, text viewer, and notices.
@@ -642,11 +668,14 @@ func _refresh_items_dock() -> void:
 	for i in range(slots.size()):
 		var slot_btn := slots[i] as Button
 		
-		# Disconnect any old hover connections to prevent duplicates.
+		# Disconnect old hover and click connections to prevent duplicates
 		for conn in slot_btn.mouse_entered.get_connections():
 			slot_btn.mouse_entered.disconnect(conn.callable)
 		for conn in slot_btn.mouse_exited.get_connections():
 			slot_btn.mouse_exited.disconnect(conn.callable)
+		# ADD THIS: Disconnect old pressed connections
+		for conn in slot_btn.pressed.get_connections():
+			slot_btn.pressed.disconnect(conn.callable)
 		
 		if i < items.size():
 			var item_file: GameFile = items[i]

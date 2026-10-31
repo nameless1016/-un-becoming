@@ -68,3 +68,16 @@ func solve_file(file_id: String) -> void:
 		file.is_solved = true
 		file_solved.emit(file)
 		print("[FileManager] Solved: ", file.filename)
+
+
+## Resets all inventory and relocks ciphers when a time loop resets
+func reset_progress() -> void:
+	for file in collected_files.values():
+		if file is GameFile:
+			file.is_solved = false
+			
+	collected_files.clear()
+	
+	# Relock commands back to starting state (Command 1 unlocked, others locked)
+	unlocked_commands = { 1: true, 2: false, 3: false, 4: false, 5: false }
+	print("[FileManager] Progress reset for new time loop.")
