@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bw1anrfqs3mwn"]
+
+[ext_resource type="Script" uid="uid://ps2sbitsjn2l" path="res://actors/Interactables/prop_computer.gd" id="1_p7sup"]
+[ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="2_b6r5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
+atlas = ExtResource("2_b6r5s")
+region = Rect2(80, 176, 32, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62yky"]
+size = Vector2(32, 8)
+
+[node name="PropComputerDesk" type="Area2D" unique_id=1170852200]
+script = ExtResource("1_p7sup")
+display_name = "Computer"
+interact_radius = 24.0
+solid = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2000902480]
+position = Vector2(0, -12)
+texture = SubResource("AtlasTexture_4kxuq")
+
+[node name="Solid" type="StaticBody2D" parent="." unique_id=614869857]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solid" unique_id=848047825]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_62yky")
