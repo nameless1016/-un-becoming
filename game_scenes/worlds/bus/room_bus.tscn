@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="6_minimap"]
 [ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="7_follow"]
 [ext_resource type="Script" uid="uid://d1wugnxskesgt" path="res://actors/Interactables/npc.gd" id="8_npc"]
+[ext_resource type="Script" uid="uid://o1wcxwd8gcxy" path="res://systems/Scripted Movement/player_path.gd" id="10_mfyfq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7fms"]
 atlas = ExtResource("1_l7fms")
@@ -78,6 +79,8 @@ region = Rect2(0, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mfyfq"]
 atlas = ExtResource("2_qn6qw")
 region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kxuq"]
 
 [node name="room_bus" type="Node2D" unique_id=494569057]
 
@@ -311,8 +314,6 @@ texture = SubResource("AtlasTexture_mfyfq")
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_m7ng0")]
 position = Vector2(432, 256)
-ACCELERATION = inf
-FRICTION = inf
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=1573317822]
 script = ExtResource("6_minimap")
@@ -322,3 +323,22 @@ panel_size = Vector2(125, 125)
 position = Vector2(117, 88)
 script = ExtResource("5_bounds")
 size = Vector2(336, 192)
+
+[node name="PlayerPath" type="Node" parent="." unique_id=903470557 node_paths=PackedStringArray("trigger_area")]
+script = ExtResource("10_mfyfq")
+trigger_area = NodePath("../WalkTrigger")
+
+[node name="Marker1" type="Marker2D" parent="PlayerPath" unique_id=1275739856]
+position = Vector2(368, 187)
+
+[node name="Marker2" type="Marker2D" parent="PlayerPath" unique_id=1721127576]
+position = Vector2(293, 190)
+
+[node name="Marker3" type="Marker2D" parent="PlayerPath" unique_id=894985760]
+position = Vector2(295, 223)
+
+[node name="WalkTrigger" type="Area2D" parent="." unique_id=1074185133]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WalkTrigger" unique_id=548445101]
+position = Vector2(390, 187)
+shape = SubResource("RectangleShape2D_4kxuq")
