@@ -32,6 +32,10 @@ CursorManager="*res://globals/Cursor Manager/cursor_manager.tscn"
 Dialogic="*uid://ds2q0uclmolvu"
 MetaOS="*uid://dyw7ns5odiwbh"
 FileManager="*uid://b2ejw4nss25lx"
+SaveManager="*uid://blc72ui8ewl1o"
+TimeManager="*uid://cdjpfhv3bj1pd"
+WindowManager="*uid://dm10jl6xy7hsm"
+PauseManager="*uid://bfntalgfdpkgw"
 
 [dialogic]
 
@@ -51,6 +55,9 @@ directories/dch_directory={
 "Unknown": "res://dialogue/characters/Unknown.dch"
 }
 directories/dtl_directory={
+"a0_blaire_burning": "res://dialogue/timelines/act_0/a0_blaire_burning.dtl",
+"a0_ghost_help": "res://dialogue/timelines/act_0/a0_ghost_help.dtl",
+"a0_ghost_help_again": "res://dialogue/timelines/act_0/a0_ghost_help_again.dtl",
 "a1_bed": "res://dialogue/timelines/act_1/apartment/a1_bed.dtl",
 "a1_blaire_before_bus": "res://dialogue/timelines/act_1/monologues/a1_blaire_before_bus.dtl",
 "a1_blaire_bus_glimpse": "res://dialogue/timelines/act_1/monologues/a1_blaire_bus_glimpse.dtl",
@@ -65,12 +72,15 @@ directories/dtl_directory={
 "a1_calendar": "res://dialogue/timelines/act_1/apartment/a1_calendar.dtl",
 "a1_closet": "res://dialogue/timelines/act_1/apartment/a1_closet.dtl",
 "a1_computer": "res://dialogue/timelines/act_1/apartment/a1_computer.dtl",
+"a1_drawer": "res://dialogue/timelines/act_1/apartment/a1_drawer.dtl",
 "a1_dream_awakening": "res://dialogue/timelines/act_1/dream/a1_dream_awakening.dtl",
 "a1_dream_machine": "res://dialogue/timelines/act_1/dream/a1_dream_machine.dtl",
 "a1_fridge": "res://dialogue/timelines/act_1/apartment/a1_fridge.dtl",
 "a1_ghost_arrives": "res://dialogue/timelines/act_1/apartment/a1_ghost_arrives.dtl",
+"a1_lamp": "res://dialogue/timelines/act_1/apartment/a1_lamp.dtl",
 "a1_notebook": "res://dialogue/timelines/act_1/apartment/a1_notebook.dtl",
 "a1_picture_frame": "res://dialogue/timelines/act_1/apartment/a1_picture_frame.dtl",
+"a1_table": "res://dialogue/timelines/act_1/apartment/a1_table.dtl",
 "a1_television": "res://dialogue/timelines/act_1/apartment/a1_television.dtl",
 "a2_blaire_after_invite": "res://dialogue/timelines/act_2/monologues/a2_blaire_after_invite.dtl",
 "a2_blaire_school_gate": "res://dialogue/timelines/act_2/monologues/a2_blaire_school_gate.dtl",
@@ -109,10 +119,13 @@ variables={}
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/transparent=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
@@ -125,6 +138,7 @@ folder_colors={
 "res://game_assets/": "orange",
 "res://game_scenes/": "yellow",
 "res://globals/": "green",
+"res://objects/": "red",
 "res://sound/": "teal",
 "res://systems/": "blue",
 "res://vfx/": "purple"

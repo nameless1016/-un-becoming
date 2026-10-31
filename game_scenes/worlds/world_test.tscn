@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://xlf878422jy3" path="res://game_scenes/worlds/world_test.gd" id="1_oaopk"]
 [ext_resource type="PackedScene" uid="uid://be8jw63t68sxd" path="res://actors/player/top_down_player.tscn" id="2_45fix"]
 [ext_resource type="PackedScene" uid="uid://bkrih4wj555nw" path="res://systems/Pause Menu Component/pause_menu_component.tscn" id="3_45fix"]
-[ext_resource type="PackedScene" uid="uid://begvhj5jhxtcv" path="res://actors/player/platformer_player.tscn" id="3_hal7r"]
 [ext_resource type="PackedScene" uid="uid://b5kib01h7s7am" path="res://systems/Camera Limit Zone Component/camera_limit_zone_component.tscn" id="6_1jghj"]
 
 [sub_resource type="Gradient" id="Gradient_dll30"]
@@ -90,9 +89,6 @@ text = "Threat--"
 
 [node name="TopDownPlayer" parent="." unique_id=1775689760 instance=ExtResource("2_45fix")]
 position = Vector2(304, 88)
-
-[node name="PlatformerPlayer" parent="." unique_id=240714517 instance=ExtResource("3_hal7r")]
-position = Vector2(304, 224)
 
 [connection signal="pressed" from="PlaySfx" to="." method="_on_play_sfx_pressed"]
 [connection signal="pressed" from="PlayMusic1" to="." method="_on_play_music_1_pressed"]

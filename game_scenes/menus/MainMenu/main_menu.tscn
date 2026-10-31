@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
-next_level_path = "uid://cbh3de4aa1ibn"
+next_level_path = "uid://dm4sbxyp7dwf5"
 
 [node name="Background" type="ColorRect" parent="." unique_id=337964643]
 layout_mode = 0
@@ -137,6 +137,7 @@ script = ExtResource("3_menu_item")
 
 [node name="UserScreen" type="Control" parent="." unique_id=783477775]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -235,6 +236,7 @@ text = "last saved: --/--/--"
 
 [node name="WelcomeScreen" type="Control" parent="." unique_id=352515015]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -296,6 +298,7 @@ text = "loading files..."
 
 [node name="SettingsScreen" type="Control" parent="." unique_id=1114530273]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

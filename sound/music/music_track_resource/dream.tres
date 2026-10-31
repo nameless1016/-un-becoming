@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://0u6570sc6xlf"]
+
+[ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="1_1803m"]
+[ext_resource type="AudioStream" uid="uid://bxg125rj10nit" path="res://sound/music/unbecoming_ost/Dreaming.wav" id="2_hlv62"]
+
+[resource]
+script = ExtResource("1_1803m")
+track_name = "dream"
+stems = Array[AudioStream]([ExtResource("2_hlv62")])
+bpm = 80
+metadata/_custom_type_script = "uid://ok7aycfrhu2f"

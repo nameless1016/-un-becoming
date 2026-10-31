@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bh2u4h0xyo4es"]
+
+[ext_resource type="Script" uid="uid://j1xi3q5m428p" path="res://globals/Meta OS/Scenes/polarized_maze.gd" id="1_q3o5j"]
+[ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="2_qnww2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32gta"]
+radius = 24.0
+
+[node name="PolarizedMazeTest" type="Node2D" unique_id=1828947712]
+script = ExtResource("1_q3o5j")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1320962612]
+unique_name_in_owner = true
+position = Vector2(120, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=840336544]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_qnww2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1623069675]
+shape = SubResource("CircleShape2D_32gta")
+
+[node name="LensWindow" type="Window" parent="." unique_id=1502330183]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "POLARIZED_FILTER.lens"
+position = Vector2i(0, 36)
+size = Vector2i(320, 320)
+visible = false
+unresizable = true
+always_on_top = true
+
+[node name="LensCamera" type="Camera2D" parent="LensWindow" unique_id=1157272303]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LensWindow/LensCamera" unique_id=1233318588]
+
+[node name="ColorRect" type="ColorRect" parent="LensWindow/LensCamera/CanvasLayer" unique_id=1697686720]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8, 0.050980393, 0.09803922, 0.2509804)

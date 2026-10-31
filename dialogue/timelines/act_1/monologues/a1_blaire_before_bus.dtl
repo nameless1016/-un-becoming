@@ -1,6 +1,10 @@
 # ACT 1 · Outside the apartment · Blaire prepares herself mentally before getting on the bus.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Thinking"]
 Blaire: Okay. Okay okay okay.
 Blaire: Today you ask them. Just ask. "Hey, want to go somewhere spooky this Friday?" Easy.
 Blaire: If they laugh, it's a joke. If they say yes, it's a plan. You can't lose.
+update Blaire [extra_data="set Expression/Reassure"]
 Blaire: [pause=0.4]You can't lose.
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: Smile, Blaire.
+leave Blaire [animation="Fade Out"]

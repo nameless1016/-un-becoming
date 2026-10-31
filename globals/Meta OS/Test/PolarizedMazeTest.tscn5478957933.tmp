@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://bh2u4h0xyo4es"]
+
+[ext_resource type="Script" uid="uid://j1xi3q5m428p" path="res://globals/Meta OS/Test/PolarizedMazeTest.gd" id="1_s2tws"]
+[ext_resource type="Texture2D" uid="uid://cdq1w16bsklp2" path="res://icon.svg" id="2_tlmc8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32gta"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32gta"]
+size = Vector2(383, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2tws"]
+size = Vector2(129.71494, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlmc8"]
+size = Vector2(408.28995, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxskp"]
+size = Vector2(94.28995, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htetq"]
+size = Vector2(408.28995, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftrg2"]
+size = Vector2(441.85495, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqfgo"]
+
+[node name="PolarizedMazeTest" type="Node2D" unique_id=1828947712]
+script = ExtResource("1_s2tws")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1320962612]
+unique_name_in_owner = true
+position = Vector2(67.61, 57.86)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=840336544]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tlmc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1623069675]
+shape = SubResource("CircleShape2D_32gta")
+
+[node name="MazeContainer" type="Node2D" parent="." unique_id=2047558329]
+
+[node name="Wall_Paranoia" type="StaticBody2D" parent="MazeContainer" unique_id=628036390]
+position = Vector2(31.525, 18.285)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia" unique_id=1522395231]
+position = Vector2(190.5, 13)
+shape = SubResource("RectangleShape2D_32gta")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia" unique_id=1005802122]
+visibility_layer = 2
+offset_right = 382.635
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia/ColorRect" unique_id=941356987]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "THEY LAUGH AT YOU. DO NOT LEAVE THIS ROOM."
+
+[node name="Wall_Paranoia2" type="StaticBody2D" parent="MazeContainer" unique_id=216351088]
+position = Vector2(132.04, 18.285)
+rotation = 1.5707964
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia2" unique_id=951010661]
+position = Vector2(63.85753, 13)
+shape = SubResource("RectangleShape2D_s2tws")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia2" unique_id=25464587]
+visibility_layer = 2
+offset_right = 128.53505
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia2/ColorRect" unique_id=1715256691]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "NOBODY CARES"
+
+[node name="Wall_Paranoia3" type="StaticBody2D" parent="MazeContainer" unique_id=1436494412]
+position = Vector2(31.71, 241.77)
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia3" unique_id=1914285577]
+position = Vector2(203.14505, 13)
+shape = SubResource("RectangleShape2D_tlmc8")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia3" unique_id=1337572454]
+visibility_layer = 2
+offset_right = 407.29
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia3/ColorRect" unique_id=942436319]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "YOU ARE A BURDEN TO EVERYONE WHO LOVES YOU."
+
+[node name="Wall_Paranoia7" type="StaticBody2D" parent="MazeContainer" unique_id=1414552608]
+position = Vector2(40.965, -7.84)
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia7" unique_id=2099978764]
+position = Vector2(46.145042, 13)
+shape = SubResource("RectangleShape2D_fxskp")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia7" unique_id=1835811678]
+visibility_layer = 2
+offset_right = 90.29
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia7/ColorRect" unique_id=2005803505]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "A NOBODY
+"
+
+[node name="Wall_Paranoia4" type="StaticBody2D" parent="MazeContainer" unique_id=1043428020]
+position = Vector2(132.845, 120.605)
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia4" unique_id=610341384]
+position = Vector2(203.14505, 13)
+shape = SubResource("RectangleShape2D_htetq")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia4" unique_id=452645836]
+visibility_layer = 2
+offset_right = 407.29
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia4/ColorRect" unique_id=2122827287]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "YOU ARE A BURDEN TO EVERYONE WHO LOVES YOU."
+
+[node name="Wall_Paranoia5" type="StaticBody2D" parent="MazeContainer" unique_id=811115510]
+position = Vector2(567.625, 120.605)
+rotation = 1.5707964
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia5" unique_id=1012423521]
+position = Vector2(195.19754, 13)
+shape = SubResource("RectangleShape2D_ftrg2")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia5" unique_id=1183748474]
+visibility_layer = 2
+offset_right = 392.99005
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia5/ColorRect" unique_id=168312417]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "OBEDIENCE IS PEACE. QUESTIONING IS WEAKNESS.
+"
+
+[node name="Wall_Paranoia6" type="StaticBody2D" parent="MazeContainer" unique_id=1505230530]
+position = Vector2(438.805, 267.55)
+rotation = 1.5707964
+
+[node name="Another" type="CollisionShape2D" parent="MazeContainer/Wall_Paranoia6" unique_id=1390372303]
+position = Vector2(219.92755, 12.999908)
+shape = SubResource("RectangleShape2D_ftrg2")
+
+[node name="ColorRect" type="ColorRect" parent="MazeContainer/Wall_Paranoia6" unique_id=1409834337]
+visibility_layer = 2
+offset_right = 442.49008
+offset_bottom = 26.23
+color = Color(0.3529412, 0.039215688, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="MazeContainer/Wall_Paranoia6/ColorRect" unique_id=1351750050]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.23137255, 0.2784314, 1)
+text = "WE ARE THE ONLY ONES WHO ACTUALLY LISTEN TO YOU.
+"
+
+[node name="ExitTrigger" type="Area2D" parent="MazeContainer" unique_id=2124651719]
+position = Vector2(494.195, 454.175)
+scale = Vector2(3.85, 3.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeContainer/ExitTrigger" unique_id=1615123537]
+shape = SubResource("RectangleShape2D_kqfgo")
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=845215780]
+unique_name_in_owner = true
+position = Vector2(510, 340)
+
+[node name="LensWindow" type="Window" parent="." unique_id=1502330183]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "POLARIZED_FILTER.lens"
+position = Vector2i(0, 36)
+size = Vector2i(320, 320)
+visible = false
+unresizable = true
+always_on_top = true
+
+[node name="LensCamera" type="Camera2D" parent="LensWindow" unique_id=1157272303]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LensWindow/LensCamera" unique_id=1233318588]
+
+[node name="ColorRect" type="ColorRect" parent="LensWindow/LensCamera/CanvasLayer" unique_id=1697686720]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8, 0.050980393, 0.09803922, 0.2509804)
+
+[connection signal="body_entered" from="MazeContainer/ExitTrigger" to="." method="_on_exit_trigger_body_entered"]

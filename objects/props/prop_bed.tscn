@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d4byl56v65qg1"]
+
+[ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_03hww"]
+[ext_resource type="Script" path="res://actors/Interactables/world_prop.gd" id="9_prop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mti6b"]
+atlas = ExtResource("1_03hww")
+region = Rect2(32, 144, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4kxuq"]
+radius = 12.0
+
+[node name="PropBed" type="Area2D" unique_id=383605962]
+script = ExtResource("9_prop")
+display_name = "Bed"
+
+[node name="Bed" type="Sprite2D" parent="." unique_id=76345892]
+position = Vector2(0, -14)
+texture = SubResource("AtlasTexture_mti6b")
+
+[node name="Solid" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solid" unique_id=429762775]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_4kxuq")

@@ -27,14 +27,23 @@ var _tween: Tween
 
 
 func _ready() -> void:
-	_button = get_parent() as Button
-	if _button == null:
+	# Deferred so styles applied right after the button is created (e.g. by
+	# Dialogic's choice layer, which sets its theme after adding the buttons) are read.
+	_setup.call_deferred()
+
+
+func _setup() -> void:
+	var button := get_parent() as Button
+	if button == null:
 		push_warning("HoverFade must be a child of a Button.")
 		return
-	var base := _button.get_theme_stylebox(&"normal")
+	var base := button.get_theme_stylebox(&"normal")
 	_box = base.duplicate() if base is StyleBoxFlat else StyleBoxFlat.new()
 	for style in [&"normal", &"hover", &"pressed", &"hover_pressed"]:
-		_button.add_theme_stylebox_override(style, _box)
+		button.add_theme_stylebox_override(style, _box)
+	# Focus fades to the hovered look below, so a separate focus box would only snap on top of it.
+	button.add_theme_stylebox_override(&"focus", StyleBoxEmpty.new())
+	_button = button
 	_normal_bg = _box.bg_color
 	_normal_font = _button.get_theme_color(&"font_color")
 	for sig in [_button.mouse_entered, _button.mouse_exited, _button.focus_entered, _button.focus_exited]:

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://systems/Point And Click/point_and_click_scene.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://game_assets/point_and_click/bedroom_night.jpg" id="2_bg"]
+[ext_resource type="StyleBox" path="res://dialogue/style/choice_panel_normal.tres" id="3_panel"]
+[ext_resource type="FontFile" path="res://game_assets/fonts/Space Mono/SpaceMono-Bold.ttf" id="4_font"]
+[ext_resource type="Script" path="res://systems/Smooth Hover/hover_fade.gd" id="5_fade"]
 
 [node name="PointAndClickScene" type="Node2D"]
 script = ExtResource("1_script")
@@ -23,8 +26,17 @@ layer = 10
 [node name="ExitButton" type="Button" parent="."]
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 44.0
-offset_bottom = 24.0
+offset_right = 50.0
+offset_bottom = 25.0
 focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.3)
+theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = ExtResource("3_panel")
+theme_override_styles/disabled = ExtResource("3_panel")
 text = "Back"
+
+[node name="HoverFade" type="Node" parent="ExitButton"]
+script = ExtResource("5_fade")
+include_pressed = false

@@ -17,7 +17,7 @@ enum Spot {
 
 @export_group("Layout")
 ## Corner of the viewport where the minimap anchors.
-@export var corner: Spot = Spot.TOP_RIGHT
+@export var corner: Spot = Spot.TOP_LEFT
 ## Dimensions of the minimap UI panel in pixels.
 @export var panel_size: Vector2 = Vector2(150, 150)
 ## Distance from the edges of the viewport in pixels.
@@ -28,6 +28,8 @@ enum Spot {
 @export var show_entities: bool = true
 ## Target node to track. If left unassigned, automatically resolves "TopDownPlayer".
 @export var player: Node2D
+## Group the player is in, used when no player is assigned
+@export var player_group: StringName = &"player"
 
 ## Internal padding between the panel boundary and drawn map content.
 const PAD := 8.0
@@ -54,7 +56,7 @@ func _ready() -> void:
 	visible = true
 
 	if player == null:
-		player = get_parent().get_node_or_null("TopDownPlayer")
+		player = get_tree().get_first_node_in_group(player_group) as Node2D
 
 	build_ui()
 	current_room = find_room()
@@ -110,7 +112,10 @@ func place_panel() -> void:
 
 func _process(_delta: float) -> void:
 	if player == null:
-		return
+		# the player might not be in the tree yet, keep looking
+		player = get_tree().get_first_node_in_group(player_group) as Node2D
+		if player == null:
+			return
 
 	var room := find_room()
 	if room != null and room != current_room:
@@ -123,6 +128,8 @@ func _process(_delta: float) -> void:
 
 ## Locates the RoomBounds node encapsulating the player's current global position.
 func find_room() -> RoomBounds:
+	if player == null:
+		return null
 	for node in get_tree().get_nodes_in_group("room_bounds"):
 		var room := node as RoomBounds
 		if room != null and room.get_rect().has_point(player.global_position):
@@ -147,6 +154,13 @@ func refresh_room() -> void:
 
 	room_rect = current_room.get_rect()
 
+	# TileMapLayer rooms: shrink the map to the walls so there's no empty margin
+	var layer_walls := collect_layer_walls()
+	if not layer_walls.is_empty():
+		room_rect = layer_walls[0]
+		for r in layer_walls:
+			room_rect = room_rect.merge(r)
+
 	var area := panel_size - Vector2(PAD * 2.0, PAD * 2.0)
 	scale_f = minf(area.x / room_rect.size.x, area.y / room_rect.size.y)
 	var drawn := room_rect.size * scale_f
@@ -160,6 +174,9 @@ func refresh_room() -> void:
 			if room_rect.has_point(center):
 				wall_rects.append(Rect2(to_map(center - ts * 0.5), ts * scale_f))
 
+	for r in layer_walls:
+		wall_rects.append(Rect2(to_map(r.position), r.size * scale_f))
+
 	for node in get_parent().find_children("*", "Area2D", true, false):
 		var area2d := node as Area2D
 		if area2d == null or not room_rect.has_point(area2d.global_position):
@@ -172,15 +189,69 @@ func refresh_room() -> void:
 	static_layer.queue_redraw()
 
 
+## Finds the real blocking area of every wall tile in TileMapLayer rooms (world space).
+## Only layers with collision count, and tiles without collision (like a doorway) are skipped.
+func collect_layer_walls() -> Array[Rect2]:
+	var out: Array[Rect2] = []
+	for node in get_parent().find_children("*", "TileMapLayer", true, false):
+		var layer := node as TileMapLayer
+		if layer == null or layer.tile_set == null or layer.tile_set.get_physics_layers_count() == 0:
+			continue
+		for cell in layer.get_used_cells():
+			var data := layer.get_cell_tile_data(cell)
+			if data == null or data.get_collision_polygons_count(0) == 0:
+				continue
+			var pts := data.get_collision_polygon_points(0, 0)
+			if pts.is_empty():
+				continue
+			var lo := pts[0]
+			var hi := pts[0]
+			for pt in pts:
+				lo = lo.min(pt)
+				hi = hi.max(pt)
+			var center := layer.to_global(layer.map_to_local(cell))
+			var rect := Rect2(center + lo, hi - lo)
+			if current_room.get_rect().grow(8.0).intersects(rect):
+				out.append(rect)
+
+	# Rooms built from sprites and StaticBody2D colliders (like the bus)
+	for node in get_parent().find_children("*", "StaticBody2D", true, false):
+		var body := node as StaticBody2D
+		if body == null or body.get_parent() is Interactable:
+			continue
+		for child in body.get_children():
+			var cs := child as CollisionShape2D
+			if cs == null or cs.disabled or cs.shape == null:
+				continue
+			var half := shape_half_extents(cs.shape) * cs.global_scale.abs()
+			if half == Vector2.ZERO:
+				continue
+			var body_rect := Rect2(cs.global_position - half, half * 2.0)
+			if current_room.get_rect().grow(8.0).intersects(body_rect):
+				out.append(body_rect)
+	return out
+
+
+## Half size of the box that encloses a collision shape (rectangles, circles, capsules).
+func shape_half_extents(shape: Shape2D) -> Vector2:
+	if shape is RectangleShape2D:
+		return shape.size * 0.5
+	if shape is CircleShape2D:
+		return Vector2(shape.radius, shape.radius)
+	if shape is CapsuleShape2D:
+		return Vector2(shape.radius, maxf(shape.height * 0.5, shape.radius))
+	return Vector2.ZERO
+
+
 ## Draws static visual elements including the floor boundary, walls, teleporters, and subway stops.
 func _draw_static() -> void:
 	if current_room == null:
 		return
 
-	static_layer.draw_rect(Rect2(origin, room_rect.size * scale_f), Color(0.12, 0.12, 0.12, 0.95))
+	static_layer.draw_rect(Rect2(origin, room_rect.size * scale_f), Color(0.75, 0.75, 0.75, 0.95))
 
 	for r in wall_rects:
-		static_layer.draw_rect(r, Color(0.55, 0.55, 0.55))
+		static_layer.draw_rect(r, Color(0.3, 0.3, 0.3))
 
 	for p in door_points:
 		static_layer.draw_circle(p, 4.0, Color(0.0, 0.0, 0.0))

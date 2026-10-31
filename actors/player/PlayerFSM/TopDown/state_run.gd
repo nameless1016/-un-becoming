@@ -5,6 +5,7 @@ func enterState():
 	pass
 
 func updateState(delta: float):
+	PLAYER.sprite.play("walk_" + PLAYER.get_facing_string())
 	movement(delta)
 
 func movement(delta: float):
