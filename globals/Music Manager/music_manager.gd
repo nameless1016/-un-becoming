@@ -52,6 +52,52 @@ func change_music(track_name: String, crossfade_time: float = 2.0) -> void:
 		var target_vol = _get_layer_volume(i, new_track.stems.size(), current_intensity)
 		tween.parallel().tween_property(player, "volume_db", target_vol, crossfade_time)
 
+# Call this to switch to a DIFFERENT MusicTrack resource while keeping the exact same playback time
+func change_music_sync(track_name: String, crossfade_time: float = 2.0) -> void:
+	var safe_name = track_name.to_lower()
+
+	if not track_db.has(safe_name):
+		push_error("MusicManager: Track '" + track_name + "' not found!")
+		return
+	if current_track_name == safe_name:
+		return # Already playing this track!
+
+	# 1. Capture the exact timestamp of the current track before swapping
+	var sync_time: float = 0.0
+	if not active_players.is_empty() and active_players[0].playing:
+		sync_time = active_players[0].get_playback_position()
+
+	current_track_name = safe_name
+	var new_track: MusicTrack = track_db[safe_name]
+
+	# 2. Move current players to the chopping block
+	var fading_players = active_players.duplicate()
+	active_players.clear()
+
+	var tween = create_tween()
+
+	# 3. Fade out the old track
+	for player in fading_players:
+		tween.parallel().tween_property(player, "volume_db", -80.0, crossfade_time)
+	tween.tween_callback(func(): _cleanup_players(fading_players))
+
+	# 4. Spin up new players for the new track's stems
+	for i in range(new_track.stems.size()):
+		var player = AudioStreamPlayer.new()
+		player.stream = new_track.stems[i]
+		player.volume_db = -80.0 
+		player.bus = "Music" 
+
+		add_child(player)
+		
+		# CRITICAL: Start playing at the exact timestamp of the previous track
+		player.play(sync_time)
+		active_players.append(player)
+
+		# Applies the existing intensity logic to the new tracks automatically
+		var target_vol = _get_layer_volume(i, new_track.stems.size(), current_intensity)
+		tween.parallel().tween_property(player, "volume_db", target_vol, crossfade_time)
+
 # Call this to raise/lower the music tension (e.g., set_intensity(0.8))
 func set_intensity(new_intensity: float, fade_time: float = 1.0) -> void:
 	current_intensity = clamp(new_intensity, 0.0, 1.0)

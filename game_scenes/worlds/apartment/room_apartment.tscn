@@ -425,10 +425,10 @@ target_scene = "uid://ejtcbfo4lt16"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor" unique_id=155651765]
 shape = SubResource("RectangleShape2D_frontdoor")
 
-[node name="RoomBounds" type="Node2D" parent="."]
+[node name="RoomBounds" type="Node2D" parent="." unique_id=8495226]
 position = Vector2(-48, 0)
 script = ExtResource("22_bounds")
 size = Vector2(544, 480)
 
-[node name="Minimap" type="CanvasLayer" parent="."]
+[node name="Minimap" type="CanvasLayer" parent="." unique_id=2131087971]
 script = ExtResource("23_minimap")
