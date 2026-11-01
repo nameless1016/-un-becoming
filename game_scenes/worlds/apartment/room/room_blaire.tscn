@@ -13,11 +13,16 @@
 [ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="11_follow"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="12_bounds"]
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="13_0vyqh"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://actors/Utilities/scene_door.gd" id="14_door"]
 [ext_resource type="Script" path="res://actors/Utilities/spawn_point.gd" id="15_spawn"]
 [ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="16_still"]
 [ext_resource type="Script" path="res://game_scenes/worlds/apartment/room/room_intro.gd" id="17_intro"]
 [ext_resource type="Script" path="res://systems/Scripted Movement/player_path.gd" id="18_path"]
+=======
+[ext_resource type="Script" uid="uid://cn20j14pfw06u" path="res://actors/Utilities/scene_door.gd" id="14_door"]
+[ext_resource type="Script" uid="uid://4cwis7paj21b" path="res://actors/Utilities/spawn_point.gd" id="15_spawn"]
+>>>>>>> origin/staging
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08jht"]
 texture = ExtResource("1_yq4q0")
@@ -137,6 +142,7 @@ solid = false
 
 [node name="PropComputerDesk" parent="Props" unique_id=1170852200 instance=ExtResource("5_10xaw")]
 position = Vector2(348, 129)
+can_interact = false
 
 [node name="PropBackTable" parent="Props" unique_id=1969808181 instance=ExtResource("6_5flus")]
 position = Vector2(356, 260)
@@ -186,16 +192,16 @@ solid = false
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=562651553]
 script = ExtResource("13_0vyqh")
 
-[node name="ExitDoor" type="Area2D" parent="."]
+[node name="ExitDoor" type="Area2D" parent="." unique_id=55138859]
 position = Vector2(374, 192)
 script = ExtResource("14_door")
 target_scene = "uid://jcppsu8fpxbh"
 target_spawn = "FromBlaire"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor" unique_id=1072337283]
 shape = SubResource("RectangleShape2D_exit")
 
-[node name="FromApartment" type="Marker2D" parent="."]
+[node name="FromApartment" type="Marker2D" parent="." unique_id=820443511]
 position = Vector2(352, 192)
 script = ExtResource("15_spawn")
 spawn_name = "FromApartment"
