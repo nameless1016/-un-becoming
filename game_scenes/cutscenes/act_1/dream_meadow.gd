@@ -34,6 +34,32 @@ const BLUR_SIZE := Vector2i(160, 90)
 ## and starts at the machine's voice.
 static var resume_at_awakening: bool = false
 
+const MEADOW := "res://game_scenes/cutscenes/act_1/dream_meadow.tscn"
+
+
+## Called by RJ's maze when it ends. The maze turns the game window into a
+## borderless, transparent 1020x680 window; this puts it back the way the project
+## sets it up, then goes to the meadow for the machine's voice.
+static func return_from_maze() -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	var win := tree.root
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false, DisplayServer.MAIN_WINDOW_ID)
+	win.borderless = false
+	# Its transparent background is left alone: the game already runs with one (Meta OS).
+	win.content_scale_size = Vector2i(
+		ProjectSettings.get_setting("display/window/size/viewport_width", 640),
+		ProjectSettings.get_setting("display/window/size/viewport_height", 360))
+	win.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	win.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+	if win.mode == Window.MODE_WINDOWED:
+		win.size = Vector2i(
+			ProjectSettings.get_setting("display/window/size/window_width_override", 1280),
+			ProjectSettings.get_setting("display/window/size/window_height_override", 720))
+		var screen := DisplayServer.get_primary_screen()
+		win.position = DisplayServer.screen_get_position(screen) + (DisplayServer.screen_get_size(screen) - win.size) / 2
+	resume_at_awakening = true
+	tree.change_scene_to_file(MEADOW)
+
 @onready var _background: TextureRect = $Background
 @onready var _petals: CanvasItem = $Petals
 @onready var _bedroom: Node2D = $Bedroom

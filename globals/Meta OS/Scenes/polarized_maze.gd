@@ -424,11 +424,8 @@ func _run_final_sequence() -> void:
 	player.hide()
 	maze_root.hide()
 
-	# Brief pause after distortion before closing.
-	# CONTINUE HERE, uncomment this
-
-	await get_tree().create_timer(0.4).timeout
-	get_tree().quit()
+	# Back to the story: the dream meadow plays the machine's voice, then WAKE UP.
+	DreamMeadow.return_from_maze()
 
 
 # Intense glitch effect with transparent background preservation.
