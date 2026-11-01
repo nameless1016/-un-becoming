@@ -7,6 +7,13 @@ class_name ExePickup
 ## Fires when the player picks it up, connect to this from the level if you want.
 signal collected
 
+@export var file_id: String = "exe_indoctrination"
+
+func _ready() -> void:
+	super._ready()
+	if not Engine.is_editor_hint() and FileManager.collected_files.has(file_id):
+		queue_free()
+
 func _init() -> void:
 	can_interact = true
 
@@ -18,8 +25,7 @@ func _on_interact(who: Node2D) -> void:
 
 # not made yet, fill this in later
 func on_collected(_who: Node2D) -> void:
-	print("here supposedly")
-	pass
+	FileManager.obtain_file_by_id(file_id)
 
 func vanish() -> void:
 	var spr := get_node_or_null("Sprite2D") as Sprite2D
