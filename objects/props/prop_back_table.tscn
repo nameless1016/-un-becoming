@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://553fms505acn"]
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_2s07e"]
+[ext_resource type="Script" path="res://actors/Interactables/world_prop.gd" id="9_prop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
 atlas = ExtResource("1_2s07e")
@@ -9,12 +10,16 @@ region = Rect2(32, 240, 32, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mti6b"]
 size = Vector2(30, 10)
 
-[node name="PropBackTable" type="StaticBody2D" unique_id=1969808181]
+[node name="PropBackTable" type="Area2D" unique_id=1969808181]
+script = ExtResource("9_prop")
+display_name = "Back Table"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=413314610]
 position = Vector2(0, -7)
 texture = SubResource("AtlasTexture_4kxuq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160045647]
+[node name="Solid" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solid" unique_id=1160045647]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_mti6b")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bdl5psjyb6nr8"]
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_piqta"]
+[ext_resource type="Script" uid="uid://ps2sbitsjn2l" path="res://actors/Interactables/prop_computer.gd" id="9_prop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
 atlas = ExtResource("1_piqta")
@@ -9,12 +10,17 @@ region = Rect2(32, 192, 32, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62yky"]
 size = Vector2(32, 11)
 
-[node name="PropComputerDesk" type="StaticBody2D" unique_id=1170852200]
+[node name="PropComputerDesk" type="Area2D" unique_id=1170852200]
+script = ExtResource("9_prop")
+display_name = "Computer"
+can_interact = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2000902480]
 position = Vector2(0, -12)
 texture = SubResource("AtlasTexture_4kxuq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=848047825]
+[node name="Solid" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solid" unique_id=848047825]
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_62yky")

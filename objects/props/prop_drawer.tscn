@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xlfhnnwumamx" path="res://game_assets/world/room/wall_tileset_blair_room-Sheet.png" id="1_tujp2"]
 [ext_resource type="PackedScene" uid="uid://dt5e47t4567xv" path="res://objects/props/prop_lamp.tscn" id="2_4neg4"]
+[ext_resource type="Script" path="res://actors/Interactables/world_prop.gd" id="9_prop"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kxuq"]
 atlas = ExtResource("1_tujp2")
@@ -10,14 +11,18 @@ region = Rect2(64, 152, 32, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mti6b"]
 radius = 6.0
 
-[node name="prop_drawer" type="StaticBody2D" unique_id=996556695]
+[node name="prop_drawer" type="Area2D" unique_id=996556695]
+script = ExtResource("9_prop")
+display_name = "Drawer"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1841713050]
 position = Vector2(0, -7)
 texture = SubResource("AtlasTexture_4kxuq")
 hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=347592458]
+[node name="Solid" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solid" unique_id=347592458]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_mti6b")
 
