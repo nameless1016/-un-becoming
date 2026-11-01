@@ -6,6 +6,7 @@ const ENGINE_SFX := "res://sound/sfx/sfx_bus_engine.mp3"
 
 func _ready() -> void:
 	MusicManager.change_music("outside", 0.5)
+	FileManager.allow_keybinds = true
 	start_engine()
 
 func start_engine() -> void:

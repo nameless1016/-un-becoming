@@ -179,7 +179,7 @@ func _start_game() -> void:
 		SaveManager.continue_game()
 	else:
 		SaveManager.new_game()
-	FileManager.allow_keybinds = true
+	FileManager.allow_keybinds = false
 
 
 func _refresh_tile() -> void:

@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_m7ng0"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="5_bounds"]
 [ext_resource type="Resource" uid="uid://jo0n1qy6xe6w" path="res://dialogue/timelines/act_1/bus/a1_bus_driver.dtl" id="5_m25xj"]
-[ext_resource type="PackedScene" uid="uid://buulijjg1rnip" path="res://game_scenes/worlds/apartment/room/room_blaire.tscn" id="6_gubwl"]
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="6_minimap"]
 [ext_resource type="Script" uid="uid://dw1i702t6qchu" path="res://systems/Camera/follow_camera.gd" id="7_follow"]
 [ext_resource type="Script" uid="uid://d1wugnxskesgt" path="res://actors/Interactables/npc.gd" id="8_npc"]
 [ext_resource type="Script" uid="uid://o1wcxwd8gcxy" path="res://systems/Scripted Movement/player_path.gd" id="10_mfyfq"]
+[ext_resource type="Script" uid="uid://5p6uxfnxheuo" path="res://actors/Interactables/travel_npc.gd" id="14_travel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7fms"]
 atlas = ExtResource("1_l7fms")
@@ -39,6 +39,9 @@ size = Vector2(24, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7nii"]
 size = Vector2(32, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm1bc"]
+size = Vector2(71.5, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qn6qw"]
 radius = 7.0
@@ -150,6 +153,13 @@ position = Vector2(464, 176)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4" unique_id=150307047]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_g7nii")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Walls" unique_id=239044489]
+position = Vector2(507, 176)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D5" unique_id=2772336]
+position = Vector2(-62.75, 112)
+shape = SubResource("RectangleShape2D_mm1bc")
 
 [node name="ChairCollisions" type="Node2D" parent="." unique_id=561866949]
 
@@ -304,11 +314,12 @@ texture = SubResource("AtlasTexture_gubwl")
 
 [node name="NPC8" type="Area2D" parent="." unique_id=3813662]
 position = Vector2(429, 151)
-script = ExtResource("8_npc")
-timeline = ExtResource("5_m25xj")
-travel_scenes = Dictionary[String, PackedScene]({
-"school": ExtResource("6_gubwl")
+script = ExtResource("14_travel")
+travel_paths = Dictionary[String, String]({
+"school": "uid://jcppsu8fpxbh"
 })
+travel_spawn = "FromBus"
+timeline = ExtResource("5_m25xj")
 
 [node name="Sprite2D" type="Sprite2D" parent="NPC8" unique_id=109553583]
 texture = SubResource("AtlasTexture_mfyfq")

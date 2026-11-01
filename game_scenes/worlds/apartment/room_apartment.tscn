@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://10wwjccuxao3" path="res://objects/props/prop_chair.tscn" id="12_xinkq"]
 [ext_resource type="PackedScene" uid="uid://byfsjswgmxvf2" path="res://objects/props/prop_sofa.tscn" id="13_yska8"]
 [ext_resource type="Texture2D" uid="uid://dr1j1bev4ylem" path="res://game_assets/world/room/more_furniture.png" id="14_6jcrf"]
+[ext_resource type="Script" uid="uid://cn20j14pfw06u" path="res://actors/Utilities/scene_door.gd" id="20_door"]
+[ext_resource type="Script" uid="uid://4cwis7paj21b" path="res://actors/Utilities/spawn_point.gd" id="21_spawn"]
 
 [sub_resource type="Gradient" id="Gradient_1negg"]
 
@@ -149,16 +151,22 @@ region = Rect2(96, 0, 32, 16)
 atlas = ExtResource("14_6jcrf")
 region = Rect2(80, 0, 16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blairedoor"]
+size = Vector2(8, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frontdoor"]
+size = Vector2(32, 16)
+
 [node name="room_apartment" type="Node2D" unique_id=1883967117]
 y_sort_enabled = true
 script = ExtResource("1_f07qk")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=609430064]
 z_index = -10
-offset_left = -543.0
-offset_top = 32.0
-offset_right = 1024.0
-offset_bottom = 576.0
+offset_left = -540.0
+offset_top = 166.0
+offset_right = 1027.0
+offset_bottom = 710.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1264073200]
@@ -387,3 +395,30 @@ texture = SubResource("AtlasTexture_1cu1w")
 [node name="Sprite2D5" type="Sprite2D" parent="Props" unique_id=1949751653]
 position = Vector2(148, 364)
 texture = SubResource("AtlasTexture_1cu1w")
+
+[node name="ToBlaire" type="Area2D" parent="." unique_id=1790304192]
+position = Vector2(136, 160)
+script = ExtResource("20_door")
+target_scene = "uid://buulijjg1rnip"
+target_spawn = "FromApartment"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToBlaire" unique_id=810699873]
+shape = SubResource("RectangleShape2D_blairedoor")
+
+[node name="FromBlaire" type="Marker2D" parent="." unique_id=1493376968]
+position = Vector2(156, 160)
+script = ExtResource("21_spawn")
+spawn_name = "FromBlaire"
+
+[node name="FromBus" type="Marker2D" parent="." unique_id=2122227740]
+position = Vector2(225, 442)
+script = ExtResource("21_spawn")
+spawn_name = "FromBus"
+
+[node name="FrontDoor" type="Area2D" parent="." unique_id=1294043059]
+position = Vector2(225, 472)
+script = ExtResource("20_door")
+target_scene = "uid://ejtcbfo4lt16"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor" unique_id=155651765]
+shape = SubResource("RectangleShape2D_frontdoor")
