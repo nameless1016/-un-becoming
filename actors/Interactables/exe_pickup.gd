@@ -26,6 +26,8 @@ func _on_interact(who: Node2D) -> void:
 # not made yet, fill this in later
 func on_collected(_who: Node2D) -> void:
 	FileManager.obtain_file_by_id(file_id)
+	SoundBank.play_sfx("ui_message")
+	await MetaOS.show_dialog("Obtained", "indoctrination.exe", "exe")
 
 func vanish() -> void:
 	var spr := get_node_or_null("Sprite2D") as Sprite2D

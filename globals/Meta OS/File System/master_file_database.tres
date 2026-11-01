@@ -165,7 +165,15 @@ file_id = "about_myself"
 filename = "Myself.info"
 category = 1
 description = "Observer self-profile."
-content = "Subject: Entity attached to Blaire. Zero physical form. Retains fractured emotional memories without autobiographical context. Bound to monitor Blaire's timeline."
+content = "Subject: Entity attached to Blaire. Zero physical form. Retains fractured emotional memories without autobiographical context. Bound to monitor Blaire's timeline.
+
+\"I have no memories of why I'm here.
+
+All I know is that, I'm attached to this little girl. I want to protect her, and I hope you can help me too.
+
+It seems that I have no physical form, so all I can do is pretty much just follow her around and learn more about her. Maybe that could help me regain memories of myself.
+
+I can't do anything to change her decisions, can I? But what if I can?\""
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
 [sub_resource type="Resource" id="Resource_3whis"]
@@ -175,7 +183,9 @@ file_id = "about_blaire"
 filename = "Blaire.info"
 category = 1
 description = "Subject profile."
-content = "Blaire. Age 19 (in 2012). University student. Mother deceased (November 2011). Father absent. Displays acute social anxiety, chronic withdrawal, and progressive dependency on anonymous networks."
+content = "That's a very cute name. It also reminds me of someone.
+
+Whenever she feels lonely, I'll be here right by her side."
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
 [sub_resource type="Resource" id="Resource_byh8s"]
@@ -185,7 +195,7 @@ file_id = "about_the_order"
 filename = "The_Order.info"
 category = 1
 description = "Extremist collective dossier."
-content = "Decentralized network operating across private boards. Targets grieving individuals. Provides material support (rent, food stipends) to induce loyalty before delegating acts of property destruction."
+content = "It seems to be a community that provides for Blaire. I should know more about their intentions and such. Looking at her computer might help, since it's an online group afterall."
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
 [sub_resource type="Resource" id="Resource_ul4bb"]
@@ -195,7 +205,7 @@ file_id = "about_apartment"
 filename = "Apartment.info"
 category = 1
 description = "Current living space."
-content = "Ground floor one-bedroom apartment. Lease funded by an account tied to The Order. Groceries and dry goods delivered bi-weekly."
+content = "She lives here, by herself. I wonder where her parents are. I wish she could see me."
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
 [sub_resource type="Resource" id="Resource_e21l2"]
@@ -276,7 +286,7 @@ file_id = "about_ghost_machine"
 filename = "Unknown_Machine.info"
 category = 1
 description = "Mechanical relic in the dream meadow."
-content = "A terminal housing vacuum tubes, stripped copper coils, and analog timer mechanisms. Appears identical to equipment constructed in an unverified future timeline."
+content = "??? [Seen in the dream]"
 metadata/_custom_type_script = "uid://buxyckyv4tgap"
 
 [sub_resource type="Resource" id="Resource_so5bg"]
@@ -516,7 +526,7 @@ script = ExtResource("1_p77w3")
 file_id = "cipher_letter_pt06"
 filename = "letter_pt06.enc"
 category = 4
-content = "SSBob3BlIHRoaXMgbGV0dGVyIGZpbmRzIHlvdSBpbiBnb29kIGhlYWx0aCwgaWYgeW91IGFy..."
+content = "SSBob3BlIHRoaXMgbGV0dGVyIGZpbmRzIHlvdSBpbiBnb29kIGhlYWx0aCwgaWYgeW91IGFyZSByZWFkaW5nIHRoaXMsIEkgYW0gcHJvYmFibHkgYXQgdGhlIHBvaW50IG9mIG5vIHJldHVybi4gV2hhdGV2ZXIgSeKAmW0gYWJvdXQgdG8gZG8gb3IgaGF2ZSBkb25lIGlzIGEgY3VsbWluYXRpb24gb2YgdGhlIHRoaW5ncyBJ4oCZdmUgYmVlbiB0aHJvdWdoIHNvIGZhci4gSSBqdXN0IHdpc2ggZm9yIHlvdSB0byBoYXZlIHN0YXllZCBwcmVzZW50IGFmdGVyIHNoZSBkaWVkLiBEbyB1bmRlcnN0YW5kLCBJIGRvbuKAmXQgYmxhbWUgeW91IGVudGlyZWx5IGZvciBob3cgdGhpcywgSSwgdHVybmVkIG91dC4gSSBjb3VsZOKAmXZlIGhlbGQgb24gdG8geW91IGhhcmRlciwgSSBjb3VsZOKAmXZlIGluc2lzdGVkIGZvciB5b3UgdG8gc3RheSwgSSBjb3VsZOKAmXZlIGRvbmUgbW9yZSB0byBrZWVwIHlvdSBmcm9tIGdvaW5nIGF3YXkuIFRvIHRoaXMgZGF5LCBJIHN0aWxsIGhhdmUgZHJlYW1z4oCmIG5pZ2h0bWFyZXMgb2YgdGhlIGRheSB3aGVuIEkgc2F0IHRoZXJlIGhlbHBsZXNzbHkgd2F0Y2hpbmcgeW91IHdhbGsgb3V0IG9mIG15IGxpZmUuIA=="
 cipher_type = 5
 solved_content = "I don't blame you entirely for how this turned out. I still have nightmares of watching you walk out of my life."
 can_decode = true
@@ -528,7 +538,7 @@ script = ExtResource("1_p77w3")
 file_id = "cipher_letter_pt07"
 filename = "letter_pt07.enc"
 category = 4
-content = "8K_\\bE+L/6BPDN1Ch7^1ATAo*Bl7I&+F.mJ+DG^9B5_^!+D>=pCij>A..."
+content = "8K_\\bE+L/6BPDN1Ch7^1ATAo*Bl7I&+F.mJ+DG^9B5_^!+D>=pCij>A+DGF1H#IgJ@<,p%Eb/ZiBl7Q+FD,B0/0IM,@;R-+Ec5Dq@Vg<4@<<W6BOr<*DeX*2+E(j7DJpY<ATW'8DD!&5BOQ!oG%G\\:8`G8gD'37rDfp.EFDi:4D]it=+D>2,AKYN%DIjr)F!+m6@s)U)Bl7@$Bl@l3De:,6BOr<.BPD?sF!+'6J=1Rl+C\\nnDBO%7Ec6)5BHVA7+D,&&/g*_.C3=T>+EqO@BHUo*EZfXGFWbdE+D>2,AKYGnASrW-DfTD3E,oN2ASuT4Bl5&1Gp$p;An<S;6uO2jDId=!F*(i.A1Sip+CoD.iddG=+C].qD.Oi8Dfm16DKKT5AScW7AoD]4BQ&);FD,B0/0IM8+EVaHDIm?$Dfp.S+A!\\cDfol,iddG?AKYYtCh+Z,DBO%>+F.mJ+D>2(A7]d4+A!\\cDfol,iddG?AKY])F(o];ARloqDfQtGDfm1ED]j+C@<jCH8K_M]F_kUJJ=1Rl+CoD.AKYi.Eb-A8D]ih,AT/c;Dfm17Ec5e;B5_L%B-:W,@<jIJ<,Wn$BPDN1A79a7+A!\\sFD5Q-+D>2,AKYN(ARTFsiddmKDJ<`sFDYH,ATJu4Afu2/AKYMlGp%<EASrV^+ELt5+EV:.Eb-A,ASc=%ATMp/Gp%<>FCSuuDJ();Dfm1H@;K^%Dfp.EDe:,/Gp$p;An<R"
 cipher_type = 6
 solved_content = "I used to resent you, but I realized you too were grieving. Her passing broke me, but I couldn't imagine losing the love of your life."
 can_decode = true

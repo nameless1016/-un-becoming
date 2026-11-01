@@ -11,7 +11,7 @@ var collected_files: Dictionary = {}
 var database: FileDatabase = preload("res://globals/Meta OS/File System/master_file_database.tres")
 
 # Command IDs: 1=Interpret, 2=Rearrange, 3=Decode, 4=Execute, 5=Intervene
-var unlocked_commands: Dictionary = { 1: true, 2: false, 3: false, 4: false, 5: false }
+var unlocked_commands: Dictionary = { 1: true, 2: false, 3: false, 4: true, 5: false }
 
 
 
@@ -22,6 +22,7 @@ var allow_keybinds: bool = false
 
 
 func _ready() -> void:
+	file_hard()
 	file_system_ui = FileSystemUI.new()
 	add_child(file_system_ui)
 
@@ -63,6 +64,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			KEY_ESCAPE:
 				SoundBank.play_sfx("ui_click")
 				pause_menu.toggle_pause()
+
+
+# THIS IS FOR SUBMISSION TO GAME JAM, HARDCODING SOME FILES SO PEOPLE CAN READ STUFF ON THEIR OWN
+# func name idea is by JJ
+func file_hard() -> void:
+	obtain_file_by_id("item_hairpin")
+	obtain_file_by_id("item_notebook")
+	obtain_file_by_id("about_myself")
+	obtain_file_by_id("about_blaire")
+	obtain_file_by_id("about_the_order")
+	obtain_file_by_id("about_apartment")
+	obtain_file_by_id("about_ghost_machine")
+	obtain_file_by_id("cipher_photo_piece_03")
+	obtain_file_by_id("cipher_photo_piece_04")
+	obtain_file_by_id("cipher_letter_pt06")
+	obtain_file_by_id("cipher_letter_pt07")
 
 
 ## Unlocks a terminal command as the story progresses

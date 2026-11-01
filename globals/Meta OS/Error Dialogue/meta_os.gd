@@ -22,6 +22,7 @@ func show_dialog(title: String, message: String, buttons: Array[String], icon: V
 		# If the player pressed the X button, verify whether to punish or exit.
 		if action == "__CLOSE_X__":
 			if buttons.is_empty():
+				SoundBank.play_sfx("ui_back")
 				return action
 
 			var punish_win: NativeErrorWindow = window_scene.instantiate() as NativeErrorWindow
@@ -29,6 +30,7 @@ func show_dialog(title: String, message: String, buttons: Array[String], icon: V
 			punish_win.setup("", "Clicking away doesn't do you any favors.", ["OK"], false)
 			await punish_win.closed
 		else:
+			SoundBank.play_sfx("ui_back")
 			return action
 
 	return ""

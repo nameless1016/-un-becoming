@@ -85,11 +85,11 @@ func change_music_sync(track_name: String, crossfade_time: float = 2.0) -> void:
 	for i in range(new_track.stems.size()):
 		var player = AudioStreamPlayer.new()
 		player.stream = new_track.stems[i]
-		player.volume_db = -80.0 
-		player.bus = "Music" 
+		player.volume_db = -80.0
+		player.bus = "Music"
 
 		add_child(player)
-		
+
 		# CRITICAL: Start playing at the exact timestamp of the previous track
 		player.play(sync_time)
 		active_players.append(player)

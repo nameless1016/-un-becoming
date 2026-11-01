@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvdebg5e4cm6s" path="res://objects/props/prop_bookshelf.tscn" id="5_m02yc"]
 [ext_resource type="PackedScene" uid="uid://bw1anrfqs3mwn" path="res://objects/props/prop_tv_desk.tscn" id="6_onk05"]
 [ext_resource type="PackedScene" uid="uid://bnfoyw5ep8ru5" path="res://objects/props/prop_drawer.tscn" id="7_0qyie"]
+[ext_resource type="Script" uid="uid://brpwlvfjbisqu" path="res://actors/Interactables/prop_television.gd" id="7_vsnan"]
 [ext_resource type="PackedScene" uid="uid://doe47vidr7yl0" path="res://objects/props/prop_table.tscn" id="8_pwynn"]
 [ext_resource type="PackedScene" uid="uid://553fms505acn" path="res://objects/props/prop_back_table.tscn" id="9_xinkq"]
 [ext_resource type="PackedScene" uid="uid://ccyr05igjc6vq" path="res://objects/props/prop_back_small_table.tscn" id="10_4tmfw"]
@@ -235,6 +236,7 @@ position = Vector2(115, 280)
 
 [node name="PropComputerDesk" parent="Props" unique_id=1170852200 instance=ExtResource("6_onk05")]
 position = Vector2(409, 86)
+script = ExtResource("7_vsnan")
 can_interact = false
 
 [node name="Shelf1" type="Sprite2D" parent="Props" unique_id=178304780]

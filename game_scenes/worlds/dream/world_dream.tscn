@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cocc0hqxbsohc" path="res://actors/Interactables/exe_pickup.gd" id="7_tlpvg"]
 [ext_resource type="Texture2D" uid="uid://c7gwxvsed7qhp" path="res://game_scenes/worlds/dream/exe_file.png" id="8_3ajys"]
 [ext_resource type="Texture2D" uid="uid://dy6wk760rhce3" path="res://game_assets/world/world.png" id="9_3ajys"]
+[ext_resource type="FontFile" uid="uid://bp72ijrsey0s3" path="res://game_assets/fonts/Space Mono/SpaceMono-Italic.ttf" id="10_hu1q4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_no8is"]
 texture = ExtResource("1_sadat")
@@ -382,3 +383,14 @@ shape = SubResource("RectangleShape2D_hu1q4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Exe_File" unique_id=1625696269]
 texture = ExtResource("8_3ajys")
+
+[node name="Label" type="Label" parent="." unique_id=1413531222]
+offset_left = 154.0
+offset_top = -920.0
+offset_right = 478.0
+offset_bottom = -893.0
+theme_override_fonts/font = ExtResource("10_hu1q4")
+theme_override_font_sizes/font_size = 8
+text = "Execute it. Go to your file system (Q), find the file, click
+Command or press 'T', then execute."
+horizontal_alignment = 1
