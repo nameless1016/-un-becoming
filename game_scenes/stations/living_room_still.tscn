@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://systems/Point And Click/point_and_click_scene.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://systems/Point And Click/hotspot.tscn" id="2_hotspot"]
+[ext_resource type="Texture2D" path="res://game_assets/point_and_click/layouts/apartment_living_room.png" id="3_layout"]
+
+[node name="LivingRoomStill" instance=ExtResource("1_base")]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("3_layout")
+
+[node name="Hotspot_Clock" parent="Hotspots" index="0" instance=ExtResource("2_hotspot")]
+position = Vector2(109, 93)
+hotspot_name = "Clock"
+dialogue_timeline = "a1_clock"
+size = Vector2(30, 36)
+label_offset = Vector2(5, 31)
+show_placeholder = false
+
+[node name="Hotspot_Television" parent="Hotspots" index="1" instance=ExtResource("2_hotspot")]
+position = Vector2(403, 155)
+hotspot_name = "Television"
+interaction_type = 1
+dialogue_timeline = "a1_television"
+size = Vector2(121, 64)
+label_offset = Vector2(-4, 5)
+show_placeholder = false
+
+[node name="Hotspot_Notebook" parent="Hotspots" index="2" instance=ExtResource("2_hotspot")]
+position = Vector2(281, 212)
+hotspot_name = "Notebook"
+interaction_type = 1
+dialogue_timeline = "a1_notebook"
+size = Vector2(40, 24)
+label_offset = Vector2(-5, 17)
+show_placeholder = false
+
+[node name="Hotspot_Unknown" parent="Hotspots" index="3" instance=ExtResource("2_hotspot")]
+position = Vector2(377, 256)
+hotspot_name = "?"
+dialogue_timeline = "a1_living_unknown"
+size = Vector2(50, 24)
+label_offset = Vector2(-2, -8)
+show_placeholder = false
+
+[node name="Hotspot_Sofa" parent="Hotspots" index="4" instance=ExtResource("2_hotspot")]
+position = Vector2(140, 280)
+hotspot_name = "Sofa"
+dialogue_timeline = "a1_sofa"
+size = Vector2(200, 150)
+label_offset = Vector2(-28, -32)
+show_placeholder = false

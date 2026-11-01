@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://d1wugnxskesgt" path="res://actors/Interactables/npc.gd" id="8_npc"]
 [ext_resource type="Script" uid="uid://o1wcxwd8gcxy" path="res://systems/Scripted Movement/player_path.gd" id="10_mfyfq"]
 [ext_resource type="Script" uid="uid://5p6uxfnxheuo" path="res://actors/Interactables/travel_npc.gd" id="14_travel"]
+[ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="40_still"]
+[ext_resource type="Script" path="res://actors/player/ghost/ghost_swap.gd" id="41_swap"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7fms"]
 atlas = ExtResource("1_l7fms")
@@ -354,3 +356,16 @@ shape = SubResource("RectangleShape2D_4kxuq")
 
 [node name="PlayerBlaire" parent="." unique_id=240714517 instance=ExtResource("3_m7ng0")]
 position = Vector2(432, 256)
+
+[node name="PointsOfInterest" type="Node2D" parent="."]
+
+[node name="Passengers" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(232, 188)
+script = ExtResource("40_still")
+station_scene = "res://game_scenes/stations/bus_still.tscn"
+display_name = "Passengers"
+body_size = Vector2(24, 12)
+show_placeholder = false
+
+[node name="GhostSwap" type="Node" parent="."]
+script = ExtResource("41_swap")

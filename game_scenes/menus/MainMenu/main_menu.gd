@@ -1,15 +1,16 @@
 extends Control
 ## The main menu, styled after the Windows XP login screen:
 ## title -> "click your username" -> "Welcome / loading files..." -> the game.
+## The very first time, Start goes straight into the intro instead (see intro_scene).
 ## Settings has General (volume, reset), Viewport (resolution, window mode)
 ## and Controls (rebinding). Quit and Reset ask through a DesktopPopup, which
 ## opens as its own window on the player's desktop.
 
 @export_file("*.tscn") var next_level_path: String
-## Set by the Act 0 cutscene once it has played.
-const INTRO_SEEN_FLAG := "act_0_seen"
+## Saved by the intro when it ends (when the player takes control of the ghost).
+const INTRO_SEEN_FLAG := "intro_seen"
 
-## Plays on Start until the save says it was seen (Act 0). Empty: skip straight to the game.
+## Where Start goes until the intro has been played (Act 0). Empty: always the usual flow.
 @export_file("*.tscn") var intro_scene: String = "res://game_scenes/cutscenes/act_0/act_0_cutscene.tscn"
 ## Blaire's silhouette behind the title (from Meta OS). Skipped if the file isn't there.
 @export_file("*.png") var silhouette_path: String = "res://globals/Meta OS/File System/blaire_silhouette.png"
@@ -61,7 +62,7 @@ func _ready() -> void:
 	if ResourceLoader.exists(silhouette_path):
 		_silhouette.texture = load(silhouette_path)
 
-	_start_button.pressed.connect(_show_screen.bind(_user_screen))
+	_start_button.pressed.connect(_on_start_pressed)
 	_settings_button.pressed.connect(_open_settings)
 	_quit_button.pressed.connect(_ask_quit)
 	%UserBackButton.pressed.connect(_show_screen.bind(_title_screen))
@@ -170,16 +171,30 @@ func _start_game() -> void:
 		return
 	# goes to the saved spot, or the start point if there's no save yet
 	SaveManager.fallback_scene = next_level_path
-	# Act 0 plays until a save says it was seen. Saves from before Act 0 existed
-	# don't have the flag, so they get it too.
-	var seen_intro: bool = SaveManager.has_save() and SaveManager.load_game() and SaveManager.get_flag(INTRO_SEEN_FLAG)
-	if not intro_scene.is_empty() and not seen_intro:
-		GameManager.load_next_level(intro_scene)
-	elif SaveManager.has_save():
+	if SaveManager.has_save():
 		SaveManager.continue_game()
 	else:
 		SaveManager.new_game()
 	FileManager.allow_keybinds = false
+
+
+## The first time, Start skips the username and welcome screens and goes straight
+## into the intro (Act 0 onwards). After the intro has been played, it's the usual flow.
+func _on_start_pressed() -> void:
+	if _busy:
+		return
+	if intro_scene.is_empty() or _has_seen_intro():
+		_show_screen(_user_screen)
+		return
+	_busy = true
+	SaveManager.fallback_scene = next_level_path
+	GameManager.load_next_level(intro_scene)
+
+
+## The intro saves this flag when it ends. Saves from before the intro existed
+## don't have it, so those players get the intro too.
+func _has_seen_intro() -> bool:
+	return SaveManager.has_save() and SaveManager.load_game() and SaveManager.get_flag(INTRO_SEEN_FLAG)
 
 
 func _refresh_tile() -> void:

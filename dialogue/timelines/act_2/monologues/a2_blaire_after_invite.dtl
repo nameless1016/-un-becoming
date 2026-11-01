@@ -1,8 +1,13 @@
 # ACT 2 · Classroom · Blaire monologue after the invite scene, typing to her online group.
 # Leads into Act 3, where the group chat is revealed as "The Order". Don't name it here.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Happy"]
 Blaire: [i]they said yes!!! all three of them!!![/i]
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: [i]friday, 8pm. I'll send them the address you gave me.[/i]
+update Blaire [extra_data="set Expression/Happy"]
 Blaire: [i]thank you for helping me. seriously. I don't know what I'd do without you guys.[/i]
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: [pause=0.4]Someone's already typing back.
+leave Blaire [animation="Fade Out"]
 Ghost: She's smiling. A real one, this time.
 Ghost: [pause=0.3]So why do I feel like I should stop her?
