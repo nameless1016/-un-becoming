@@ -50,15 +50,18 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not allow_keybinds: return
 	if event is InputEventKey and event.pressed and not event.is_echo():
-		SoundBank.play_sfx("ui_click")
 		match event.keycode:
 			KEY_Q:
+				SoundBank.play_sfx("ui_click")
 				file_system_ui.toggle_filesystem()
 			KEY_T:
+				SoundBank.play_sfx("ui_click")
 				file_system_ui.toggle_terminal()
 			KEY_C:
+				SoundBank.play_sfx("ui_click")
 				calendar_win.toggle_calendar()
 			KEY_ESCAPE:
+				SoundBank.play_sfx("ui_click")
 				pause_menu.toggle_pause()
 
 

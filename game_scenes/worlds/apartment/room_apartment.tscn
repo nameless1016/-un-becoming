@@ -163,10 +163,10 @@ script = ExtResource("1_f07qk")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=609430064]
 z_index = -10
-offset_left = -540.0
-offset_top = 166.0
-offset_right = 1027.0
-offset_bottom = 710.0
+offset_left = -788.0
+offset_top = -330.0
+offset_right = 1224.0
+offset_bottom = 995.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1264073200]
