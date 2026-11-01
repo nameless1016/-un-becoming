@@ -1,5 +1,10 @@
 # ACT 1 · Apartment dining room · Blaire monologue over breakfast. Ties into the fridge interactable.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Happy"]
 Blaire: They restocked the fridge again. Tuesday's container even has the little egg in it.
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: I should say thank you properly. In person, someday.
+update Blaire [extra_data="set Expression/Thinking"]
 Blaire: [pause=0.3]Do they even do "in person"?
+update Blaire [extra_data="set Expression/Reassure"]
 Blaire: Doesn't matter. They're here. That's what matters.
+leave Blaire [animation="Fade Out"]

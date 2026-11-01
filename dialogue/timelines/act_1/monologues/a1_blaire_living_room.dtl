@@ -1,4 +1,8 @@
 # ACT 1 · Apartment living room · Blaire monologue, plays when the ghost enters the living room.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Thinking"]
 Blaire: Keys, ID, phone. Keys, ID, phone.
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: [i]Good morning everyone![/i] [pause=0.2]Okay, I'll post that on the bus.
+update Blaire [extra_data="set Expression/Happy"]
 Blaire: They always answer. Even this early. Nobody at school answers this early.
+leave Blaire [animation="Fade Out"]

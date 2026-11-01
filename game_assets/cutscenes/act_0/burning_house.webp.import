@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkepsflwo578p"
-path="res://.godot/imported/placeholder_home.png-44176f8254dbc64ce1eae946d8dd0f14.ctex"
+uid="uid://dvlmdftceljk1"
+path="res://.godot/imported/burning_house.webp-b37d3611e5423c2d43823c566ae27ba7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_assets/cutscenes/act_0/placeholder_home.png"
-dest_files=["res://.godot/imported/placeholder_home.png-44176f8254dbc64ce1eae946d8dd0f14.ctex"]
+source_file="res://game_assets/cutscenes/act_0/burning_house.webp"
+dest_files=["res://.godot/imported/burning_house.webp-b37d3611e5423c2d43823c566ae27ba7.ctex"]
 
 [params]
 

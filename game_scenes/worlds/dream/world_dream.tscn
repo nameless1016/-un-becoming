@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c7gwxvsed7qhp" path="res://game_scenes/worlds/dream/exe_file.png" id="8_3ajys"]
 [ext_resource type="Texture2D" uid="uid://dy6wk760rhce3" path="res://game_assets/world/world.png" id="9_3ajys"]
 [ext_resource type="FontFile" uid="uid://bp72ijrsey0s3" path="res://game_assets/fonts/Space Mono/SpaceMono-Italic.ttf" id="10_hu1q4"]
+[ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="20_still"]
+[ext_resource type="Script" path="res://game_scenes/cutscenes/act_1/dream_area_director.gd" id="21_director"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_no8is"]
 texture = ExtResource("1_sadat")
@@ -383,6 +385,18 @@ shape = SubResource("RectangleShape2D_hu1q4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Exe_File" unique_id=1625696269]
 texture = ExtResource("8_3ajys")
+
+[node name="GhostMachinePoint" type="Area2D" parent="."]
+position = Vector2(320, -706)
+script = ExtResource("20_still")
+interact_radius = 30.0
+display_name = "???"
+body_size = Vector2(60, 20)
+timeline = "a1_dream_machine"
+show_placeholder = false
+
+[node name="DreamAreaDirector" type="Node" parent="."]
+script = ExtResource("21_director")
 
 [node name="Label" type="Label" parent="." unique_id=1413531222]
 offset_left = 154.0

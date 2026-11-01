@@ -1,22 +1,21 @@
 [gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://game_scenes/cutscenes/act_0/act_0_cutscene.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/placeholder_home.png" id="2_home"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/burning_house.webp" id="2_home"]
+[ext_resource type="Shader" path="res://vfx/shaders/heat_haze.gdshader" id="9_haze"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/blaire_eye.webp" id="10_eye"]
 [ext_resource type="Shader" path="res://vfx/shaders/ember_lines.gdshader" id="3_ember"]
-[ext_resource type="Texture2D" path="res://globals/Meta OS/File System/blaire_silhouette.png" id="4_silhouette"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/blaire_back_silhouette.png" id="4_silhouette"]
 [ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/placeholder_blaire_concept.png" id="5_concept"]
 [ext_resource type="AudioStream" path="res://sound/sfx/loop_fire.mp3" id="6_fire"]
 [ext_resource type="Shader" path="res://vfx/shaders/screen_glitch.gdshader" id="7_glitch"]
+[ext_resource type="Theme" path="res://game_scenes/menus/MainMenu/menu_theme.tres" id="8_theme"]
 
 [sub_resource type="ShaderMaterial" id="HouseMaterial"]
-shader = ExtResource("3_ember")
-shader_parameter/dark_color = Color(0.07, 0.04, 0.08, 1)
-shader_parameter/line_color = Color(1, 0.36, 0.24, 1)
-shader_parameter/line_boost = 2.5
-shader_parameter/sway_speed = 1.4
-shader_parameter/sway_strength = 0.003
-shader_parameter/noise_scale = 18.0
-shader_parameter/flicker = 0.25
+shader = ExtResource("9_haze")
+shader_parameter/sway_speed = 1.3
+shader_parameter/sway_strength = 0.004
+shader_parameter/noise_scale = 14.0
 
 [sub_resource type="Gradient" id="GlowGradient"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -108,12 +107,14 @@ scale_amount_min = 1.0
 scale_amount_max = 2.0
 color_ramp = SubResource("EmberGradient")
 
-[node name="Silhouette" type="Sprite2D" parent="WideShot"]
+[node name="Silhouette" type="TextureRect" parent="WideShot"]
 texture_filter = 2
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(320, 247)
-scale = Vector2(0.16, 0.16)
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
 texture = ExtResource("4_silhouette")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="FaceShot" type="Node2D" parent="."]
 
@@ -134,6 +135,19 @@ mouse_filter = 2
 texture = SubResource("VignetteTexture")
 expand_mode = 1
 
+[node name="EyeShot" type="Node2D" parent="."]
+visible = false
+
+[node name="Eye" type="TextureRect" parent="EyeShot"]
+texture_filter = 2
+offset_right = 640.0
+offset_bottom = 360.0
+pivot_offset = Vector2(320, 180)
+mouse_filter = 2
+texture = ExtResource("10_eye")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="FireLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fire")
 bus = &"SFX"
@@ -150,6 +164,20 @@ material = SubResource("GlitchMaterial")
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="GlitchLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme = ExtResource("8_theme")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+bbcode_enabled = true
+text = "[center][b][lb]un[rb][/b][color=#c94a4a][i][s]becoming[/s][/i][/color].exe[/center]"
+scroll_active = false
 
 [node name="Flash" type="ColorRect" parent="GlitchLayer"]
 offset_right = 640.0

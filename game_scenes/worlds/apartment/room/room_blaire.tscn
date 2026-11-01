@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="13_0vyqh"]
 [ext_resource type="Script" uid="uid://cn20j14pfw06u" path="res://actors/Utilities/scene_door.gd" id="14_door"]
 [ext_resource type="Script" uid="uid://4cwis7paj21b" path="res://actors/Utilities/spawn_point.gd" id="15_spawn"]
+[ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="16_still"]
+[ext_resource type="Script" path="res://game_scenes/worlds/apartment/room/room_intro.gd" id="17_intro"]
+[ext_resource type="Script" path="res://systems/Scripted Movement/player_path.gd" id="18_path"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08jht"]
 texture = ExtResource("1_yq4q0")
@@ -197,3 +200,29 @@ shape = SubResource("RectangleShape2D_exit")
 position = Vector2(352, 192)
 script = ExtResource("15_spawn")
 spawn_name = "FromApartment"
+
+[node name="PointsOfInterest" type="Node2D" parent="."]
+
+[node name="Bed" type="Area2D" parent="PointsOfInterest"]
+position = Vector2(300, 130)
+script = ExtResource("16_still")
+station_scene = "res://game_scenes/stations/bedroom_still.tscn"
+display_name = "Bed"
+body_size = Vector2(28, 32)
+show_placeholder = false
+
+[node name="BlaireExitPath" type="Node" parent="."]
+script = ExtResource("18_path")
+autostart = false
+start_delay = 0.0
+end_facing = Vector2(1, 0)
+
+[node name="Marker1" type="Marker2D" parent="BlaireExitPath"]
+position = Vector2(330, 182)
+
+[node name="Marker2" type="Marker2D" parent="BlaireExitPath"]
+position = Vector2(356, 192)
+
+[node name="Intro" type="Node" parent="." node_paths=PackedStringArray("exit_path")]
+script = ExtResource("17_intro")
+exit_path = NodePath("../BlaireExitPath")

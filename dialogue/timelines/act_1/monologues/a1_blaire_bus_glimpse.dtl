@@ -1,7 +1,13 @@
 # ACT 1 · Bus still · POI: Blaire's "glimpse". Hearing her thoughts on the way to school.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Smile"]
 Blaire: [i]The group says I'm braver than I think I am.[/i]
+update Blaire [extra_data="set Expression/Happy"]
 Blaire: [i]They found the house for me. Old, empty, "perfect for a first adventure." They said my friends will love it.[/i]
+update Blaire [extra_data="set Expression/Thinking"]
 Blaire: [i]My friends. I hope they still think of me that way.[/i]
+update Blaire [extra_data="set Expression/Pout"]
 Blaire: [i]Last time I invited them somewhere, they said they were busy. All three of them. Same night.[/i]
+update Blaire [extra_data="set Expression/Reassure"]
 Blaire: [i]It's different this time. I have a plan this time.[/i]
+leave Blaire [animation="Fade Out"]
 Ghost: She's rehearsing. She's been rehearsing this for days.

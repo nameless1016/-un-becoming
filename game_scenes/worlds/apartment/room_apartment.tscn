@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://4cwis7paj21b" path="res://actors/Utilities/spawn_point.gd" id="21_spawn"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="22_bounds"]
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="23_minimap"]
+[ext_resource type="Script" uid="uid://b5di5bbmrgh5l" path="res://systems/Point And Click/still_point.gd" id="30_still"]
+[ext_resource type="Script" uid="uid://x1ym3a18yuyy" path="res://actors/player/ghost/ghost_swap.gd" id="31_swap"]
 
 [sub_resource type="Gradient" id="Gradient_1negg"]
 
@@ -426,6 +428,33 @@ target_scene = "uid://ejtcbfo4lt16"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor" unique_id=155651765]
 shape = SubResource("RectangleShape2D_frontdoor")
+
+[node name="PointsOfInterest" type="Node2D" parent="." unique_id=1081526294]
+
+[node name="Fridge" type="Area2D" parent="PointsOfInterest" unique_id=1989127067]
+position = Vector2(350, 268)
+script = ExtResource("30_still")
+show_placeholder = false
+station_scene = "res://game_scenes/stations/kitchen_still.tscn"
+display_name = "Fridge"
+interact_radius = 26.0
+solid = false
+body_size = Vector2(24, 30)
+glow_enabled = false
+
+[node name="LivingRoom" type="Area2D" parent="PointsOfInterest" unique_id=1238896789]
+position = Vector2(411, 150)
+script = ExtResource("30_still")
+show_placeholder = false
+station_scene = "res://game_scenes/stations/living_room_still.tscn"
+display_name = "Living room"
+interact_radius = 26.0
+solid = false
+body_size = Vector2(40, 20)
+glow_enabled = false
+
+[node name="GhostSwap" type="Node" parent="." unique_id=1755356601]
+script = ExtResource("31_swap")
 
 [node name="RoomBounds" type="Node2D" parent="." unique_id=8495226]
 position = Vector2(-48, 0)

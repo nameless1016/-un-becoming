@@ -74,6 +74,8 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	# Leaving mid-dialogue: stop Dialogic so it doesn't keep running headless.
 	var dialogic := _get_dialogic()
+	if dialogic and dialogic.signal_event.is_connected(StoryUnlocks.handle):
+		dialogic.signal_event.disconnect(StoryUnlocks.handle)
 	if dialogic and not _current_timeline.is_empty():
 		if dialogic.timeline_ended.is_connected(_on_timeline_ended):
 			dialogic.timeline_ended.disconnect(_on_timeline_ended)
@@ -133,6 +135,9 @@ func play_dialogue(timeline: String) -> bool:
 	_current_timeline = timeline
 	dialogue_started.emit(timeline)
 	dialogic.timeline_ended.connect(_on_timeline_ended, CONNECT_ONE_SHOT)
+	# Pick-ups and unlocks in the dialogue go to RJ's file system (see StoryUnlocks).
+	if not dialogic.signal_event.is_connected(StoryUnlocks.handle):
+		dialogic.signal_event.connect(StoryUnlocks.handle)
 
 	# Dialogic adds its layout to the scene root unless one already exists.
 	# Loading it ourselves puts it in DialogueLayer, so it's freed with this scene.
@@ -170,6 +175,9 @@ func _on_exit_button_hovered() -> void:
 
 
 func _on_timeline_ended() -> void:
+	var dialogic := _get_dialogic()
+	if dialogic and dialogic.signal_event.is_connected(StoryUnlocks.handle):
+		dialogic.signal_event.disconnect(StoryUnlocks.handle)
 	var timeline := _current_timeline
 	_current_timeline = ""
 	dialogue_ended.emit(timeline)
