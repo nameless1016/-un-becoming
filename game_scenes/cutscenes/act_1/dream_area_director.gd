@@ -1,27 +1,21 @@
 extends Node
-## Runs Act 1's top-down dream area (PoorCoconut's world_dream): a short tutorial
-## hint, the "Obtained" pop-up when indoctrination.exe is picked up, and the way
-## back to the meadow for the machine's voice.
+## Our part of Act 1's top-down dream area (PoorCoconut's world_dream): a short
+## movement hint when the player arrives.
 ##
-## Executing indoctrination.exe should turn the dream into RJ's maze, which then
-## hands back to the meadow (DreamMeadow.resume_at_awakening). The maze can't
-## hand back yet (it quits the game when it ends), so for now picking the file up
-## goes straight back to the meadow after the pop-up.
+## The rest of the dream is the team's: the indoctrination.exe pickup shows its own
+## "Obtained" pop-up, executing it from the file system opens RJ's maze, and the
+## maze is meant to hand back to the meadow for the machine's voice
+## (DreamMeadow.resume_at_awakening). The maze doesn't hand back yet.
 
-const MEADOW := "res://game_scenes/cutscenes/act_1/dream_meadow.tscn"
 const HINT := "Move: WASD / Arrows   ·   Interact: E"
 const HINT_FONT := preload("res://game_assets/fonts/Space Mono/SpaceMono-Regular.ttf")
 
-## The indoctrination.exe pickup in the dream.
-@export var exe_pickup: Node
 @export var hint_hold: float = 5.0
 
 var _hint: Label
 
 
 func _ready() -> void:
-	if exe_pickup and exe_pickup.has_signal(&"collected"):
-		exe_pickup.collected.connect(_on_exe_collected)
 	_show_hint.call_deferred()
 
 
@@ -46,17 +40,3 @@ func _show_hint() -> void:
 	tween.tween_property(_hint, ^"modulate:a", 1.0, 0.8)
 	tween.tween_interval(hint_hold)
 	tween.tween_property(_hint, ^"modulate:a", 0.0, 0.8)
-
-
-func _on_exe_collected() -> void:
-	# The pickup adds the file right after this signal; wait a frame so it's there.
-	await get_tree().process_frame
-	var file_id: String = exe_pickup.get(&"file_id")
-	var file = FileManager.collected_files.get(file_id)
-	var file_name: String = file.filename if file else file_id
-	# Through MetaOS, the team's pop-up system.
-	await MetaOS.show_dialog("Obtained", file_name, ["CLOSE"], "txt")
-	await get_tree().create_timer(0.8).timeout
-	# Placeholder until the maze can hand back: straight to the machine's voice.
-	DreamMeadow.resume_at_awakening = true
-	GameManager.load_next_level(MEADOW)

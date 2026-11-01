@@ -17,13 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://dr1j1bev4ylem" path="res://game_assets/world/room/more_furniture.png" id="14_6jcrf"]
 [ext_resource type="Script" uid="uid://cn20j14pfw06u" path="res://actors/Utilities/scene_door.gd" id="20_door"]
 [ext_resource type="Script" uid="uid://4cwis7paj21b" path="res://actors/Utilities/spawn_point.gd" id="21_spawn"]
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://b5di5bbmrgh5l" path="res://systems/Point And Click/still_point.gd" id="30_still"]
-[ext_resource type="Script" uid="uid://x1ym3a18yuyy" path="res://actors/player/ghost/ghost_swap.gd" id="31_swap"]
-=======
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="22_bounds"]
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="23_minimap"]
->>>>>>> origin/staging
+[ext_resource type="Script" uid="uid://b5di5bbmrgh5l" path="res://systems/Point And Click/still_point.gd" id="30_still"]
+[ext_resource type="Script" uid="uid://x1ym3a18yuyy" path="res://actors/player/ghost/ghost_swap.gd" id="31_swap"]
 
 [sub_resource type="Gradient" id="Gradient_1negg"]
 
@@ -432,7 +429,6 @@ target_scene = "uid://ejtcbfo4lt16"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor" unique_id=155651765]
 shape = SubResource("RectangleShape2D_frontdoor")
 
-<<<<<<< HEAD
 [node name="PointsOfInterest" type="Node2D" parent="." unique_id=1081526294]
 
 [node name="Fridge" type="Area2D" parent="PointsOfInterest" unique_id=1989127067]
@@ -459,7 +455,7 @@ glow_enabled = false
 
 [node name="GhostSwap" type="Node" parent="." unique_id=1755356601]
 script = ExtResource("31_swap")
-=======
+
 [node name="RoomBounds" type="Node2D" parent="." unique_id=8495226]
 position = Vector2(-48, 0)
 script = ExtResource("22_bounds")
@@ -467,4 +463,3 @@ size = Vector2(544, 480)
 
 [node name="Minimap" type="CanvasLayer" parent="." unique_id=2131087971]
 script = ExtResource("23_minimap")
->>>>>>> origin/staging
