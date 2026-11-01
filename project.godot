@@ -84,7 +84,6 @@ directories/dtl_directory={
 "a1_living_unknown": "res://dialogue/timelines/act_1/apartment/a1_living_unknown.dtl",
 "a1_notebook": "res://dialogue/timelines/act_1/apartment/a1_notebook.dtl",
 "a1_picture_frame": "res://dialogue/timelines/act_1/apartment/a1_picture_frame.dtl",
-"a1_redacted_floor": "res://dialogue/timelines/act_1/apartment/a1_redacted_floor.dtl",
 "a1_sofa": "res://dialogue/timelines/act_1/apartment/a1_sofa.dtl",
 "a1_table": "res://dialogue/timelines/act_1/apartment/a1_table.dtl",
 "a1_television": "res://dialogue/timelines/act_1/apartment/a1_television.dtl",
