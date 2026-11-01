@@ -16,6 +16,10 @@ const INTRO_SEEN_FLAG := "intro_seen"
 @export_file("*.png") var silhouette_path: String = "res://globals/Meta OS/File System/blaire_silhouette.png"
 ## How long "loading files..." shows before the game starts, in seconds.
 @export var welcome_time: float = 2.5
+## Used by the pause menu. Only shows Settings, and "go back" closes it instead of going to the title
+@export var settings_only: bool = false
+
+signal closed
 
 const SCREEN_FADE := 0.2
 const RESOLUTIONS: Array[Vector2i] = [Vector2i(1920, 1080), Vector2i(1280, 720), Vector2i(960, 540)]
@@ -52,8 +56,9 @@ var _tile_tween: Tween
 
 
 func _ready() -> void:
-	MusicManager.change_music("title", 0)
-	
+	if not settings_only:
+		MusicManager.change_music("title", 0)
+
 	if ResourceLoader.exists(silhouette_path):
 		_silhouette.texture = load(silhouette_path)
 
@@ -61,7 +66,7 @@ func _ready() -> void:
 	_settings_button.pressed.connect(_open_settings)
 	_quit_button.pressed.connect(_ask_quit)
 	%UserBackButton.pressed.connect(_show_screen.bind(_title_screen))
-	%SettingsBackButton.pressed.connect(_show_screen.bind(_title_screen))
+	%SettingsBackButton.pressed.connect(_on_settings_back)
 	_user_tile.pressed.connect(_start_game)
 	for sig in [_user_tile.mouse_entered, _user_tile.mouse_exited, _user_tile.focus_entered, _user_tile.focus_exited]:
 		sig.connect(_refresh_tile.call_deferred)
@@ -84,7 +89,12 @@ func _ready() -> void:
 	_update_last_saved()
 	for screen in [_title_screen, _user_screen, _welcome_screen, _settings_screen]:
 		screen.hide()
-	_show_screen(_title_screen, false)
+	if settings_only:
+		# from the pause menu: no wiping the save in the middle of a game
+		%ResetGameButton.hide()
+		_open_settings(false)
+	else:
+		_show_screen(_title_screen, false)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -93,6 +103,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 	if _screen == _title_screen:
 		_ask_quit()
+	elif _screen == _settings_screen and settings_only:
+		closed.emit()
 	elif _screen == _user_screen or _screen == _settings_screen:
 		_show_screen(_title_screen)
 
@@ -131,10 +143,17 @@ func _focus_default(screen: Control) -> void:
 					tab.grab_focus()
 
 
-func _open_settings() -> void:
+func _open_settings(fade: bool = true) -> void:
 	_select_tab(0)
 	_sync_viewport_buttons()
-	_show_screen(_settings_screen)
+	_show_screen(_settings_screen, fade)
+
+
+func _on_settings_back() -> void:
+	if settings_only:
+		closed.emit()
+	else:
+		_show_screen(_title_screen)
 
 
 func _start_game() -> void:
@@ -156,6 +175,7 @@ func _start_game() -> void:
 		SaveManager.continue_game()
 	else:
 		SaveManager.new_game()
+	FileManager.allow_keybinds = false
 
 
 ## The first time, Start skips the username and welcome screens and goes straight
@@ -211,7 +231,7 @@ func _on_volume_changed() -> void:
 	SettingsManager.music_vol = _sliders[1].value
 	SettingsManager.sfx_vol = _sliders[2].value
 	SettingsManager.save_settings()
-	
+
 	#SoundBank.play_sfx("ui_hover")
 
 
@@ -223,14 +243,14 @@ func _on_resolution_pressed(index: int) -> void:
 	var area := DisplayServer.screen_get_usable_rect(DisplayServer.window_get_current_screen())
 	DisplayServer.window_set_position(area.position + (area.size - window_size) / 2)
 	_sync_viewport_buttons()
-	
+
 	SoundBank.play_sfx("ui_click")
 
 
 func _on_mode_pressed(index: int) -> void:
 	DisplayServer.window_set_mode(WINDOW_MODES[index])
 	_sync_viewport_buttons()
-	
+
 	SoundBank.play_sfx("ui_click")
 
 

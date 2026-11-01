@@ -1,37 +1,67 @@
+@tool
 class_name GameFile
 extends Resource
 
-# Resource container for files, notes, photos, and inventory items.
+## Data resource representing either a desktop folder file or an inventory item.
 
-# Enumeration for file categories.
-enum Category { ENTRY, ABOUT, PHOTO, ITEM, SECRET }
+enum Destination { FILE_SYSTEM, ITEM_DOCK }
+enum Category { ENTRY, ABOUT, PHOTO, EXECUTABLE, SECRET, ITEM }
 
-# Enumeration for cipher types.
-enum CipherType { NONE, ANAGRAM, CAESAR, BASE64, BINARY, INVERT_IMAGE }
+enum CipherType {
+	NONE,
+	REVERSED,
+	CAESAR,
+	VIGENERE,
+	BASE32,
+	BASE64,
+	ASCII85,
+	MORSE,
+	NIHILIST
+}
 
-@export var file_id: String = "file_001"
-@export var filename: String = "journal_01.txt"
+@export_group("Identification")
+@export var file_id: String = "file_001":
+	set(val):
+		file_id = val
+		_sync_inspector_name()
+
+@export var filename: String = "journal_01.txt":
+	set(val):
+		filename = val
+		_sync_inspector_name()
+
+@export var destination: Destination = Destination.FILE_SYSTEM
 @export var category: Category = Category.ENTRY
+@export var icon: Texture2D
+
+@export_group("Folder File Properties")
+@export_multiline var description: String = ""
 @export_multiline var content: String = "Default raw content."
 
-# Metadata shown in the item hover box on the right dock.
-@export var item_size: String = "17KB"
-@export var item_location: String = "bedroom"
+@export_group("Item Dock Properties")
+@export var item_size: String = "12KB"
+@export var item_location: String = "apartment"
+@export_multiline var short_description: String = ""
 
-# Cipher variables used by the terminal.
+@export_group("Cipher & Decryption")
 @export var cipher_type: CipherType = CipherType.NONE
+@export var cipher_key: String = ""
+@export var cipher_shift: int = 0
 @export_multiline var solved_content: String = ""
 @export var is_solved: bool = false
 
-# Ghost hint texts shown when selecting option 1 in the terminal.
+@export_group("Ghost Hints")
 @export_multiline var ghost_hint_unsolved: String = "It's encrypted. I can't read it yet."
 @export_multiline var ghost_hint_solved: String = "I remember this now."
 
-# Command permission switches.
-# If a switch is false, the terminal prints an error message.
 @export_group("Terminal Command Permissions")
 @export var can_interpret: bool = false
 @export var can_rearrange: bool = false
 @export var can_decode: bool = false
 @export var can_execute: bool = false
 @export var can_intervene: bool = false
+
+
+## Automatically sets Godot's built-in resource_name so the Inspector displays the file's name
+func _sync_inspector_name() -> void:
+	resource_name = "%s [%s]" % [filename, file_id]

@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://game_scenes/cutscenes/act_0/act_0_cutscene.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/burning_house.webp" id="2_home"]
 [ext_resource type="Shader" path="res://vfx/shaders/heat_haze.gdshader" id="9_haze"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/blaire_eye.webp" id="10_eye"]
 [ext_resource type="Shader" path="res://vfx/shaders/ember_lines.gdshader" id="3_ember"]
-[ext_resource type="Texture2D" path="res://globals/Meta OS/File System/blaire_silhouette.png" id="4_silhouette"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/blaire_back_silhouette.png" id="4_silhouette"]
 [ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/placeholder_blaire_concept.png" id="5_concept"]
 [ext_resource type="AudioStream" path="res://sound/sfx/loop_fire.mp3" id="6_fire"]
 [ext_resource type="Shader" path="res://vfx/shaders/screen_glitch.gdshader" id="7_glitch"]
@@ -106,12 +107,14 @@ scale_amount_min = 1.0
 scale_amount_max = 2.0
 color_ramp = SubResource("EmberGradient")
 
-[node name="Silhouette" type="Sprite2D" parent="WideShot"]
+[node name="Silhouette" type="TextureRect" parent="WideShot"]
 texture_filter = 2
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(320, 247)
-scale = Vector2(0.16, 0.16)
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
 texture = ExtResource("4_silhouette")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="FaceShot" type="Node2D" parent="."]
 
@@ -131,6 +134,19 @@ offset_bottom = 360.0
 mouse_filter = 2
 texture = SubResource("VignetteTexture")
 expand_mode = 1
+
+[node name="EyeShot" type="Node2D" parent="."]
+visible = false
+
+[node name="Eye" type="TextureRect" parent="EyeShot"]
+texture_filter = 2
+offset_right = 640.0
+offset_bottom = 360.0
+pivot_offset = Vector2(320, 180)
+mouse_filter = 2
+texture = ExtResource("10_eye")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="FireLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_fire")

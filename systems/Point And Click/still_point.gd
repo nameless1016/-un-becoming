@@ -9,10 +9,14 @@ extends PointAndClickTrigger
 ## - remembers where the player stood, so the still's Back button returns them there.
 ## Set [member body_size] to the furniture's footprint and [member interact_radius] to
 ## how close the player must stand.
+## With no station_scene but a [member timeline], it plays that dialogue in place
+## instead (for things that only get a comment), and the player stands still meanwhile.
 
 const KEY_FONT := preload("res://game_assets/fonts/Space Mono/SpaceMono-Bold.ttf")
 const LABEL_FONT := preload("res://game_assets/fonts/Space Mono/SpaceMono-Regular.ttf")
 
+## Dialogic timeline to play in place when there's no station_scene.
+@export var timeline: String = ""
 ## Draws a labelled outline where furniture art doesn't exist yet. Turn off once it does.
 @export var show_placeholder: bool = true:
 	set(value):
@@ -42,6 +46,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_interact(who: Node2D) -> void:
+	if station_scene == "" and timeline != "":
+		_comment(who)
+		return
 	if station_scene == "":
 		push_warning("%s has no station_scene set" % name)
 		return
@@ -49,6 +56,20 @@ func _on_interact(who: Node2D) -> void:
 	PointAndClickScene.return_position = who.global_position
 	PointAndClickScene.return_facing = who.get(&"CUR_DIR") if &"CUR_DIR" in who else Vector2.ZERO
 	GameManager.load_next_level(station_scene)
+
+
+func _comment(who: Node2D) -> void:
+	if Dialogic.current_timeline != null or not Dialogic.timeline_exists(timeline):
+		return
+	can_interact = false
+	var fsm := who.get_node_or_null(^"FSM")
+	if fsm:
+		fsm.process_mode = Node.PROCESS_MODE_DISABLED
+	Dialogic.start(timeline)
+	await Dialogic.timeline_ended
+	if is_instance_valid(fsm):
+		fsm.process_mode = Node.PROCESS_MODE_INHERIT
+	can_interact = true
 
 
 ## Coming back from a still: put the player where they stood when they opened it.

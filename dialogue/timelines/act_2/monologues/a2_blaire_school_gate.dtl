@@ -1,4 +1,8 @@
 # ACT 2 · School exterior · Blaire monologue at the gate before going in.
+join Blaire rightmost [animation="Fade In" extra_data="set Expression/Thinking"]
 Blaire: Three floors. Every classroom looks the same. I still almost walk into the wrong one sometimes.
+update Blaire [extra_data="set Expression/Smile"]
 Blaire: Mine's the one with the window that doesn't close all the way.
+update Blaire [extra_data="set Expression/Reassure"]
 Blaire: [pause=0.3]Go in. Say good morning. Then ask.
+leave Blaire [animation="Fade Out"]

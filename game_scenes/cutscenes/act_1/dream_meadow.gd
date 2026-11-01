@@ -1,3 +1,4 @@
+class_name DreamMeadow
 extends Node2D
 ## Act 1's dream meadow. It has two parts, with the top-down dream area between them:
 ##

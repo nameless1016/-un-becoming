@@ -29,7 +29,7 @@ signal dialogue_finished
 ## Display name used as a fallback speaker tag in dialogues.
 @export var display_name: String = ""
 ## Proximity radius required for the player to trigger an interaction.
-@export var interact_radius: float = 130.0
+@export var interact_radius: float = 32.0
 ## When true, spawns a static physics body to block player movement.
 @export var solid: bool = true
 ## Text glyph displayed inside the floating interaction prompt.
@@ -136,7 +136,7 @@ func make_solid_shape() -> Shape2D:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is PlayerTopDown or body.name == "PlayerTopDown":
+	if body is PlayerTopDown or body.name == "PlayerTopDown" or body.is_in_group("player"):
 		player = body
 		player_near = true
 		queue_redraw()

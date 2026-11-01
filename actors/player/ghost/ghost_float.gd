@@ -1,6 +1,6 @@
 extends Node
 ## Makes the ghost hover: bobs its sprite gently up and down.
-## The ghost's art is a placeholder (ghost_1 from the drive, front view only).
+## Uses ghost_sheet.png, drawn in the same layout as Blaire's sheet.
 
 @export var height: float = 1.5
 @export var period: float = 2.4

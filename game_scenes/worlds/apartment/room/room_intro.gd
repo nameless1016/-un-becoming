@@ -7,16 +7,17 @@ extends Node
 ## Once the intro has been seen, the room starts with the ghost in Blaire's place:
 ## she's already left for the day.
 
-const GHOST_SCENE := preload("res://actors/player/ghost/player_ghost.tscn")
 ## Saved when the player takes control of the ghost; the main menu checks it.
-const SEEN_FLAG := "intro_seen"
-const WALK_SPEED := 45.0
+const SEEN_FLAG := GhostSwap.SEEN_FLAG
 
 ## Set by the dream right before it loads this room.
 static var pending: bool = false
 
-## Blaire's way out, from below the bed to the door.
-@export var exit_path: Array[Vector2] = [Vector2(330, 182), Vector2(358, 192)]
+## Blaire's way out: a PlayerPath (Mike's scripted walking) whose markers lead from
+## the bed to just inside the door. Move the markers in the editor to change it.
+@export var exit_path: PlayerPath
+## Where Blaire is when she wakes up, beside the bed.
+@export var wake_spot: Vector2 = Vector2(300, 166)
 ## Where the ghost appears, beside the bed.
 @export var ghost_spot: Vector2 = Vector2(318, 162)
 
@@ -34,20 +35,20 @@ func _ready() -> void:
 
 func _play_intro() -> void:
 	var blaire := _room.get_node(^"PlayerBlaire") as Player
+	blaire.global_position = wake_spot
 	_set_points_enabled(false)
-	# She moves on her own: no input, no state machine.
-	blaire.get_node(^"FSM").process_mode = Node.PROCESS_MODE_DISABLED
 	await _wait(1.0)
-	for target in exit_path:
-		await _walk(blaire, target)
-	blaire.sprite.play(&"idle_right")
+	# She walks out on her own: PlayerPath drives her Scripted state, no input needed.
+	if exit_path:
+		exit_path.start()
+		await exit_path.finished
 	await create_tween().tween_property(blaire, ^"modulate:a", 0.0, 0.6).finished
 	# Out of the "player" group, so nothing (camera, points) looks for her any more.
 	blaire.remove_from_group(&"player")
 	blaire.visible = false
 	await _wait(1.5)
 
-	var ghost := _spawn_ghost(ghost_spot, blaire)
+	var ghost := GhostSwap.put_in(_room, ghost_spot, blaire)
 	ghost.get_node(^"FSM").process_mode = Node.PROCESS_MODE_DISABLED
 	await _flicker_in(ghost)
 	ghost.get_node(^"FSM").process_mode = Node.PROCESS_MODE_INHERIT
@@ -59,26 +60,7 @@ func _play_intro() -> void:
 func _swap_in_ghost() -> void:
 	var blaire := _room.get_node_or_null(^"PlayerBlaire") as Node2D
 	if blaire:
-		_spawn_ghost(blaire.global_position, blaire)
-
-
-## Adds the ghost, points the camera at it and removes [param replacing].
-func _spawn_ghost(at: Vector2, replacing: Node) -> Node2D:
-	var ghost := GHOST_SCENE.instantiate() as Node2D
-	ghost.global_position = at
-	_room.add_child(ghost)
-	var camera := _room.get_node_or_null(^"WorldCameraComponent")
-	if camera and &"player" in camera:
-		camera.set(&"player", ghost)
-	replacing.queue_free()
-	return ghost
-
-
-func _walk(body: Player, target: Vector2) -> void:
-	var step := target - body.global_position
-	body.CUR_DIR = Vector2(signf(step.x), 0) if absf(step.x) > absf(step.y) else Vector2(0, signf(step.y))
-	body.sprite.play(StringName("walk_" + body.get_facing_string()))
-	await create_tween().tween_property(body, ^"global_position", target, step.length() / WALK_SPEED).finished
+		GhostSwap.put_in(_room, blaire.global_position, blaire)
 
 
 ## Fades in unsteadily, like something that isn't quite here.

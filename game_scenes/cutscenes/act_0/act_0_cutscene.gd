@@ -10,9 +10,9 @@ extends Node2D
 ## fx:burning_start (fire sound + wide shot), fx:shot_face, fx:shot_closer
 ## (each one pushes the close-up in a step) and fx:glitch_start.
 ##
-## The burning house is the real illustration. The face is still a placeholder
-## (a crop of the character concept sheet); swap its texture when the close-ups
-## exist, and the shots and timing stay the same.
+## The burning house and the eye are the real illustrations. The face before the
+## eye is still a placeholder (a crop of the character concept sheet); swap its
+## texture when that close-up exists, and the shots and timing stay the same.
 
 signal finished
 
@@ -43,6 +43,8 @@ var _face_step: int = 0
 @onready var _wide: CanvasItem = $WideShot
 @onready var _face_shot: CanvasItem = $FaceShot
 @onready var _face: Sprite2D = $FaceShot/Face
+@onready var _eye_shot: CanvasItem = $EyeShot
+@onready var _eye: Control = $EyeShot/Eye
 @onready var _fire: AudioStreamPlayer = $FireLoop
 @onready var _glitch: ColorRect = $GlitchLayer/Glitch
 @onready var _flash: ColorRect = $GlitchLayer/Flash
@@ -124,10 +126,21 @@ func _on_dialogic_signal(argument: Variant) -> void:
 			tween.tween_property(_wide, ^"modulate:a", 0.0, 1.2)
 		"fx:shot_closer":
 			_face_step = mini(_face_step + 1, FACE_STEPS.size() - 1)
+			if _face_step == FACE_STEPS.size() - 1:
+				_cut_to_eye()
+				return
 			create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT) \
 				.tween_property(_face, ^"scale", Vector2.ONE * FACE_STEPS[_face_step], 0.9)
 		"fx:glitch_start":
 			create_tween().tween_method(_set_glitch, 0.0, 0.35, 1.5)
+
+
+## Hard cut from her face to her eye, which keeps creeping closer until the glitch.
+func _cut_to_eye() -> void:
+	_face_shot.visible = false
+	_eye.scale = Vector2.ONE
+	_eye_shot.visible = true
+	create_tween().tween_property(_eye, ^"scale", Vector2.ONE * 1.12, 8.0)
 
 
 ## The cutscene tears apart: full glitch, the fire cuts out, black, then error pop-ups.
@@ -137,6 +150,7 @@ func _break_down() -> void:
 	_fire.stop()
 	_wide.visible = false
 	_face_shot.visible = false
+	_eye_shot.visible = false
 	_set_glitch(0.0)
 	await _wait(1.2)
 	for error in ERRORS:

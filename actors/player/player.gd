@@ -3,8 +3,8 @@ class_name Player
 
 @export_category("PLAYER MOVEMENT")
 @export var MAX_SPEED : float = 80
-@export var ACCELERATION : float = 200
-@export var FRICTION : float = 400
+@export var ACCELERATION : float = INF
+@export var FRICTION : float = INF
 
 var CUR_DIR : Vector2 = Vector2.DOWN
 @onready var sprite: AnimatedSprite2D = %Sprite

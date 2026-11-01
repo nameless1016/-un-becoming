@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://10wwjccuxao3"]
+
+[ext_resource type="Texture2D" uid="uid://dr1j1bev4ylem" path="res://game_assets/world/room/more_furniture.png" id="1_yo14w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg7ot"]
+atlas = ExtResource("1_yo14w")
+region = Rect2(0, 40, 16, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fatgh"]
+radius = 5.0
+
+[node name="PropChair" type="StaticBody2D" unique_id=991210297]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2004338112]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_wg7ot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1270160899]
+position = Vector2(0, -5)
+rotation = -1.5707964
+shape = SubResource("CircleShape2D_fatgh")
