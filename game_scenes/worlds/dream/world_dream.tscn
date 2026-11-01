@@ -309,6 +309,7 @@ shape = SubResource("RectangleShape2D_3ajys")
 [node name="Exe_File" type="Area2D" parent="." unique_id=438409595]
 position = Vector2(322, -222)
 script = ExtResource("7_tlpvg")
+file_id = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exe_File" unique_id=1524603492]
 shape = SubResource("RectangleShape2D_hu1q4")
