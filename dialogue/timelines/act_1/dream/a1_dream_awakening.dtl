@@ -1,6 +1,7 @@
 # ACT 1 · Dream · Runs after the player executes the file near the ??? machine.
 # Lines are verbatim from the story brief. Speaker shows as "???".
 # The game should glitch the screen around this (shader/out-game layer); the text effects only add to it.
+# "W A K E  U P" comes right after, as an ERROR pop-up, not a line here (updated brief). The dream scene shows it.
 [signal arg="fx:glitch_start"]
 Unknown: [speed=0.08]Initializing...
 Unknown: [shake rate=20 level=6]OH BLAIRE. MY SWEET LITTLE BLAIRE.[/shake]
@@ -9,6 +10,5 @@ Unknown: YOU ARE NO LONGER FORCED TO ACT.
 Unknown: ALLOW ME TO TAKE CONTROL OF YOU.
 Unknown: ALLOW ME TO CHOOSE WHAT'S BEST FOR YOU.
 Unknown: [shake rate=30 level=10]THIS IS AN ORDER.[/shake]
-Unknown: [speed=0.2]W A K E  U P
 [signal arg="fx:glitch_end"]
 [signal arg="travel:apartment_bedroom"]

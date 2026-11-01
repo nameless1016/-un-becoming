@@ -29,6 +29,7 @@ func _ready() -> void:
 
 func _pressed() -> void:
 	is_listening = true
+	SoundBank.play_sfx("ui_beep")
 	text = "Press any key..."
 
 func _input(event: InputEvent) -> void:
@@ -43,6 +44,7 @@ func _input(event: InputEvent) -> void:
 		# Send the specific Slot Number (bind_index) to the Manager
 		SettingsManager.update_keybind(action_name, bind_index, event)
 		is_listening = false
+		SoundBank.play_sfx("ui_message")
 		get_viewport().set_input_as_handled()
 
 func update_button_text() -> void:

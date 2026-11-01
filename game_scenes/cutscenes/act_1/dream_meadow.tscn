@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://game_scenes/cutscenes/act_1/dream_meadow.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_1/placeholder_dream_meadow.webp" id="2_meadow"]
+[ext_resource type="Shader" path="res://vfx/shaders/screen_glitch.gdshader" id="3_glitch"]
+[ext_resource type="Texture2D" path="res://game_assets/point_and_click/layouts/apartment_bedroom.png" id="4_bedroom"]
+
+[sub_resource type="Gradient" id="PetalColors"]
+offsets = PackedFloat32Array(0, 0.3, 0.6, 1)
+colors = PackedColorArray(1, 0.9, 0.35, 1, 1, 0.6, 0.8, 1, 1, 1, 1, 1, 0.65, 0.85, 1, 1)
+
+[sub_resource type="Gradient" id="PetalFade"]
+offsets = PackedFloat32Array(0, 0.15, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.9, 1, 1, 1, 0.9, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="GlitchMaterial"]
+shader = ExtResource("3_glitch")
+shader_parameter/amount = 0.0
+
+[node name="DreamMeadow" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Black" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 2
+offset_right = 640.0
+offset_bottom = 360.0
+pivot_offset = Vector2(320, 180)
+scale = Vector2(1.08, 1.08)
+mouse_filter = 2
+texture = ExtResource("2_meadow")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Petals" type="CPUParticles2D" parent="."]
+position = Vector2(-20, 120)
+amount = 28
+lifetime = 9.0
+preprocess = 9.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 160)
+direction = Vector2(1, 0.2)
+spread = 20.0
+gravity = Vector2(2, 4)
+initial_velocity_min = 40.0
+initial_velocity_max = 75.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_min = 1.5
+scale_amount_max = 3.0
+color_ramp = SubResource("PetalFade")
+color_initial_ramp = SubResource("PetalColors")
+
+[node name="Bedroom" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Blurred" type="TextureRect" parent="Bedroom"]
+texture_filter = 2
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Sharp" type="TextureRect" parent="Bedroom"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 4
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+texture = ExtResource("4_bedroom")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="OverLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="LidTop" type="ColorRect" parent="OverLayer"]
+visible = false
+offset_right = 640.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LidBottom" type="ColorRect" parent="OverLayer"]
+visible = false
+offset_top = 180.0
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Glitch" type="ColorRect" parent="OverLayer"]
+visible = false
+material = SubResource("GlitchMaterial")
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Flash" type="ColorRect" parent="OverLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2

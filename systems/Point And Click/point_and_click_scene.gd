@@ -10,6 +10,11 @@ extends Node2D
 ##
 ## Hotspot positions are in the game's 640x360 viewport (the Background
 ## rect), so keep them inside it. Esc is left to the pause menu; Back leaves.
+##
+## Stills are illustrated, not pixel art: draw them at 1920x1080. Background
+## uses smooth (linear) filtering, unlike the project's pixel-art default, so
+## the full detail shows at the window's real resolution. A point in the
+## 1920x1080 art is at (x / 3, y / 3) in hotspot coordinates.
 
 signal hotspot_activated(hotspot: Hotspot)
 signal dialogue_started(timeline: String)
@@ -21,9 +26,16 @@ signal exit_requested
 const INPUT_COOLDOWN := 0.15
 const DIALOGUE_LOCK := &"dialogue"
 
-## Scene to go to when the player leaves (the top-down view). Leave empty to
-## only emit [signal exit_requested] and let a parent handle it.
+## Scene to go to when the player leaves (the top-down view). Leave empty to go
+## back to the room the still was opened from (see StillPoint); if there isn't
+## one, Back only emits [signal exit_requested].
 @export_file("*.tscn") var exit_scene: String = ""
+
+## Set by StillPoint when it opens a still: the room to return to, and where the
+## player stood and faced. StillPoint puts the player back when that room loads.
+static var return_scene: String = ""
+static var return_position: Variant = null
+static var return_facing: Vector2 = Vector2.ZERO
 
 ## True while anything holds an input lock: dialogue, an open window, or the
 ## short cooldown after either.
@@ -133,9 +145,10 @@ func play_dialogue(timeline: String) -> bool:
 
 func request_exit() -> void:
 	exit_requested.emit()
-	if not exit_scene.is_empty():
+	var target := exit_scene if not exit_scene.is_empty() else return_scene
+	if not target.is_empty():
 		# The template's transition + threaded loading, same as every other level change.
-		GameManager.load_next_level(exit_scene)
+		GameManager.load_next_level(target)
 
 
 ## What a hotspot click does. The default plays its dialogue_timeline.

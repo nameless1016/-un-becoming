@@ -2,7 +2,26 @@ extends Node
 
 #Store sound effects here...
 var sfx_dict : Dictionary = {
-	"test_sfx" : preload("res://sound/sfx/sfx_example.mp3")
+	"test_sfx" : preload("res://sound/sfx/sfx_example.mp3"),
+	
+	#UI SFX
+	"ui_accept" : preload("uid://kkq33t2qj2pj"),
+	"ui_back" : preload("uid://db0ar1oy86eft"),
+	"ui_beep" : preload("uid://qo4rh03www3a"), #???
+	"ui_click" : preload("uid://ob6u2rm8b6em"),
+	"ui_error" : preload("uid://8o0xxmy07je"),
+	"ui_hover" : preload("uid://bi5nkke62kvxd"),
+	"ui_message" : preload("uid://dsfru34v1obpv"),
+	"ui_open" : preload("uid://dhr5u1bxdi33b"),
+	"ui_sound" : preload("uid://bit75tt6qgv6g"), #???
+	
+	#Gameplay SFX
+	"bus_door" : preload("uid://bm1unho0vnint"),
+	"bus_going" : preload("uid://ljygubctxm6b"),
+	"grass1" : preload("uid://bhgmt3yikdj4h"),
+	"grass2" : preload("uid://c52xxx7hrd07m"),
+	"grass3" : preload("uid://njoatlyamxcj"),
+	"page_flip" : preload("uid://d3ok02oril5ap"),
 }
 
 #Here is an example:

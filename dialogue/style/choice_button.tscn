@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_choice"]
+[ext_resource type="Script" path="res://systems/Smooth Hover/hover_fade.gd" id="2_fade"]
+
+[node name="ChoiceButton" type="Button"]
+script = ExtResource("1_choice")
+
+[node name="HoverFade" type="Node" parent="."]
+script = ExtResource("2_fade")
+hover_bg = Color(1, 1, 1, 1)
+hover_font = Color(0, 0, 0, 1)
+include_pressed = false

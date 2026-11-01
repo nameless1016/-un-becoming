@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://cpsvdbigif2vf"]
+
+[ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="1_xjp00"]
+[ext_resource type="AudioStream" uid="uid://dkljxk8e44qmx" path="res://sound/music/unbecoming_ost/Outside_r.wav" id="2_2c6sm"]
+
+[resource]
+script = ExtResource("1_xjp00")
+track_name = "outside"
+stems = Array[AudioStream]([ExtResource("2_2c6sm")])
+bpm = 80
+metadata/_custom_type_script = "uid://ok7aycfrhu2f"

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://byfsjswgmxvf2"]
+
+[ext_resource type="Texture2D" uid="uid://dr1j1bev4ylem" path="res://game_assets/world/room/more_furniture.png" id="1_h3sq7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg7ot"]
+atlas = ExtResource("1_h3sq7")
+region = Rect2(72, 40, 32, 24)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjgfo"]
+radius = 4.0
+height = 14.0
+
+[node name="PropSofa" type="StaticBody2D" unique_id=991210297]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2004338112]
+position = Vector2(0, -11)
+texture = SubResource("AtlasTexture_wg7ot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1270160899]
+position = Vector2(0, -4)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_bjgfo")

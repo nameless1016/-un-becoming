@@ -12,6 +12,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child; #Place in states dictionary
 			child.transition.connect(change_state) #Connect the transition signal. When it detects the transition signal, call the change_state function, the parameters of the function is automatically placed as the arguments of the signal (self, "new state name")
 	if initial_state:
+		await owner.ready
 		initial_state.enterState();
 		cur_state = initial_state;
 

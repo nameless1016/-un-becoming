@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://qo2fi2oboewn"]
+
+[ext_resource type="Script" uid="uid://ok7aycfrhu2f" path="res://systems/Custom Music Track Resource/MusicTrack.gd" id="1_cbdn0"]
+[ext_resource type="AudioStream" uid="uid://bfvqd3mdi8cjf" path="res://sound/music/unbecoming_ost/Ghost in the Machine.wav" id="2_x2pht"]
+
+[resource]
+script = ExtResource("1_cbdn0")
+track_name = "title"
+stems = Array[AudioStream]([ExtResource("2_x2pht")])
+bpm = 80
+metadata/_custom_type_script = "uid://ok7aycfrhu2f"

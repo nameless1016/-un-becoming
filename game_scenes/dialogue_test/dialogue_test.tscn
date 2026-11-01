@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://bdw1a4gp5ptom"]
 
-[ext_resource type="Script" path="res://game_scenes/dialogue_test/dialogue_test.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dkh8e363ek537" path="res://game_scenes/dialogue_test/dialogue_test.gd" id="1_script"]
 
 [sub_resource type="Theme" id="Theme_small"]
 default_font_size = 9
 
-[node name="DialogueTest" type="Control"]
+[node name="DialogueTest" type="Control" unique_id=1116475454]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_vertical = 2
 theme = SubResource("Theme_small")
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=400833936]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.07, 0.08, 0.12, 1)
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=1902959227]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,32 +37,32 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Columns" type="HBoxContainer" parent="Margin"]
+[node name="Columns" type="HBoxContainer" parent="Margin" unique_id=390586587]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Timelines" type="VBoxContainer" parent="Margin/Columns"]
+[node name="Timelines" type="VBoxContainer" parent="Margin/Columns" unique_id=440624590]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="Margin/Columns/Timelines"]
+[node name="Title" type="Label" parent="Margin/Columns/Timelines" unique_id=599494443]
 layout_mode = 2
 text = "Timelines (click to play)"
 
-[node name="TimelineList" type="ItemList" parent="Margin/Columns/Timelines"]
+[node name="TimelineList" type="ItemList" parent="Margin/Columns/Timelines" unique_id=366308962]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Signals" type="VBoxContainer" parent="Margin/Columns"]
+[node name="Signals" type="VBoxContainer" parent="Margin/Columns" unique_id=1883131664]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title" type="Label" parent="Margin/Columns/Signals"]
+[node name="Title" type="Label" parent="Margin/Columns/Signals" unique_id=455611840]
 layout_mode = 2
 text = "Signals sent"
 
-[node name="SignalLog" type="RichTextLabel" parent="Margin/Columns/Signals"]
+[node name="SignalLog" type="RichTextLabel" parent="Margin/Columns/Signals" unique_id=7322811]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
