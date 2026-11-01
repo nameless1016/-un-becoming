@@ -24,27 +24,27 @@ func _ready() -> void:
 	var main_win: Window = get_window()
 	main_win.title = "SYSTEM TEST HARNESS // MENUS"
 	main_win.size = Vector2i(960, 640)
-	
+
 	var screen_id: int = DisplayServer.get_primary_screen()
 	var screen_origin: Vector2i = DisplayServer.screen_get_position(screen_id)
 	var screen_size: Vector2i = DisplayServer.screen_get_size(screen_id)
 	main_win.position = screen_origin + (screen_size - main_win.size) / 2
-	
+
 	get_tree().root.gui_embed_subwindows = false
-	
+
 	# Initialize subwindow UI systems.
 	file_system_ui = FileSystemUI.new()
 	add_child(file_system_ui)
-	
+
 	pause_menu = PauseMenuUI.new()
 	add_child(pause_menu)
-	
+
 	time_banner = TimeBannerUI.new()
 	add_child(time_banner)
-	
+
 	calendar_win = CalendarWindow.new()
 	add_child(calendar_win)
-	
+
 	# Connect cross window signals.
 	calendar_win.request_open_filesystem.connect(func():
 		if calendar_win.visible:
@@ -52,14 +52,14 @@ func _ready() -> void:
 		if not file_system_ui.is_open:
 			file_system_ui.toggle_filesystem()
 	)
-	
+
 	file_system_ui.request_open_calendar.connect(func():
 		if file_system_ui.is_open:
 			file_system_ui.toggle_filesystem()
 		if not calendar_win.visible:
 			calendar_win.toggle_calendar()
 	)
-	
+
 	_create_test_ui()
 
 
@@ -68,7 +68,7 @@ func _create_test_ui() -> void:
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	bg.color = Color("#0e1117")
 	add_child(bg)
-	
+
 	var label := Label.new()
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -88,7 +88,7 @@ func _create_test_ui() -> void:
 [5] - Pick up Mother Dossier (About)
 [6] - Pick up Plushie Manual & Unlock Rearrange
 [7] - Pick up Letter Part 4 (Vigenère)"""
-	
+
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["Cartograph Mono", "Consolas", "monospace"])
 	label.add_theme_font_override("font", font)
@@ -148,10 +148,10 @@ func _test_pickup_about_mother() -> void:
 func _test_pickup_plushie_manual() -> void:
 	# Obtains the plushie repair cipher.
 	FileManager.obtain_file_by_id("cipher_plushie_manual")
-	
+
 	# Unlocks command two which represents Rearrange.
 	FileManager.unlock_terminal_command(2)
-	
+
 	await MetaOS.show_dialog("Obtained", "plushie_repair.enc", ["CLOSE"], "txt")
 
 

@@ -14,6 +14,54 @@ var database: FileDatabase = preload("res://globals/Meta OS/File System/master_f
 var unlocked_commands: Dictionary = { 1: true, 2: false, 3: false, 4: false, 5: false }
 
 
+
+var file_system_ui: FileSystemUI
+var pause_menu: PauseMenuUI
+var calendar_win: CalendarWindow
+var allow_keybinds: bool = false
+
+
+func _ready() -> void:
+	file_system_ui = FileSystemUI.new()
+	add_child(file_system_ui)
+
+	pause_menu = PauseMenuUI.new()
+	add_child(pause_menu)
+
+	calendar_win = CalendarWindow.new()
+	add_child(calendar_win)
+
+	# Connect cross window signals.
+	calendar_win.request_open_filesystem.connect(func():
+		if calendar_win.visible:
+			calendar_win.toggle_calendar()
+		if not file_system_ui.is_open:
+			file_system_ui.toggle_filesystem()
+	)
+
+	file_system_ui.request_open_calendar.connect(func():
+		if file_system_ui.is_open:
+			file_system_ui.toggle_filesystem()
+		if not calendar_win.visible:
+			calendar_win.toggle_calendar()
+	)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not allow_keybinds: return
+	if event is InputEventKey and event.pressed and not event.is_echo():
+		SoundBank.play_sfx("ui_click")
+		match event.keycode:
+			KEY_Q:
+				file_system_ui.toggle_filesystem()
+			KEY_T:
+				file_system_ui.toggle_terminal()
+			KEY_C:
+				calendar_win.toggle_calendar()
+			KEY_ESCAPE:
+				pause_menu.toggle_pause()
+
+
 ## Unlocks a terminal command as the story progresses
 func unlock_terminal_command(cmd_id: int) -> void:
 	unlocked_commands[cmd_id] = true
@@ -28,18 +76,18 @@ func is_command_unlocked(cmd_id: int) -> bool:
 func obtain_file_by_id(fid: String) -> void:
 	if collected_files.has(fid):
 		return
-		
+
 	if not database:
 		push_error("[FileManager] Database resource is missing!")
 		return
-		
+
 	for f in database.all_files:
 		if f and f.file_id == fid:
 			collected_files[fid] = f
 			file_obtained.emit(f)
 			print("[FileManager] Obtained: ", f.filename)
 			return
-			
+
 	push_warning("[FileManager] File ID not found in database: " + fid)
 
 
@@ -75,9 +123,9 @@ func reset_progress() -> void:
 	for file in collected_files.values():
 		if file is GameFile:
 			file.is_solved = false
-			
+
 	collected_files.clear()
-	
+
 	# Relock commands back to starting state (Command 1 unlocked, others locked)
 	unlocked_commands = { 1: true, 2: false, 3: false, 4: false, 5: false }
 	print("[FileManager] Progress reset for new time loop.")

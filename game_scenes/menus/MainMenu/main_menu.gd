@@ -57,7 +57,7 @@ var _tile_tween: Tween
 func _ready() -> void:
 	if not settings_only:
 		MusicManager.change_music("title", 0)
-	
+
 	if ResourceLoader.exists(silhouette_path):
 		_silhouette.texture = load(silhouette_path)
 
@@ -179,6 +179,7 @@ func _start_game() -> void:
 		SaveManager.continue_game()
 	else:
 		SaveManager.new_game()
+	FileManager.allow_keybinds = true
 
 
 func _refresh_tile() -> void:
@@ -215,7 +216,7 @@ func _on_volume_changed() -> void:
 	SettingsManager.music_vol = _sliders[1].value
 	SettingsManager.sfx_vol = _sliders[2].value
 	SettingsManager.save_settings()
-	
+
 	#SoundBank.play_sfx("ui_hover")
 
 
@@ -227,14 +228,14 @@ func _on_resolution_pressed(index: int) -> void:
 	var area := DisplayServer.screen_get_usable_rect(DisplayServer.window_get_current_screen())
 	DisplayServer.window_set_position(area.position + (area.size - window_size) / 2)
 	_sync_viewport_buttons()
-	
+
 	SoundBank.play_sfx("ui_click")
 
 
 func _on_mode_pressed(index: int) -> void:
 	DisplayServer.window_set_mode(WINDOW_MODES[index])
 	_sync_viewport_buttons()
-	
+
 	SoundBank.play_sfx("ui_click")
 
 
