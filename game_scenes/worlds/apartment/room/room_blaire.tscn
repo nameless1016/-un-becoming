@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3vev5pcqxupu" path="res://actors/player/player_blaire.tscn" id="3_qk6m4"]
 [ext_resource type="Script" uid="uid://bpryilfi80de0" path="res://systems/Camera/room_bounds.gd" id="4_bounds"]
 [ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="4_still"]
+[ext_resource type="Script" path="res://game_scenes/worlds/apartment/room/room_intro.gd" id="5_intro"]
 [ext_resource type="PackedScene" uid="uid://bdl5psjyb6nr8" path="res://objects/props/prop_computer_desk.tscn" id="5_10xaw"]
 [ext_resource type="PackedScene" uid="uid://d4byl56v65qg1" path="res://objects/props/prop_bed.tscn" id="5_dsmek"]
 [ext_resource type="PackedScene" uid="uid://bnfoyw5ep8ru5" path="res://objects/props/prop_drawer.tscn" id="6_4lic0"]
@@ -199,3 +200,6 @@ station_scene = "res://game_scenes/stations/kitchen_still.tscn"
 display_name = "Kitchen"
 body_size = Vector2(8, 64)
 show_placeholder = false
+
+[node name="Intro" type="Node" parent="."]
+script = ExtResource("5_intro")

@@ -1,22 +1,20 @@
 [gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://game_scenes/cutscenes/act_0/act_0_cutscene.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/placeholder_home.png" id="2_home"]
+[ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/burning_house.webp" id="2_home"]
+[ext_resource type="Shader" path="res://vfx/shaders/heat_haze.gdshader" id="9_haze"]
 [ext_resource type="Shader" path="res://vfx/shaders/ember_lines.gdshader" id="3_ember"]
 [ext_resource type="Texture2D" path="res://globals/Meta OS/File System/blaire_silhouette.png" id="4_silhouette"]
 [ext_resource type="Texture2D" path="res://game_assets/cutscenes/act_0/placeholder_blaire_concept.png" id="5_concept"]
 [ext_resource type="AudioStream" path="res://sound/sfx/loop_fire.mp3" id="6_fire"]
 [ext_resource type="Shader" path="res://vfx/shaders/screen_glitch.gdshader" id="7_glitch"]
+[ext_resource type="Theme" path="res://game_scenes/menus/MainMenu/menu_theme.tres" id="8_theme"]
 
 [sub_resource type="ShaderMaterial" id="HouseMaterial"]
-shader = ExtResource("3_ember")
-shader_parameter/dark_color = Color(0.07, 0.04, 0.08, 1)
-shader_parameter/line_color = Color(1, 0.36, 0.24, 1)
-shader_parameter/line_boost = 2.5
-shader_parameter/sway_speed = 1.4
-shader_parameter/sway_strength = 0.003
-shader_parameter/noise_scale = 18.0
-shader_parameter/flicker = 0.25
+shader = ExtResource("9_haze")
+shader_parameter/sway_speed = 1.3
+shader_parameter/sway_strength = 0.004
+shader_parameter/noise_scale = 14.0
 
 [sub_resource type="Gradient" id="GlowGradient"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -150,6 +148,20 @@ material = SubResource("GlitchMaterial")
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="GlitchLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 160.0
+offset_right = 640.0
+offset_bottom = 200.0
+mouse_filter = 2
+theme = ExtResource("8_theme")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+bbcode_enabled = true
+text = "[center][b][lb]un[rb][/b][color=#c94a4a][i][s]becoming[/s][/i][/color].exe[/center]"
+scroll_active = false
 
 [node name="Flash" type="ColorRect" parent="GlitchLayer"]
 offset_right = 640.0

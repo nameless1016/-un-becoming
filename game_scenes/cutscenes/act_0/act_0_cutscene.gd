@@ -3,15 +3,16 @@ extends Node2D
 ## plays over the burning house, the close-ups push in on her face, then the
 ## game "errors" and the voice asks the player for help.
 ##
-## After the player answers YES, a white flash cuts to [member next_scene] (the dream).
+## After the player answers YES: a pause in the dark while the game's title fades in
+## and out, then a white flash cuts to [member next_scene] (the dream).
 ##
 ## The shots are cued from the timeline with Dialogic signals:
 ## fx:burning_start (fire sound + wide shot), fx:shot_face, fx:shot_closer
 ## (each one pushes the close-up in a step) and fx:glitch_start.
 ##
-## All art here is placeholder: the house is the Home layout and the face is a
-## crop of the character concept sheet. Swap the textures when the real
-## illustrations exist; the shots and timing stay the same.
+## The burning house is the real illustration. The face is still a placeholder
+## (a crop of the character concept sheet); swap its texture when the close-ups
+## exist, and the shots and timing stay the same.
 
 signal finished
 
@@ -22,9 +23,9 @@ const HELP_TIMELINES: Array[String] = ["a0_ghost_help", "a0_ghost_help_again"]
 ## The first step is the smallest that still fills the screen with the crop.
 const FACE_STEPS: Array[float] = [1.12, 1.5, 2.0, 2.7]
 const FIRE_VOLUME_DB := -4.0
-## Saved flag the main menu checks, so Start only plays Act 0 until it's been seen.
-const SEEN_FLAG := "act_0_seen"
-## Placeholder error messages shown between the cutscene and the voice.
+## Placeholder error messages shown between the cutscene and the voice. Every pop-up
+## here goes through RJ's MetaOS (the team's pop-up system): these use its critical
+## error, red and closable only with OK.
 const ERRORS: Array[Array] = [
 	["FATAL ERROR", "The memory at 0x00000000 could not be read."],
 	["FATAL ERROR", "blaire.exe has stopped responding."],
@@ -45,6 +46,7 @@ var _face_step: int = 0
 @onready var _fire: AudioStreamPlayer = $FireLoop
 @onready var _glitch: ColorRect = $GlitchLayer/Glitch
 @onready var _flash: ColorRect = $GlitchLayer/Flash
+@onready var _title: CanvasItem = $GlitchLayer/Title
 @onready var _dialogue_layer: CanvasLayer = $DialogueLayer
 
 
@@ -77,12 +79,18 @@ func _run() -> void:
 	await _play(MONOLOGUE)
 	await _break_down()
 	await _play(HELP_TIMELINES[mini(resets, HELP_TIMELINES.size() - 1)])
-	await DesktopPopup.ask(self, "Info", "Please help me.", ["YES", "YES"])
-	SaveManager.set_flag(SEEN_FLAG)
+	# An empty title shows as "Info"; [i] makes the line italic.
+	await MetaOS.show_dialog("", "[i]Please help me.[/i]", ["YES", "YES"])
 	finished.emit()
 	if next_scene.is_empty():
 		SaveManager.new_game()
 		return
+	# A held breath: the title surfaces in the dark and sinks again (about 4.5 s in all).
+	await _wait(0.6)
+	await create_tween().tween_property(_title, ^"modulate:a", 1.0, 1.2).finished
+	await _wait(1.0)
+	await create_tween().tween_property(_title, ^"modulate:a", 0.0, 1.2).finished
+	await _wait(0.5)
 	# Flashbang: snap to white, hold, then a hard cut. The dream fades in from the same white.
 	await create_tween().tween_property(_flash, ^"modulate:a", 1.0, 0.08).finished
 	await _wait(0.5)
@@ -133,7 +141,7 @@ func _break_down() -> void:
 	await _wait(1.2)
 	for error in ERRORS:
 		SoundBank.play_sfx("ui_error", Vector2.ZERO, 1.0, 1.0)
-		await DesktopPopup.ask(self, error[0], error[1], ["OK"], "", false)
+		await MetaOS.show_critical_error(error[0], error[1])
 		await _wait(0.3)
 	await _wait(0.8)
 

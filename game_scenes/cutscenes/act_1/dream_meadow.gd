@@ -1,16 +1,20 @@
 extends Node2D
-## Act 1's opening, for now: the dream meadow right after Act 0's flash.
+## Act 1's dream meadow. It has two parts, with the top-down dream area between them:
 ##
-## Fades in from the flash's white and plays the machine's voice (a1_dream_awakening).
+## 1. Right after Act 0's flash: fades in from white and plays the intro
+##    (a1_dream_intro), then goes to [member dream_area_scene], the top-down tutorial.
+## 2. After RJ's maze (which sets [member resume_at_awakening]): plays the machine's
+##    voice (a1_dream_awakening).
 ## The meadow then melts into a blurry view of Blaire's bedroom (she's surfacing),
 ## "W A K E  U P" breaks in as an error pop-up, her eyes blink open on the room,
 ## she says her wake-up monologue, and the game moves to the top-down bedroom.
-## The full dream (exploring, the files, the maze, finding the machine) isn't
-## built yet; this is the part that runs without it.
+## Until the dream area exists, part 1 runs straight on into part 2, so the
+## intro plays end to end.
 ##
 ## The meadow is placeholder art; swap the Background texture for the final
 ## illustration (Planescape on the drive). The bedroom view is the bedroom still's layout.
 
+const INTRO_TIMELINE := "a1_dream_intro"
 const TIMELINE := "a1_dream_awakening"
 const WAKE_MONOLOGUE := "a1_blaire_wake_up"
 ## Per the brief this is an error message, not a line of dialogue.
@@ -22,6 +26,12 @@ const DROWSY_TINT := Color(0.5, 0.5, 0.58)
 const BLUR_SIZE := Vector2i(160, 90)
 
 @export_file("*.tscn") var next_scene: String = "res://game_scenes/worlds/apartment/room/room_blaire.tscn"
+## The top-down dream tutorial, after the intro. Empty: go straight on to the machine's voice.
+@export_file("*.tscn") var dream_area_scene: String = ""
+
+## Set this before loading the meadow again after the maze: it skips the intro
+## and starts at the machine's voice.
+static var resume_at_awakening: bool = false
 
 @onready var _background: TextureRect = $Background
 @onready var _petals: CanvasItem = $Petals
@@ -59,6 +69,14 @@ func _run() -> void:
 	await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC) \
 		.tween_property(_flash, ^"modulate:a", 0.0, 2.5).finished
 	await _wait(1.5)
+	var resuming := resume_at_awakening
+	resume_at_awakening = false
+	if not resuming:
+		await _play(INTRO_TIMELINE)
+		if not dream_area_scene.is_empty():
+			GameManager.load_next_level(dream_area_scene)
+			return
+		await _wait(1.0)
 	await _play(TIMELINE)
 
 	# The dream melts into her bedroom: she's surfacing, not awake yet.
@@ -73,7 +91,8 @@ func _run() -> void:
 	# The error breaks in.
 	_set_glitch(1.0)
 	SoundBank.play_sfx("ui_error", Vector2.ZERO, 1.0, 1.0)
-	await DesktopPopup.ask(self, "ERROR", WAKE_UP, ["OK"], "", false)
+	# Through MetaOS, the team's pop-up system: a critical error, red, closable only with OK.
+	await MetaOS.show_critical_error("ERROR", WAKE_UP)
 
 	# Eyes shut... then they open on the room: a crack, a blink, then wide, coming into focus.
 	_set_glitch(0.0)
@@ -92,7 +111,8 @@ func _run() -> void:
 	await _wait(0.6)
 
 	await _play(WAKE_MONOLOGUE)
-	# She gets up: over to the top-down room, with the usual transition.
+	# She gets up: over to the top-down room, where she walks out and the ghost appears.
+	RoomIntro.pending = true
 	GameManager.load_next_level(next_scene)
 
 
