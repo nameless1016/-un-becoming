@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://bbkgguwdemc8s" path="res://systems/Map/minimap.gd" id="23_minimap"]
 [ext_resource type="Script" uid="uid://b5di5bbmrgh5l" path="res://systems/Point And Click/still_point.gd" id="30_still"]
 [ext_resource type="Script" uid="uid://x1ym3a18yuyy" path="res://actors/player/ghost/ghost_swap.gd" id="31_swap"]
+[ext_resource type="Script" path="res://systems/Story/blaire_route.gd" id="32_route"]
+[ext_resource type="Script" path="res://systems/Story/blaire_stop.gd" id="33_stop"]
 
 [sub_resource type="Gradient" id="Gradient_1negg"]
 
@@ -455,6 +457,48 @@ glow_enabled = false
 
 [node name="GhostSwap" type="Node" parent="." unique_id=1755356601]
 script = ExtResource("31_swap")
+
+[node name="BlaireRoute" type="Node2D" parent="." node_paths=PackedStringArray("exit_door")]
+script = ExtResource("32_route")
+exit_door = NodePath("../FrontDoor")
+
+[node name="LivingRoom" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(384, 122)
+script = ExtResource("33_stop")
+step = &"a1_living_room"
+timeline = "a1_blaire_living_room"
+facing = Vector2(0, -1)
+
+[node name="ToDining1" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(400, 205)
+
+[node name="ToDining2" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(400, 262)
+
+[node name="ToDining3" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(368, 295)
+
+[node name="ToDining4" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(368, 348)
+
+[node name="DiningRoom" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(410, 348)
+script = ExtResource("33_stop")
+step = &"a1_dining_room"
+timeline = "a1_blaire_dining_room"
+facing = Vector2(0, -1)
+
+[node name="ToDoor1" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(223, 352)
+
+[node name="FrontDoor" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(223, 425)
+script = ExtResource("33_stop")
+step = &"a1_outside"
+timeline = "a1_blaire_before_bus"
+
+[node name="Out" type="Marker2D" parent="BlaireRoute"]
+position = Vector2(225, 464)
 
 [node name="RoomBounds" type="Node2D" parent="." unique_id=8495226]
 position = Vector2(-48, 0)

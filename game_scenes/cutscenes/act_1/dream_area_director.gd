@@ -4,8 +4,7 @@ extends Node
 ##
 ## The rest of the dream is the team's: the indoctrination.exe pickup shows its own
 ## "Obtained" pop-up, executing it from the file system opens RJ's maze, and the
-## maze is meant to hand back to the meadow for the machine's voice
-## (DreamMeadow.resume_at_awakening). The maze doesn't hand back yet.
+## maze hands back to the meadow for the machine's voice (DreamMeadow.return_from_maze).
 
 const HINT := "Move: WASD / Arrows   ·   Interact: E"
 const HINT_FONT := preload("res://game_assets/fonts/Space Mono/SpaceMono-Regular.ttf")
@@ -16,6 +15,7 @@ var _hint: Label
 
 
 func _ready() -> void:
+	StoryProgress.advance_to(StoryProgress.A1_DREAM_AREA)
 	_show_hint.call_deferred()
 
 

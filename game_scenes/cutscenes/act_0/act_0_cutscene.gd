@@ -76,6 +76,8 @@ func _exit_tree() -> void:
 
 
 func _run() -> void:
+	# Act 0 is where the story (and the loop) starts, wherever it was before.
+	StoryProgress.set_step(StoryProgress.A0_BURNING)
 	# A moment of black before anything happens.
 	await _wait(1.0)
 	await _play(MONOLOGUE)

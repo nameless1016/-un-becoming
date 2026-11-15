@@ -7,8 +7,6 @@ extends Control
 ## opens as its own window on the player's desktop.
 
 @export_file("*.tscn") var next_level_path: String
-## Saved by the intro when it ends (when the player takes control of the ghost).
-const INTRO_SEEN_FLAG := "intro_seen"
 
 ## Where Start goes until the intro has been played (Act 0). Empty: always the usual flow.
 @export_file("*.tscn") var intro_scene: String = "res://game_scenes/cutscenes/act_0/act_0_cutscene.tscn"
@@ -191,10 +189,12 @@ func _on_start_pressed() -> void:
 	GameManager.load_next_level(intro_scene)
 
 
-## The intro saves this flag when it ends. Saves from before the intro existed
-## don't have it, so those players get the intro too.
+## The intro ends when the player takes control of the ghost, and saves the story
+## there. Saves from before the intro existed aren't that far, so those players
+## get the intro too.
 func _has_seen_intro() -> bool:
-	return SaveManager.has_save() and SaveManager.load_game() and SaveManager.get_flag(INTRO_SEEN_FLAG)
+	return SaveManager.has_save() and SaveManager.load_game() \
+		and StoryProgress.reached(StoryProgress.A1_BEDROOM)
 
 
 func _refresh_tile() -> void:

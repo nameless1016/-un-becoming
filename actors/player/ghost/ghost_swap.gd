@@ -5,14 +5,28 @@ extends Node
 ## it puts the ghost in her place (after any SpawnPoint has placed her).
 
 const GHOST_SCENE := preload("res://actors/player/ghost/player_ghost.tscn")
-## Saved when the intro ends, when the player takes control of the ghost.
-const SEEN_FLAG := "intro_seen"
+
+
+## The room's PlayerPaths (scripted walks) were made for Blaire, like her walk to her
+## seat on the bus. With this on they don't run for the ghost.
+@export var stop_player_paths: bool = true
 
 
 func _ready() -> void:
-	if SaveManager.get_flag(SEEN_FLAG):
+	if StoryProgress.reached(StoryProgress.A1_BEDROOM):
+		if stop_player_paths:
+			_stop_paths()
 		# Deferred, so SpawnPoints and StillPoints place Blaire first.
 		_swap.call_deferred()
+
+
+## Marks every PlayerPath in the room as already walked, so none of them starts.
+func _stop_paths() -> void:
+	for node in get_parent().find_children("*", "", true, false):
+		var path := node as PlayerPath
+		if path:
+			path.once = true
+			path.has_run = true
 
 
 func _swap() -> void:

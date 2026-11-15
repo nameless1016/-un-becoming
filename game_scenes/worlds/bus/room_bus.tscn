@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://5p6uxfnxheuo" path="res://actors/Interactables/travel_npc.gd" id="14_travel"]
 [ext_resource type="Script" path="res://systems/Point And Click/still_point.gd" id="40_still"]
 [ext_resource type="Script" path="res://actors/player/ghost/ghost_swap.gd" id="41_swap"]
+[ext_resource type="Script" path="res://systems/Story/blaire_spot.gd" id="42_spot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7fms"]
 atlas = ExtResource("1_l7fms")
@@ -369,3 +370,11 @@ show_placeholder = false
 
 [node name="GhostSwap" type="Node" parent="."]
 script = ExtResource("41_swap")
+
+[node name="BlaireSeat" type="Marker2D" parent="."]
+z_index = 1
+position = Vector2(295, 223)
+script = ExtResource("42_spot")
+until_step = &"a2_school"
+arrive_step = &"a1_bus"
+facing = Vector2(0, -1)

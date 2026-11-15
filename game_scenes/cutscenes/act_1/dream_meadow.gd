@@ -99,11 +99,13 @@ func _run() -> void:
 	var resuming := resume_at_awakening
 	resume_at_awakening = false
 	if not resuming:
+		StoryProgress.advance_to(StoryProgress.A1_DREAM_INTRO)
 		await _play(INTRO_TIMELINE)
 		if not dream_area_scene.is_empty():
 			GameManager.load_next_level(dream_area_scene)
 			return
 		await _wait(1.0)
+	StoryProgress.advance_to(StoryProgress.A1_DREAM_VOICE)
 	await _play(TIMELINE)
 
 	# The dream melts into her bedroom: she's surfacing, not awake yet.
@@ -116,6 +118,7 @@ func _run() -> void:
 	await _wait(0.8)
 
 	# The error breaks in.
+	StoryProgress.advance_to(StoryProgress.A1_WAKE_UP)
 	_set_glitch(1.0)
 	SoundBank.play_sfx("ui_error", Vector2.ZERO, 1.0, 1.0)
 	# Through MetaOS, the team's pop-up system: a critical error, red, closable only with OK.
